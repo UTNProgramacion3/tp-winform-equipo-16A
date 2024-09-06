@@ -6,8 +6,8 @@
 -
 **Desarrolladores:**
  - [Báez, Franco](https://github.com/Franc00Baez) 
- - [Cáceres Federico](https://github.com/FedericoECaceres) 
- - [Escudero Pablo Martín](https://github.com/escu-git)
+ - [Cáceres, Federico](https://github.com/FedericoECaceres) 
+ - [Escudero, Pablo Martín](https://github.com/escu-git)
 ---
 
 Se necesita una **aplicación para la gestión de artículos de un catálogo de un comercio**. La aplicación debe ser genérica, es decir, aplicar para cualquier tipo de comercio; y la información que en ella se cargue será consumida luego desde distintos servicios para ser mostradas ya sea en webs, e-commerces, apps mobile, revistas, etc. Esto no es parte del desarrollo, pero sí del contexto en el cual se utilizará la aplicación a desarrollar.
