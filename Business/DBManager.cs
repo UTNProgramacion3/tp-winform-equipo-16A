@@ -15,7 +15,7 @@ namespace Business
         /// </summary>
         public DBManager()
         {
-            _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=CATALOGO_P3_DB;" + "Integrated Security=True";
+            _connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString; ;
             _connection = new SqlConnection(_connectionString);
         }
 
