@@ -9,6 +9,6 @@ namespace TPWinForm_16A
     internal class Marca
     {
         Marca() { }
-        public string descripcion {  get; set; }
+        public string Descripcion {  get; set; }
     }
 }

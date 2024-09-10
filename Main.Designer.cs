@@ -1,6 +1,6 @@
 ﻿namespace TPWinForm_16A
 {
-    partial class Main
+    partial class frmMain
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -34,20 +34,20 @@
             this.tlsArchivo = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsOpciones = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsAgregar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tlsModificar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tlsEliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tlsListar = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsAgregarArt = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsAgregarMarca = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsAgregarCat = new System.Windows.Forms.ToolStripMenuItem();
-            this.léemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tlsModificar = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsModificarArt = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsModificarMarca = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsModificarCat = new System.Windows.Forms.ToolStripMenuItem();
+            this.tlsEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsElimarArt = new System.Windows.Forms.ToolStripMenuItem();
+            this.tlsListar = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsListarArt = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsListarMarca = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsListarCat = new System.Windows.Forms.ToolStripMenuItem();
+            this.léemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -57,9 +57,9 @@
             this.statusStrip1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsUserUTN});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 585);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 619);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1040, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1043, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -77,7 +77,7 @@
             this.léemeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1040, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1043, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -108,6 +108,25 @@
             this.tlsAgregar.Size = new System.Drawing.Size(180, 22);
             this.tlsAgregar.Text = "Agregar...";
             // 
+            // tlsAgregarArt
+            // 
+            this.tlsAgregarArt.Name = "tlsAgregarArt";
+            this.tlsAgregarArt.Size = new System.Drawing.Size(180, 22);
+            this.tlsAgregarArt.Text = "Articulo";
+            this.tlsAgregarArt.Click += new System.EventHandler(this.tlsAgregarArt_Click);
+            // 
+            // tlsAgregarMarca
+            // 
+            this.tlsAgregarMarca.Name = "tlsAgregarMarca";
+            this.tlsAgregarMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsAgregarMarca.Text = "Marca";
+            // 
+            // tlsAgregarCat
+            // 
+            this.tlsAgregarCat.Name = "tlsAgregarCat";
+            this.tlsAgregarCat.Size = new System.Drawing.Size(125, 22);
+            this.tlsAgregarCat.Text = "Categoria";
+            // 
             // tlsModificar
             // 
             this.tlsModificar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -115,16 +134,40 @@
             this.tlsModificarMarca,
             this.tlsModificarCat});
             this.tlsModificar.Name = "tlsModificar";
-            this.tlsModificar.Size = new System.Drawing.Size(180, 22);
+            this.tlsModificar.Size = new System.Drawing.Size(134, 22);
             this.tlsModificar.Text = "Modificar...";
+            // 
+            // tlsModificarArt
+            // 
+            this.tlsModificarArt.Name = "tlsModificarArt";
+            this.tlsModificarArt.Size = new System.Drawing.Size(125, 22);
+            this.tlsModificarArt.Text = "Articulo";
+            // 
+            // tlsModificarMarca
+            // 
+            this.tlsModificarMarca.Name = "tlsModificarMarca";
+            this.tlsModificarMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsModificarMarca.Text = "Marca";
+            // 
+            // tlsModificarCat
+            // 
+            this.tlsModificarCat.Name = "tlsModificarCat";
+            this.tlsModificarCat.Size = new System.Drawing.Size(125, 22);
+            this.tlsModificarCat.Text = "Categoria";
             // 
             // tlsEliminar
             // 
             this.tlsEliminar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsElimarArt});
             this.tlsEliminar.Name = "tlsEliminar";
-            this.tlsEliminar.Size = new System.Drawing.Size(180, 22);
+            this.tlsEliminar.Size = new System.Drawing.Size(134, 22);
             this.tlsEliminar.Text = "Eliminar...";
+            // 
+            // tlsElimarArt
+            // 
+            this.tlsElimarArt.Name = "tlsElimarArt";
+            this.tlsElimarArt.Size = new System.Drawing.Size(116, 22);
+            this.tlsElimarArt.Text = "Articulo";
             // 
             // tlsListar
             // 
@@ -133,26 +176,26 @@
             this.tlsListarMarca,
             this.tlsListarCat});
             this.tlsListar.Name = "tlsListar";
-            this.tlsListar.Size = new System.Drawing.Size(180, 22);
+            this.tlsListar.Size = new System.Drawing.Size(134, 22);
             this.tlsListar.Text = "Listar...";
             // 
-            // tlsAgregarArt
+            // tlsListarArt
             // 
-            this.tlsAgregarArt.Name = "tlsAgregarArt";
-            this.tlsAgregarArt.Size = new System.Drawing.Size(180, 22);
-            this.tlsAgregarArt.Text = "Articulo";
+            this.tlsListarArt.Name = "tlsListarArt";
+            this.tlsListarArt.Size = new System.Drawing.Size(125, 22);
+            this.tlsListarArt.Text = "Articulo";
             // 
-            // tlsAgregarMarca
+            // tlsListarMarca
             // 
-            this.tlsAgregarMarca.Name = "tlsAgregarMarca";
-            this.tlsAgregarMarca.Size = new System.Drawing.Size(180, 22);
-            this.tlsAgregarMarca.Text = "Marca";
+            this.tlsListarMarca.Name = "tlsListarMarca";
+            this.tlsListarMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsListarMarca.Text = "Marca";
             // 
-            // tlsAgregarCat
+            // tlsListarCat
             // 
-            this.tlsAgregarCat.Name = "tlsAgregarCat";
-            this.tlsAgregarCat.Size = new System.Drawing.Size(180, 22);
-            this.tlsAgregarCat.Text = "Categoria";
+            this.tlsListarCat.Name = "tlsListarCat";
+            this.tlsListarCat.Size = new System.Drawing.Size(125, 22);
+            this.tlsListarCat.Text = "Categoria";
             // 
             // léemeToolStripMenuItem
             // 
@@ -160,58 +203,16 @@
             this.léemeToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.léemeToolStripMenuItem.Text = "Léeme";
             // 
-            // tlsModificarArt
-            // 
-            this.tlsModificarArt.Name = "tlsModificarArt";
-            this.tlsModificarArt.Size = new System.Drawing.Size(180, 22);
-            this.tlsModificarArt.Text = "Articulo";
-            // 
-            // tlsModificarMarca
-            // 
-            this.tlsModificarMarca.Name = "tlsModificarMarca";
-            this.tlsModificarMarca.Size = new System.Drawing.Size(180, 22);
-            this.tlsModificarMarca.Text = "Marca";
-            // 
-            // tlsModificarCat
-            // 
-            this.tlsModificarCat.Name = "tlsModificarCat";
-            this.tlsModificarCat.Size = new System.Drawing.Size(180, 22);
-            this.tlsModificarCat.Text = "Categoria";
-            // 
-            // tlsElimarArt
-            // 
-            this.tlsElimarArt.Name = "tlsElimarArt";
-            this.tlsElimarArt.Size = new System.Drawing.Size(180, 22);
-            this.tlsElimarArt.Text = "Articulo";
-            // 
-            // tlsListarArt
-            // 
-            this.tlsListarArt.Name = "tlsListarArt";
-            this.tlsListarArt.Size = new System.Drawing.Size(180, 22);
-            this.tlsListarArt.Text = "Articulo";
-            // 
-            // tlsListarMarca
-            // 
-            this.tlsListarMarca.Name = "tlsListarMarca";
-            this.tlsListarMarca.Size = new System.Drawing.Size(180, 22);
-            this.tlsListarMarca.Text = "Marca";
-            // 
-            // tlsListarCat
-            // 
-            this.tlsListarCat.Name = "tlsListarCat";
-            this.tlsListarCat.Size = new System.Drawing.Size(180, 22);
-            this.tlsListarCat.Text = "Categoria";
-            // 
-            // Main
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(1040, 607);
+            this.ClientSize = new System.Drawing.Size(1043, 641);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Main";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema Gestion";
             this.statusStrip1.ResumeLayout(false);

@@ -9,9 +9,9 @@ namespace TPWinForm_16A
     internal class Articulo
     {
         public Articulo() { }
-        public string codigo { get; set; }
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
-        public float precio {  get; set; }
+        public string Codigo { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public float Precio {  get; set; }
     }
 }

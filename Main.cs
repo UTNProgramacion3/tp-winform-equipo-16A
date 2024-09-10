@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace TPWinForm_16A
 {
-    public partial class Main : Form
+    public partial class frmMain : Form
     {
-        public Main()
+        public frmMain()
         {
             InitializeComponent();
+        }
+
+        private void tlsAgregarArt_Click(object sender, EventArgs e)
+        {
+            frmAgregarArticulo ventana = new frmAgregarArticulo();
+
+            ventana.ShowDialog();
         }
     }
 }

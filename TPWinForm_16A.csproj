@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAgregarArt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarArt.Designer.cs">
+      <DependentUpon>frmAgregarArt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Articulo.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Main.cs">
@@ -58,6 +64,9 @@
     <Compile Include="Marca.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAgregarArt.resx">
+      <DependentUpon>frmAgregarArt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
