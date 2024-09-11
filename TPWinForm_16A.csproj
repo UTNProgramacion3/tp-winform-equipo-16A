@@ -77,13 +77,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{0c953172-bb8c-4977-bb74-7893462ea150}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="Business\Business.csproj">
       <Project>{fffa04db-d698-495e-987b-28295c73fb29}</Project>
       <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="DataAccess\DataAccess.csproj">
+      <Project>{98677985-b64c-471e-9080-fa40e29d997e}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="Domain\Domain.csproj">
+      <Project>{0c953172-bb8c-4977-bb74-7893462ea150}</Project>
+      <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

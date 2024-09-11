@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Business.Managers
 {
-    public class ArticuloManager
+    public class ArticuloManager : ICrudRepository<Articulo>
     {
         private DBManager dbManager;
 
@@ -17,32 +18,28 @@ namespace Business.Managers
             dbManager = new DBManager();
         }
 
-        public string ObtenerNombreArticuloPorId(int id)
+        public void Crear(Articulo entity)
         {
-            try
-            {
-                dbManager.OpenConnection();
+            throw new NotImplementedException();
+        }
 
-                DataTable tabla = dbManager.ExecuteQuery($"Select Nombre From ARTICULOS where Id = {id}");
+        public void Eliminar(Articulo entity)
+        {
+            throw new NotImplementedException();
+        }
+        public Articulo ObtenerPorId(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-                if (tabla.Rows.Count > 0)
-                {
-                    return tabla.Rows[0]["Nombre"].ToString();
-                }
-                else
-                {
-                    return "Artículo no encontrado";
-                }
-            }
-            catch (Exception ex)
-            {
-                // Manejar el error de manera más amigable para la capa UI
-                throw new Exception("Error al obtener el artículo.", ex);
-            }
-            finally
-            {
-                dbManager.CloseConnection();
-            }
+        public List<Articulo> ObtenerTodos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Articulo entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }
