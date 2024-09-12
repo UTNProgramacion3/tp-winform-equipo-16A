@@ -50,7 +50,19 @@ namespace Business.Managers
 
         public List<Categoria> ObtenerTodos()
         {
-            throw new NotImplementedException();
+            string query = "SELECT * FROM Categorias";
+
+            DataTable res = _dbManager.ExecuteQuery(query);
+
+            if(res.Rows.Count == 0)
+            {
+                return null;
+            }
+
+            var categoriasList = _mapper.ListMapFromRow(res);
+
+            return categoriasList;
+
         }
 
         public void Update(Categoria entity)

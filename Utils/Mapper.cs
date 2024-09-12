@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 using Utils.Interfaces;
@@ -32,6 +33,20 @@ namespace Utils
             }
             // Retornamos el objeto con los valores asignados
             return obj;
+        }
+        public List<T> ListMapFromRow(DataTable row)
+        {
+            List<T> objList = new List<T>();
+
+            //Iteramos cada row de la tabla:
+            foreach (DataRow r in row.Rows)
+            {
+                //Y utilizamos el método que ya tenemos para mapear:
+                var res = MapFromRow(r);
+                objList.Add(res);
+            }
+
+            return objList;
         }
     }
 }
