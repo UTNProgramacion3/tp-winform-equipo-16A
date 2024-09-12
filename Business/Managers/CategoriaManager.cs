@@ -17,12 +17,12 @@ namespace Business.Managers
             dbManager = new DBManager();
         }
 
-        public void Crear(Categoria entity)
+        public bool Crear(Categoria entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Eliminar(Categoria entity)
+        public bool Eliminar(int id)
         {
             throw new NotImplementedException();
         }
@@ -37,7 +37,7 @@ namespace Business.Managers
             throw new NotImplementedException();
         }
 
-        public void Update(Categoria entity)
+        public bool Update(Categoria entity)
         {
             throw new NotImplementedException();
         }

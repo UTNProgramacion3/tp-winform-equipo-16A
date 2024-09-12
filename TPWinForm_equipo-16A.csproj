@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BEF2DF98-D7A9-49F9-9DA4-C31F0244AB72}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TPWinForm_16A</RootNamespace>
-    <AssemblyName>TPWinForm_16A</AssemblyName>
+    <RootNamespace>TPWinForm_equipo-16A</RootNamespace>
+    <AssemblyName>TPWinForm_equipo-16A</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
