@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Managers\ArticuloManager.cs" />
-    <Compile Include="Managers\ICrudRepository.cs" />
+    <Compile Include="Interfaces\ICrudRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
