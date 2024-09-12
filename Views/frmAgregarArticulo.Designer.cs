@@ -29,193 +29,225 @@
         private void InitializeComponent()
         {
             this.lblAgregarArticulo = new System.Windows.Forms.Label();
-            this.lblCodigo = new System.Windows.Forms.Label();
-            this.lblDescripcion = new System.Windows.Forms.Label();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.lblMarca = new System.Windows.Forms.Label();
-            this.lblCategoria = new System.Windows.Forms.Label();
-            this.lblPrecio = new System.Windows.Forms.Label();
-            this.txtbCodigo = new System.Windows.Forms.TextBox();
-            this.txtbNombre = new System.Windows.Forms.TextBox();
-            this.txtbDescripcion = new System.Windows.Forms.TextBox();
-            this.cmbMarca = new System.Windows.Forms.ComboBox();
-            this.cmbCategoria = new System.Windows.Forms.ComboBox();
-            this.txtbPrecio = new System.Windows.Forms.TextBox();
-            this.lblAgregarImagen = new System.Windows.Forms.Label();
-            this.btnCargarImagen = new System.Windows.Forms.Button();
-            this.pcbArticulo = new System.Windows.Forms.PictureBox();
-            this.btnSalirSinGuardar = new System.Windows.Forms.Button();
-            this.btnCargarArticulo = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbArticulo)).BeginInit();
+            this.lblCodigoAgr = new System.Windows.Forms.Label();
+            this.lblDescripcionAgr = new System.Windows.Forms.Label();
+            this.lblNombreAgr = new System.Windows.Forms.Label();
+            this.lblMarcaAgr = new System.Windows.Forms.Label();
+            this.lblCategoriaAgr = new System.Windows.Forms.Label();
+            this.lblPrecioAgr = new System.Windows.Forms.Label();
+            this.txtbCodigoAgr = new System.Windows.Forms.TextBox();
+            this.txtbNombreAgr = new System.Windows.Forms.TextBox();
+            this.txtbDescripcionAgr = new System.Windows.Forms.TextBox();
+            this.cmbMarcaAgr = new System.Windows.Forms.ComboBox();
+            this.cmbCategoriaAgr = new System.Windows.Forms.ComboBox();
+            this.txtbPrecioAgr = new System.Windows.Forms.TextBox();
+            this.lblAgregarImagenAgr = new System.Windows.Forms.Label();
+            this.btnCargarImagenAgr = new System.Windows.Forms.Button();
+            this.pcbArticuloAgr = new System.Windows.Forms.PictureBox();
+            this.btnSalirSinGuardarAgr = new System.Windows.Forms.Button();
+            this.btnCargarArticuloAgr = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbArticuloAgr)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAgregarArticulo
             // 
-            this.lblAgregarArticulo.AutoSize = true;
-            this.lblAgregarArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAgregarArticulo.Location = new System.Drawing.Point(77, 66);
+            this.lblAgregarArticulo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblAgregarArticulo.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.lblAgregarArticulo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblAgregarArticulo.Font = new System.Drawing.Font("Calibri", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgregarArticulo.Location = new System.Drawing.Point(-2, 47);
             this.lblAgregarArticulo.Name = "lblAgregarArticulo";
-            this.lblAgregarArticulo.Size = new System.Drawing.Size(261, 39);
+            this.lblAgregarArticulo.Size = new System.Drawing.Size(810, 71);
             this.lblAgregarArticulo.TabIndex = 0;
-            this.lblAgregarArticulo.Text = "Agregar Articulo";
+            this.lblAgregarArticulo.Text = "AGREGAR ARTICULO";
+            this.lblAgregarArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblCodigo
+            // lblCodigoAgr
             // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(80, 162);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(63, 20);
-            this.lblCodigo.TabIndex = 1;
-            this.lblCodigo.Text = "Codigo:";
+            this.lblCodigoAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCodigoAgr.AutoSize = true;
+            this.lblCodigoAgr.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoAgr.Location = new System.Drawing.Point(80, 162);
+            this.lblCodigoAgr.Name = "lblCodigoAgr";
+            this.lblCodigoAgr.Size = new System.Drawing.Size(64, 18);
+            this.lblCodigoAgr.TabIndex = 1;
+            this.lblCodigoAgr.Text = "Codigo:";
             // 
-            // lblDescripcion
+            // lblDescripcionAgr
             // 
-            this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescripcion.Location = new System.Drawing.Point(80, 228);
-            this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(96, 20);
-            this.lblDescripcion.TabIndex = 1;
-            this.lblDescripcion.Text = "Descripcion:";
+            this.lblDescripcionAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDescripcionAgr.AutoSize = true;
+            this.lblDescripcionAgr.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescripcionAgr.Location = new System.Drawing.Point(80, 228);
+            this.lblDescripcionAgr.Name = "lblDescripcionAgr";
+            this.lblDescripcionAgr.Size = new System.Drawing.Size(96, 18);
+            this.lblDescripcionAgr.TabIndex = 1;
+            this.lblDescripcionAgr.Text = "Descripcion:";
             // 
-            // lblNombre
+            // lblNombreAgr
             // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(80, 195);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(69, 20);
-            this.lblNombre.TabIndex = 2;
-            this.lblNombre.Text = "Nombre:";
+            this.lblNombreAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblNombreAgr.AutoSize = true;
+            this.lblNombreAgr.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreAgr.Location = new System.Drawing.Point(80, 195);
+            this.lblNombreAgr.Name = "lblNombreAgr";
+            this.lblNombreAgr.Size = new System.Drawing.Size(68, 18);
+            this.lblNombreAgr.TabIndex = 2;
+            this.lblNombreAgr.Text = "Nombre:";
             // 
-            // lblMarca
+            // lblMarcaAgr
             // 
-            this.lblMarca.AutoSize = true;
-            this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarca.Location = new System.Drawing.Point(419, 162);
-            this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(57, 20);
-            this.lblMarca.TabIndex = 1;
-            this.lblMarca.Text = "Marca:";
+            this.lblMarcaAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblMarcaAgr.AutoSize = true;
+            this.lblMarcaAgr.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarcaAgr.Location = new System.Drawing.Point(419, 162);
+            this.lblMarcaAgr.Name = "lblMarcaAgr";
+            this.lblMarcaAgr.Size = new System.Drawing.Size(56, 18);
+            this.lblMarcaAgr.TabIndex = 1;
+            this.lblMarcaAgr.Text = "Marca:";
             // 
-            // lblCategoria
+            // lblCategoriaAgr
             // 
-            this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.Location = new System.Drawing.Point(419, 195);
-            this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(82, 20);
-            this.lblCategoria.TabIndex = 1;
-            this.lblCategoria.Text = "Categoria:";
+            this.lblCategoriaAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCategoriaAgr.AutoSize = true;
+            this.lblCategoriaAgr.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoriaAgr.Location = new System.Drawing.Point(419, 195);
+            this.lblCategoriaAgr.Name = "lblCategoriaAgr";
+            this.lblCategoriaAgr.Size = new System.Drawing.Size(82, 18);
+            this.lblCategoriaAgr.TabIndex = 1;
+            this.lblCategoriaAgr.Text = "Categoria:";
             // 
-            // lblPrecio
+            // lblPrecioAgr
             // 
-            this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecio.Location = new System.Drawing.Point(419, 225);
-            this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(57, 20);
-            this.lblPrecio.TabIndex = 1;
-            this.lblPrecio.Text = "Precio:";
+            this.lblPrecioAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblPrecioAgr.AutoSize = true;
+            this.lblPrecioAgr.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioAgr.Location = new System.Drawing.Point(419, 229);
+            this.lblPrecioAgr.Name = "lblPrecioAgr";
+            this.lblPrecioAgr.Size = new System.Drawing.Size(58, 18);
+            this.lblPrecioAgr.TabIndex = 1;
+            this.lblPrecioAgr.Text = "Precio:";
             // 
-            // txtbCodigo
+            // txtbCodigoAgr
             // 
-            this.txtbCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtbCodigo.Location = new System.Drawing.Point(185, 161);
-            this.txtbCodigo.Multiline = true;
-            this.txtbCodigo.Name = "txtbCodigo";
-            this.txtbCodigo.Size = new System.Drawing.Size(200, 21);
-            this.txtbCodigo.TabIndex = 0;
+            this.txtbCodigoAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtbCodigoAgr.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtbCodigoAgr.Location = new System.Drawing.Point(185, 161);
+            this.txtbCodigoAgr.Multiline = true;
+            this.txtbCodigoAgr.Name = "txtbCodigoAgr";
+            this.txtbCodigoAgr.Size = new System.Drawing.Size(200, 21);
+            this.txtbCodigoAgr.TabIndex = 0;
             // 
-            // txtbNombre
+            // txtbNombreAgr
             // 
-            this.txtbNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtbNombre.Location = new System.Drawing.Point(185, 194);
-            this.txtbNombre.Multiline = true;
-            this.txtbNombre.Name = "txtbNombre";
-            this.txtbNombre.Size = new System.Drawing.Size(200, 21);
-            this.txtbNombre.TabIndex = 1;
+            this.txtbNombreAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtbNombreAgr.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtbNombreAgr.Location = new System.Drawing.Point(185, 194);
+            this.txtbNombreAgr.Multiline = true;
+            this.txtbNombreAgr.Name = "txtbNombreAgr";
+            this.txtbNombreAgr.Size = new System.Drawing.Size(200, 21);
+            this.txtbNombreAgr.TabIndex = 1;
             // 
-            // txtbDescripcion
+            // txtbDescripcionAgr
             // 
-            this.txtbDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtbDescripcion.Location = new System.Drawing.Point(185, 227);
-            this.txtbDescripcion.Multiline = true;
-            this.txtbDescripcion.Name = "txtbDescripcion";
-            this.txtbDescripcion.Size = new System.Drawing.Size(200, 43);
-            this.txtbDescripcion.TabIndex = 2;
+            this.txtbDescripcionAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtbDescripcionAgr.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtbDescripcionAgr.Location = new System.Drawing.Point(185, 227);
+            this.txtbDescripcionAgr.Multiline = true;
+            this.txtbDescripcionAgr.Name = "txtbDescripcionAgr";
+            this.txtbDescripcionAgr.Size = new System.Drawing.Size(200, 45);
+            this.txtbDescripcionAgr.TabIndex = 2;
             // 
-            // cmbMarca
+            // cmbMarcaAgr
             // 
-            this.cmbMarca.FormattingEnabled = true;
-            this.cmbMarca.Location = new System.Drawing.Point(524, 161);
-            this.cmbMarca.Name = "cmbMarca";
-            this.cmbMarca.Size = new System.Drawing.Size(200, 21);
-            this.cmbMarca.TabIndex = 3;
+            this.cmbMarcaAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbMarcaAgr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbMarcaAgr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMarcaAgr.FormattingEnabled = true;
+            this.cmbMarcaAgr.Location = new System.Drawing.Point(524, 161);
+            this.cmbMarcaAgr.MaxDropDownItems = 50;
+            this.cmbMarcaAgr.Name = "cmbMarcaAgr";
+            this.cmbMarcaAgr.Size = new System.Drawing.Size(200, 21);
+            this.cmbMarcaAgr.TabIndex = 3;
             // 
-            // cmbCategoria
+            // cmbCategoriaAgr
             // 
-            this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(524, 194);
-            this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(200, 21);
-            this.cmbCategoria.TabIndex = 4;
+            this.cmbCategoriaAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbCategoriaAgr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbCategoriaAgr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoriaAgr.FormattingEnabled = true;
+            this.cmbCategoriaAgr.Location = new System.Drawing.Point(524, 194);
+            this.cmbCategoriaAgr.MaxDropDownItems = 50;
+            this.cmbCategoriaAgr.Name = "cmbCategoriaAgr";
+            this.cmbCategoriaAgr.Size = new System.Drawing.Size(200, 21);
+            this.cmbCategoriaAgr.TabIndex = 4;
             // 
-            // txtbPrecio
+            // txtbPrecioAgr
             // 
-            this.txtbPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtbPrecio.Location = new System.Drawing.Point(524, 228);
-            this.txtbPrecio.Multiline = true;
-            this.txtbPrecio.Name = "txtbPrecio";
-            this.txtbPrecio.Size = new System.Drawing.Size(200, 21);
-            this.txtbPrecio.TabIndex = 5;
+            this.txtbPrecioAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtbPrecioAgr.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtbPrecioAgr.Location = new System.Drawing.Point(524, 228);
+            this.txtbPrecioAgr.Multiline = true;
+            this.txtbPrecioAgr.Name = "txtbPrecioAgr";
+            this.txtbPrecioAgr.Size = new System.Drawing.Size(200, 21);
+            this.txtbPrecioAgr.TabIndex = 5;
             // 
-            // lblAgregarImagen
+            // lblAgregarImagenAgr
             // 
-            this.lblAgregarImagen.AutoSize = true;
-            this.lblAgregarImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAgregarImagen.Location = new System.Drawing.Point(80, 328);
-            this.lblAgregarImagen.Name = "lblAgregarImagen";
-            this.lblAgregarImagen.Size = new System.Drawing.Size(119, 20);
-            this.lblAgregarImagen.TabIndex = 1;
-            this.lblAgregarImagen.Text = "Cargar Imagen:";
+            this.lblAgregarImagenAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblAgregarImagenAgr.AutoSize = true;
+            this.lblAgregarImagenAgr.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgregarImagenAgr.Location = new System.Drawing.Point(80, 341);
+            this.lblAgregarImagenAgr.Name = "lblAgregarImagenAgr";
+            this.lblAgregarImagenAgr.Size = new System.Drawing.Size(116, 18);
+            this.lblAgregarImagenAgr.TabIndex = 1;
+            this.lblAgregarImagenAgr.Text = "Cargar Imagen:";
             // 
-            // btnCargarImagen
+            // btnCargarImagenAgr
             // 
-            this.btnCargarImagen.Location = new System.Drawing.Point(265, 328);
-            this.btnCargarImagen.Name = "btnCargarImagen";
-            this.btnCargarImagen.Size = new System.Drawing.Size(120, 23);
-            this.btnCargarImagen.TabIndex = 6;
-            this.btnCargarImagen.Text = "Cargar";
-            this.btnCargarImagen.UseVisualStyleBackColor = true;
+            this.btnCargarImagenAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCargarImagenAgr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarImagenAgr.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnCargarImagenAgr.Location = new System.Drawing.Point(265, 341);
+            this.btnCargarImagenAgr.Name = "btnCargarImagenAgr";
+            this.btnCargarImagenAgr.Size = new System.Drawing.Size(120, 23);
+            this.btnCargarImagenAgr.TabIndex = 6;
+            this.btnCargarImagenAgr.Text = "Cargar";
+            this.btnCargarImagenAgr.UseVisualStyleBackColor = true;
             // 
-            // pcbArticulo
+            // pcbArticuloAgr
             // 
-            this.pcbArticulo.BackColor = System.Drawing.SystemColors.Window;
-            this.pcbArticulo.Location = new System.Drawing.Point(84, 373);
-            this.pcbArticulo.Name = "pcbArticulo";
-            this.pcbArticulo.Size = new System.Drawing.Size(301, 133);
-            this.pcbArticulo.TabIndex = 6;
-            this.pcbArticulo.TabStop = false;
+            this.pcbArticuloAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pcbArticuloAgr.BackColor = System.Drawing.SystemColors.Window;
+            this.pcbArticuloAgr.Location = new System.Drawing.Point(84, 386);
+            this.pcbArticuloAgr.Name = "pcbArticuloAgr";
+            this.pcbArticuloAgr.Size = new System.Drawing.Size(301, 133);
+            this.pcbArticuloAgr.TabIndex = 6;
+            this.pcbArticuloAgr.TabStop = false;
             // 
-            // btnSalirSinGuardar
+            // btnSalirSinGuardarAgr
             // 
-            this.btnSalirSinGuardar.Location = new System.Drawing.Point(84, 576);
-            this.btnSalirSinGuardar.Name = "btnSalirSinGuardar";
-            this.btnSalirSinGuardar.Size = new System.Drawing.Size(120, 23);
-            this.btnSalirSinGuardar.TabIndex = 8;
-            this.btnSalirSinGuardar.Text = "Salir sin guardar";
-            this.btnSalirSinGuardar.UseVisualStyleBackColor = true;
+            this.btnSalirSinGuardarAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSalirSinGuardarAgr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalirSinGuardarAgr.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnSalirSinGuardarAgr.Location = new System.Drawing.Point(84, 576);
+            this.btnSalirSinGuardarAgr.Name = "btnSalirSinGuardarAgr";
+            this.btnSalirSinGuardarAgr.Size = new System.Drawing.Size(120, 23);
+            this.btnSalirSinGuardarAgr.TabIndex = 8;
+            this.btnSalirSinGuardarAgr.Text = "Salir sin guardar";
+            this.btnSalirSinGuardarAgr.UseVisualStyleBackColor = true;
             // 
-            // btnCargarArticulo
+            // btnCargarArticuloAgr
             // 
-            this.btnCargarArticulo.Location = new System.Drawing.Point(548, 576);
-            this.btnCargarArticulo.Name = "btnCargarArticulo";
-            this.btnCargarArticulo.Size = new System.Drawing.Size(120, 23);
-            this.btnCargarArticulo.TabIndex = 7;
-            this.btnCargarArticulo.Text = "Cargar Artiulo";
-            this.btnCargarArticulo.UseVisualStyleBackColor = true;
+            this.btnCargarArticuloAgr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCargarArticuloAgr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarArticuloAgr.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnCargarArticuloAgr.Location = new System.Drawing.Point(604, 576);
+            this.btnCargarArticuloAgr.Name = "btnCargarArticuloAgr";
+            this.btnCargarArticuloAgr.Size = new System.Drawing.Size(120, 23);
+            this.btnCargarArticuloAgr.TabIndex = 7;
+            this.btnCargarArticuloAgr.Text = "Cargar Artiulo";
+            this.btnCargarArticuloAgr.UseVisualStyleBackColor = true;
             // 
             // frmAgregarArticulo
             // 
@@ -223,28 +255,30 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(804, 661);
-            this.Controls.Add(this.pcbArticulo);
-            this.Controls.Add(this.btnCargarArticulo);
-            this.Controls.Add(this.btnSalirSinGuardar);
-            this.Controls.Add(this.btnCargarImagen);
-            this.Controls.Add(this.cmbCategoria);
-            this.Controls.Add(this.cmbMarca);
-            this.Controls.Add(this.txtbDescripcion);
-            this.Controls.Add(this.txtbPrecio);
-            this.Controls.Add(this.txtbNombre);
-            this.Controls.Add(this.txtbCodigo);
-            this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.lblAgregarImagen);
-            this.Controls.Add(this.lblPrecio);
-            this.Controls.Add(this.lblCategoria);
-            this.Controls.Add(this.lblMarca);
-            this.Controls.Add(this.lblDescripcion);
-            this.Controls.Add(this.lblCodigo);
+            this.Controls.Add(this.pcbArticuloAgr);
+            this.Controls.Add(this.btnCargarArticuloAgr);
+            this.Controls.Add(this.btnSalirSinGuardarAgr);
+            this.Controls.Add(this.btnCargarImagenAgr);
+            this.Controls.Add(this.cmbCategoriaAgr);
+            this.Controls.Add(this.cmbMarcaAgr);
+            this.Controls.Add(this.txtbDescripcionAgr);
+            this.Controls.Add(this.txtbPrecioAgr);
+            this.Controls.Add(this.txtbNombreAgr);
+            this.Controls.Add(this.txtbCodigoAgr);
+            this.Controls.Add(this.lblNombreAgr);
+            this.Controls.Add(this.lblAgregarImagenAgr);
+            this.Controls.Add(this.lblPrecioAgr);
+            this.Controls.Add(this.lblCategoriaAgr);
+            this.Controls.Add(this.lblMarcaAgr);
+            this.Controls.Add(this.lblDescripcionAgr);
+            this.Controls.Add(this.lblCodigoAgr);
             this.Controls.Add(this.lblAgregarArticulo);
+            this.MaximumSize = new System.Drawing.Size(1000, 800);
+            this.MinimumSize = new System.Drawing.Size(710, 605);
             this.Name = "frmAgregarArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
-            ((System.ComponentModel.ISupportInitialize)(this.pcbArticulo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbArticuloAgr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,22 +287,22 @@
         #endregion
 
         private System.Windows.Forms.Label lblAgregarArticulo;
-        private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.Label lblDescripcion;
-        private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblMarca;
-        private System.Windows.Forms.Label lblCategoria;
-        private System.Windows.Forms.Label lblPrecio;
-        private System.Windows.Forms.TextBox txtbCodigo;
-        private System.Windows.Forms.TextBox txtbNombre;
-        private System.Windows.Forms.TextBox txtbDescripcion;
-        private System.Windows.Forms.ComboBox cmbMarca;
-        private System.Windows.Forms.ComboBox cmbCategoria;
-        private System.Windows.Forms.TextBox txtbPrecio;
-        private System.Windows.Forms.Label lblAgregarImagen;
-        private System.Windows.Forms.Button btnCargarImagen;
-        private System.Windows.Forms.PictureBox pcbArticulo;
-        private System.Windows.Forms.Button btnSalirSinGuardar;
-        private System.Windows.Forms.Button btnCargarArticulo;
+        private System.Windows.Forms.Label lblCodigoAgr;
+        private System.Windows.Forms.Label lblDescripcionAgr;
+        private System.Windows.Forms.Label lblNombreAgr;
+        private System.Windows.Forms.Label lblMarcaAgr;
+        private System.Windows.Forms.Label lblCategoriaAgr;
+        private System.Windows.Forms.Label lblPrecioAgr;
+        private System.Windows.Forms.TextBox txtbCodigoAgr;
+        private System.Windows.Forms.TextBox txtbNombreAgr;
+        private System.Windows.Forms.TextBox txtbDescripcionAgr;
+        private System.Windows.Forms.ComboBox cmbMarcaAgr;
+        private System.Windows.Forms.ComboBox cmbCategoriaAgr;
+        private System.Windows.Forms.TextBox txtbPrecioAgr;
+        private System.Windows.Forms.Label lblAgregarImagenAgr;
+        private System.Windows.Forms.Button btnCargarImagenAgr;
+        private System.Windows.Forms.PictureBox pcbArticuloAgr;
+        private System.Windows.Forms.Button btnSalirSinGuardarAgr;
+        private System.Windows.Forms.Button btnCargarArticuloAgr;
     }
 }

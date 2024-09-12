@@ -50,6 +50,8 @@
             this.tlsLeeme = new System.Windows.Forms.ToolStripMenuItem();
             this.ssUTN = new System.Windows.Forms.StatusStrip();
             this.tslUTNFRGP = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tlsBuscar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tlsBuscarArticulo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.ssUTN.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +73,7 @@
             this.tlsNuevo,
             this.tlsEditar,
             this.tlsEliminar,
+            this.tlsBuscar,
             this.tlsMostrar,
             this.tlsSalir});
             this.tlsArchivo.Name = "tlsArchivo";
@@ -119,19 +122,19 @@
             // tlsEditarArticulo
             // 
             this.tlsEditarArticulo.Name = "tlsEditarArticulo";
-            this.tlsEditarArticulo.Size = new System.Drawing.Size(125, 22);
+            this.tlsEditarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tlsEditarArticulo.Text = "Articulo";
             // 
             // tlsEditarMarca
             // 
             this.tlsEditarMarca.Name = "tlsEditarMarca";
-            this.tlsEditarMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsEditarMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsEditarMarca.Text = "Marca";
             // 
             // tlsEditarCategoria
             // 
             this.tlsEditarCategoria.Name = "tlsEditarCategoria";
-            this.tlsEditarCategoria.Size = new System.Drawing.Size(125, 22);
+            this.tlsEditarCategoria.Size = new System.Drawing.Size(180, 22);
             this.tlsEditarCategoria.Text = "Categoria";
             // 
             // tlsEliminar
@@ -147,19 +150,19 @@
             // tlsEliminarArticulo
             // 
             this.tlsEliminarArticulo.Name = "tlsEliminarArticulo";
-            this.tlsEliminarArticulo.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarArticulo.Text = "Articulo";
             // 
             // tlsEliminarMarca
             // 
             this.tlsEliminarMarca.Name = "tlsEliminarMarca";
-            this.tlsEliminarMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarMarca.Text = "Marca";
             // 
             // tlsEliminarCategoria
             // 
             this.tlsEliminarCategoria.Name = "tlsEliminarCategoria";
-            this.tlsEliminarCategoria.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarCategoria.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarCategoria.Text = "Categoria";
             // 
             // tlsMostrar
@@ -175,19 +178,19 @@
             // tlsMostrarListArticulos
             // 
             this.tlsMostrarListArticulos.Name = "tlsMostrarListArticulos";
-            this.tlsMostrarListArticulos.Size = new System.Drawing.Size(173, 22);
+            this.tlsMostrarListArticulos.Size = new System.Drawing.Size(180, 22);
             this.tlsMostrarListArticulos.Text = "Lista de Articulos";
             // 
             // tlsMostrarListMarcas
             // 
             this.tlsMostrarListMarcas.Name = "tlsMostrarListMarcas";
-            this.tlsMostrarListMarcas.Size = new System.Drawing.Size(173, 22);
+            this.tlsMostrarListMarcas.Size = new System.Drawing.Size(180, 22);
             this.tlsMostrarListMarcas.Text = "Lista de Marcas";
             // 
             // tlsMostrarListCategorias
             // 
             this.tlsMostrarListCategorias.Name = "tlsMostrarListCategorias";
-            this.tlsMostrarListCategorias.Size = new System.Drawing.Size(173, 22);
+            this.tlsMostrarListCategorias.Size = new System.Drawing.Size(180, 22);
             this.tlsMostrarListCategorias.Text = "Lista de Categorias";
             // 
             // tlsSalir
@@ -217,6 +220,20 @@
             this.tslUTNFRGP.Name = "tslUTNFRGP";
             this.tslUTNFRGP.Size = new System.Drawing.Size(61, 17);
             this.tslUTNFRGP.Text = "UTN FRGP";
+            // 
+            // tlsBuscar
+            // 
+            this.tlsBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlsBuscarArticulo});
+            this.tlsBuscar.Name = "tlsBuscar";
+            this.tlsBuscar.Size = new System.Drawing.Size(180, 22);
+            this.tlsBuscar.Text = "Buscar...";
+            // 
+            // tlsBuscarArticulo
+            // 
+            this.tlsBuscarArticulo.Name = "tlsBuscarArticulo";
+            this.tlsBuscarArticulo.Size = new System.Drawing.Size(180, 22);
+            this.tlsBuscarArticulo.Text = "Articulo";
             // 
             // frmPrincipal
             // 
@@ -263,5 +280,7 @@
         private System.Windows.Forms.ToolStripMenuItem tlsLeeme;
         private System.Windows.Forms.StatusStrip ssUTN;
         private System.Windows.Forms.ToolStripStatusLabel tslUTNFRGP;
+        private System.Windows.Forms.ToolStripMenuItem tlsBuscar;
+        private System.Windows.Forms.ToolStripMenuItem tlsBuscarArticulo;
     }
 }
