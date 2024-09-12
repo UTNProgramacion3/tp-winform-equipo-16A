@@ -1,6 +1,5 @@
 ﻿using DataAccess;
 using Domain.Entities;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -20,7 +19,7 @@ namespace Business.Managers
             _mapper = new Mapper<Categoria>();
         }
 
-        public void Crear(Categoria entity)
+        public bool Crear(Categoria entity)
         {
             string query = "INSERT INTO Categorias (Descripcion) VALUES (@Descripcion)";
 
@@ -29,19 +28,33 @@ namespace Business.Managers
                 new SqlParameter("@Descripcion", entity.Descripcion)
             };
 
-            _dbManager.ExecuteNonQuery(query, parameters);
+            var res =_dbManager.ExecuteNonQuery(query, parameters);
+
+            if(res == 0) 
+            {
+                return false;
+            }
+
+            return true;
         }
 
-        public void Eliminar(Categoria entity)
+        public bool Eliminar(int id)
         {
             string query = "DELETE FROM Categorias WHERE Id = @Id";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@Id", entity.Id)
+                new SqlParameter("@Id", id)
             };
 
-            _dbManager.ExecuteNonQuery(query, parameters);
+            var res = _dbManager.ExecuteNonQuery(query, parameters);
+
+            if (res == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public Categoria ObtenerPorId(int id)
@@ -79,7 +92,7 @@ namespace Business.Managers
 
         }
 
-        public void Update(Categoria entity)
+        public bool Update(Categoria entity)
         {
             string query = "UPDATE Categorias SET Descripcion = @Descripcion WHERE Id = @Id";
 
@@ -89,7 +102,14 @@ namespace Business.Managers
                 new SqlParameter("@Id", entity.Id)
             };
 
-            _dbManager.ExecuteNonQuery(query, parameters);
+            var res = _dbManager.ExecuteNonQuery(query, parameters);
+
+            if (res == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
