@@ -22,12 +22,26 @@ namespace Business.Managers
 
         public void Crear(Categoria entity)
         {
-            throw new NotImplementedException();
+            string query = "INSERT INTO Categorias (Descripcion) VALUES (@Descripcion)";
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Descripcion", entity.Descripcion)
+            };
+
+            _dbManager.ExecuteNonQuery(query, parameters);
         }
 
         public void Eliminar(Categoria entity)
         {
-            throw new NotImplementedException();
+            string query = "DELETE FROM Categorias WHERE Id = @Id";
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Id", entity.Id)
+            };
+
+            _dbManager.ExecuteNonQuery(query, parameters);
         }
 
         public Categoria ObtenerPorId(int id)
@@ -67,7 +81,15 @@ namespace Business.Managers
 
         public void Update(Categoria entity)
         {
-            throw new NotImplementedException();
+            string query = "UPDATE Categorias SET Descripcion = @Descripcion WHERE Id = @Id";
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Descripcion", entity.Descripcion),
+                new SqlParameter("@Id", entity.Id)
+            };
+
+            _dbManager.ExecuteNonQuery(query, parameters);
         }
     }
 }
