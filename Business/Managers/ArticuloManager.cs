@@ -1,5 +1,7 @@
 ﻿using DataAccess;
 using Domain.Entities;
+using Utils;
+using Utils.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,11 +11,12 @@ namespace Business.Managers
 {
     public class ArticuloManager : ICrudRepository<Articulo>
     {
-        private DBManager dbManager;
+        private DBManager _dbManager;
+        private IMapper<Articulo> _mapper;
 
         public ArticuloManager()
         {
-            dbManager = new DBManager();
+            _dbManager = new DBManager();
         }
 
         public bool Crear(Articulo entity)
@@ -30,18 +33,14 @@ namespace Business.Managers
                     new SqlParameter("@Precio", entity.Precio)
                 };
 
-            try
+            var res = _dbManager.ExecuteNonQuery(query, parametros);
+
+            if (res == 0)
             {
-                int creado = dbManager.ExecuteNonQuery(query, parametros);
-
-                return creado >= 1;
-
-
-            }catch (Exception ex)
-            {
-                throw ex;
+                return false;
             }
 
+            return true;
         }
 
         public bool Eliminar(int id)
@@ -58,17 +57,14 @@ namespace Business.Managers
                     new SqlParameter("@Id", id)
                 };
 
-            try
-            {
-                int eliminado = dbManager.ExecuteNonQuery(query, parametros);
+            var res = _dbManager.ExecuteNonQuery(query, parametros);
 
-                return eliminado >= 1;
-
-            }catch (Exception ex)
+            if (res == 0)
             {
-                throw ex;
-                
+                return false;
             }
+
+            return true;
         }
         public Articulo ObtenerPorId(int id)
         {
@@ -79,42 +75,33 @@ namespace Business.Managers
                     new SqlParameter("@Id", id)
                 };
 
-            try
-            {
-                DataTable tabla = dbManager.ExecuteQuery(query, parametros);
-                Articulo art = ConvertirRowEnArticulo(tabla.Rows[0]);
+            DataTable res = _dbManager.ExecuteQuery(query, parametros);
 
-                return art;
-
-            }catch (Exception ex)
+            if (res.Rows.Count == 0)
             {
-                throw ex;
+                return null;
             }
+
+            var articulo = _mapper.MapFromRow(res.Rows[0]);
+
+            return articulo;
 
         }
 
         public List<Articulo> ObtenerTodos()
         {
-            List<Articulo> lista = new List<Articulo>();
             string query = @"Select * from ARTICULOS";
 
-            try
+            DataTable res = _dbManager.ExecuteQuery(query);
+
+            if (res.Rows.Count == 0)
             {
-                DataTable tabla = dbManager.ExecuteQuery(query);
-
-                foreach(DataRow row in tabla.Rows)
-                {
-                    Articulo art = ConvertirRowEnArticulo(row);
-                    lista.Add(art);
-                }
-
-                return lista;
-
-            }catch (Exception ex)
-            {
-                throw ex;
+                return null;
             }
 
+            var articulosList = _mapper.ListMapFromRow(res);
+
+            return articulosList;
         }
 
         public bool Update(Articulo entity)
@@ -138,32 +125,16 @@ namespace Business.Managers
                     new SqlParameter("@Precio", entity.Precio)
                 };
 
-            try
-            {
-                int updated = dbManager.ExecuteNonQuery(query, parametros);
+            var res = _dbManager.ExecuteNonQuery(query, parametros);
 
-                return updated >= 1;
-
-            }catch (Exception ex)
+            if(res == 0)
             {
-                throw ex;
+                return false;
             }
 
+            return true;
+
         }
 
-        public Articulo ConvertirRowEnArticulo(DataRow row)
-        {
-            var Id = Convert.ToInt32(row["Id"]);
-            var Codigo = row["Codigo"].ToString();
-            var Nombre = row["Nombre"].ToString();
-            var Descripcion = row["Descripcion"].ToString();
-            var IdMarca = Convert.ToInt32(row["IdMarca"]);
-            var IdCategoria = Convert.ToInt32(row["IdCategoria"]);
-            var Precio = Convert.ToDecimal(row["Precio"]);
-
-            return new Articulo(Id, Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio);
-        }
-
-       
     }
 }
