@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace TPWinForm_16A.Views
 {
-    public partial class Form1 : Form
+    public partial class frmAgregarArticulo : Form
     {
-        public Form1()
+        public frmAgregarArticulo()
         {
             InitializeComponent();
         }
+
+
     }
 }
