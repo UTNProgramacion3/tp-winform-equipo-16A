@@ -11,15 +11,5 @@ namespace Domain.Entities
         public int Id { get; set; }
         public int IdArticulo { get; set; }
         public string ImagenUrl { get; set; }
-        
-        public Imagen()
-        {}
-
-        public Imagen(int Id, int IdArticulo, string ImagenUrl)
-        {
-            this.Id = Id;
-            this.IdArticulo = IdArticulo;
-            this.ImagenUrl = ImagenUrl;
-        }
     }
 }

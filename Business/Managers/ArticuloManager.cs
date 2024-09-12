@@ -17,6 +17,7 @@ namespace Business.Managers
         public ArticuloManager()
         {
             _dbManager = new DBManager();
+            _mapper = new Mapper<Articulo>();
         }
 
         public bool Crear(Articulo entity)
