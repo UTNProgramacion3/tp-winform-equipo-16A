@@ -32,7 +32,6 @@ namespace Business.Managers
 
             try
             {
-                dbManager.OpenConnection();
                 int creado = dbManager.ExecuteNonQuery(query, parametros);
 
                 return creado >= 1;
@@ -42,10 +41,7 @@ namespace Business.Managers
             {
                 throw ex;
             }
-            finally
-            {
-                dbManager.CloseConnection();
-            }
+
         }
 
         public bool Eliminar(int id)
@@ -64,7 +60,6 @@ namespace Business.Managers
 
             try
             {
-                dbManager.OpenConnection();
                 int eliminado = dbManager.ExecuteNonQuery(query, parametros);
 
                 return eliminado >= 1;
@@ -73,9 +68,6 @@ namespace Business.Managers
             {
                 throw ex;
                 
-            }finally
-            {
-                dbManager.CloseConnection();
             }
         }
         public Articulo ObtenerPorId(int id)
@@ -89,7 +81,6 @@ namespace Business.Managers
 
             try
             {
-                dbManager.OpenConnection();
                 DataTable tabla = dbManager.ExecuteQuery(query, parametros);
                 Articulo art = ConvertirRowEnArticulo(tabla.Rows[0]);
 
@@ -99,10 +90,7 @@ namespace Business.Managers
             {
                 throw ex;
             }
-            finally
-            {
-                dbManager.CloseConnection();
-            }
+
         }
 
         public List<Articulo> ObtenerTodos()
@@ -112,7 +100,6 @@ namespace Business.Managers
 
             try
             {
-                dbManager.OpenConnection();
                 DataTable tabla = dbManager.ExecuteQuery(query);
 
                 foreach(DataRow row in tabla.Rows)
@@ -126,10 +113,6 @@ namespace Business.Managers
             }catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                dbManager.CloseConnection();
             }
 
         }
@@ -157,7 +140,6 @@ namespace Business.Managers
 
             try
             {
-                dbManager.OpenConnection();
                 int updated = dbManager.ExecuteNonQuery(query, parametros);
 
                 return updated >= 1;
@@ -165,10 +147,6 @@ namespace Business.Managers
             }catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                dbManager.CloseConnection();
             }
 
         }
