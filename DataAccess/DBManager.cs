@@ -31,7 +31,7 @@ namespace DataAccess
         /// <summary>
         /// Abre la conexion a base de datos
         /// </summary>
-        public void OpenConnection()
+        private void OpenConnection()
         {
             try
             {
@@ -50,7 +50,7 @@ namespace DataAccess
         /// <summary>
         /// Cierra la conexion a base de datos
         /// </summary>
-        public void CloseConnection()
+        private void CloseConnection()
         {
             try
             {
@@ -73,8 +73,10 @@ namespace DataAccess
         {
             try
             {
+                OpenConnection();
+
                 using (SqlCommand command = new SqlCommand(query, _connection))
-                {
+                {   
                     if (parameters != null)
                     {
                         command.Parameters.AddRange(parameters);
@@ -93,6 +95,10 @@ namespace DataAccess
                 LogError("Error al ejecutar la consulta.", ex);
                 throw;
             }
+            finally
+            {
+                CloseConnection();
+            }
         }
 
         /// <summary>
@@ -102,6 +108,8 @@ namespace DataAccess
         {
             try
             {
+                OpenConnection();
+
                 using (SqlCommand command = new SqlCommand(query, _connection))
                 {
                     if (parameters != null)
@@ -117,6 +125,10 @@ namespace DataAccess
                 LogError("Error al ejecutar la consulta de modificación.", ex);
                 throw;
             }
+            finally
+            {
+                CloseConnection();
+            }
         }
 
         /// <summary>
@@ -126,6 +138,8 @@ namespace DataAccess
         {
             try
             {
+                OpenConnection();
+
                 using (SqlCommand command = new SqlCommand(query, _connection))
                 {
                     if (parameters != null)
@@ -140,6 +154,10 @@ namespace DataAccess
             {
                 LogError("Error al ejecutar la consulta de valor escalar.", ex);
                 throw;
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 

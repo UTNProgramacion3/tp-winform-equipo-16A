@@ -44,7 +44,9 @@
   <ItemGroup>
     <Compile Include="Managers\ArticuloManager.cs" />
     <Compile Include="Interfaces\ICrudRepository.cs" />
+    <Compile Include="Managers\CategoriaManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicios\ImagenService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
@@ -55,6 +57,13 @@
       <Project>{0c953172-bb8c-4977-bb74-7893462ea150}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{71a0b790-d408-4e05-9c39-d7240328cfc1}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
