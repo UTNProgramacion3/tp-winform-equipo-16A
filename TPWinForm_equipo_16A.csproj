@@ -48,11 +48,23 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\frmBuscarArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmBuscarArticulo.Designer.cs">
+      <DependentUpon>frmBuscarArticulo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmAgregarArticulo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmAgregarArticulo.Designer.cs">
       <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmEditarArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmEditarArticulo.Designer.cs">
+      <DependentUpon>frmEditarArticulo.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -68,9 +80,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\frmAgregarArticulo.resx">
       <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmBuscarArticulo.resx">
+      <DependentUpon>frmBuscarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmEditarArticulo.resx">
+      <DependentUpon>frmEditarArticulo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
@@ -102,6 +121,8 @@
       <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Icons\lupa-01.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
