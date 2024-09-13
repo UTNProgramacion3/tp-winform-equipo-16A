@@ -16,15 +16,33 @@ namespace TPWinForm_16A.Views
         {
             InitializeComponent();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void tlsNuevoArticulo_Click(object sender, EventArgs e)
         {
             frmAgregarArticulo ventanaArticulo = new frmAgregarArticulo();
+            ventanaArticulo.ShowDialog();
+        }
+
+        private void tlsBuscarArticulo_Click(object sender, EventArgs e)
+        {
+            frmBuscarArticulo ventana = new frmBuscarArticulo();
+            ventana.ShowDialog();
+        }
+
+        private void tlsbCargarArticulo_Click(object sender, EventArgs e)
+        {
+            frmAgregarArticulo ventanaArticulo = new frmAgregarArticulo();
+            ventanaArticulo.ShowDialog();
+        }
+
+        private void tlsbEditarArticulo_Click(object sender, EventArgs e)
+        {
+            frmEditarArticulo ventanaArticulo = new frmEditarArticulo();
+            ventanaArticulo.ShowDialog();
+        }
+
+        private void tlsbBuscarArticulo_Click(object sender, EventArgs e)
+        {
+            frmBuscarArticulo ventanaArticulo = new frmBuscarArticulo();
             ventanaArticulo.ShowDialog();
         }
     }
