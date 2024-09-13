@@ -7,14 +7,15 @@ using System.Data;
 using Utils;
 using Utils.Interfaces;
 
-namespace Business.Servicios
+
+namespace Business.Managers
 {
-    public class ImagenService
+    public class ImagenManager : ICrudRepository<Imagen>
     {
         private DBManager _dbManager;
         private IMapper<Imagen> _mapper;
 
-        public ImagenService()
+        public ImagenManager()
         {
             _dbManager = new DBManager();
             _mapper = new Mapper<Imagen>();
@@ -88,7 +89,7 @@ namespace Business.Servicios
             return true;
         }
 
-        public bool EliminarImagen(int Id)
+        public bool Eliminar(int Id)
         {
             string query = @"Delete From IMAGENES Where Id = @Id";
 
@@ -108,7 +109,29 @@ namespace Business.Servicios
 
         }
 
-        public bool EditarImagen(int Id, string nuevaUrl)
+        public Imagen ObtenerPorId(int id)
+        {
+            string query = @"Select * From IMAGENES Where Id = @Id";
+
+            SqlParameter[] parametros = new SqlParameter[]
+                {
+                    new SqlParameter("@Id", id)
+                };
+
+            DataTable res = _dbManager.ExecuteQuery(query, parametros);
+
+            if (res.Rows.Count == 0)
+            {
+                return null;
+            }
+
+            var imagen = _mapper.MapFromRow(res.Rows[0]);
+
+            return imagen;
+
+        }
+
+        public bool Update(Imagen entity)
         {
             string query = @"Update IMAGENES 
                              SET ImagenUrl = @NuevaUrl
@@ -116,8 +139,8 @@ namespace Business.Servicios
 
             SqlParameter[] parametros = new SqlParameter[]
                 {
-                    new SqlParameter("@Id", Id),
-                    new SqlParameter("@NuevaUrl", nuevaUrl)
+                    new SqlParameter("@Id", entity.Id),
+                    new SqlParameter("@NuevaUrl", entity.ImagenUrl)
                 };
 
             var res = _dbManager.ExecuteNonQuery(query, parametros);
@@ -130,14 +153,14 @@ namespace Business.Servicios
             return true;
         }
 
-        public bool Crear(int idArticulo, string imagenUrl)
+        public bool Crear(Imagen entity)
         {
             string query = @"Insert into IMAGENES values (@IdArticulo, @ImagenUrl)";
 
             SqlParameter[] parametros = new SqlParameter[]
                 {
-                    new SqlParameter("@IdArticulo", idArticulo),
-                    new SqlParameter("@ImagenUrl", imagenUrl)
+                    new SqlParameter("@IdArticulo", entity.Id),
+                    new SqlParameter("@ImagenUrl", entity.ImagenUrl)
                 };
 
             var res = _dbManager.ExecuteNonQuery(query, parametros);
@@ -157,7 +180,7 @@ namespace Business.Servicios
             {
                 if(img != null)
                 {
-                    var res = Crear(img.IdArticulo, img.ImagenUrl);
+                    var res = Crear(img);
 
                     if(!res)
                     {
@@ -168,5 +191,20 @@ namespace Business.Servicios
             return true;
         }
 
+        public List<Imagen> ObtenerTodos()
+        {
+            string query = @"Select * From IMAGENES";
+
+            DataTable res = _dbManager.ExecuteQuery(query);
+
+            if (res.Rows.Count == 0)
+            {
+                return null;
+            }
+
+            var imagen = _mapper.ListMapFromRow(res);
+
+            return imagen;
+        }
     }
 }
