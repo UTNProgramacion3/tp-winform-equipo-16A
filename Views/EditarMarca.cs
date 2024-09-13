@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Domain.Entities;
 
 namespace TPWinForm_equipo_16A.Views
 {
@@ -43,7 +44,13 @@ namespace TPWinForm_equipo_16A.Views
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            frmAgregarMarca ventana = new frmAgregarMarca();
+
+            Marca marca;
+
+            marca = (Marca)dgvMarcas.CurrentRow.DataBoundItem;  
+
+            frmAgregarMarca ventana = new frmAgregarMarca(marca);
+
 
             ventana.ShowDialog();
         }
