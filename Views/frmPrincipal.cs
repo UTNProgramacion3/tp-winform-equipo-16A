@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TPWinForm_equipo_16A.Views;
 
 namespace TPWinForm_16A.Views
 {
@@ -44,6 +45,18 @@ namespace TPWinForm_16A.Views
         {
             frmBuscarArticulo ventanaArticulo = new frmBuscarArticulo();
             ventanaArticulo.ShowDialog();
+        }
+
+        private void tlsNuevoMarca_Click(object sender, EventArgs e)
+        {
+            frmAgregarMarca ventana = new frmAgregarMarca();
+            ventana.ShowDialog();
+        }
+
+        private void tlsEditarMarca_Click(object sender, EventArgs e)
+        {
+            frmEditarMarca ventana = new frmEditarMarca();
+            ventana.ShowDialog();
         }
     }
 }
