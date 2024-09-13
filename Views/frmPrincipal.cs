@@ -13,6 +13,7 @@ namespace TPWinForm_16A.Views
     public partial class frmPrincipal : Form
     {
         protected List<Articulo> _articulos;
+        protected List<Imagen> _imagenes;
         protected ArticuloManager _artManager;
         protected ImagenManager _imgManager;
 
@@ -20,13 +21,15 @@ namespace TPWinForm_16A.Views
         {
             _artManager = new ArticuloManager();
             _imgManager = new ImagenManager();
-            _articulos = new List<Articulo>();
+            //_articulos = new List<Articulo>();
             InitializeComponent();
         }
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             CargarArticulos(dgvArticulos);
+            pbArticulo.Load(_imagenes[0].ImagenUrl);
         }
+
         private void tlsNuevoArticulo_Click(object sender, EventArgs e)
         {
             frmAgregarArticulo ventanaArticulo = new frmAgregarArticulo();
@@ -86,5 +89,25 @@ namespace TPWinForm_16A.Views
             }
         }
 
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo art = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            _imagenes = _imgManager.ObtenerImagenesPorArticulo(art.Id);
+
+            try
+            {
+                if(_imagenes != null)
+                {
+                    pbArticulo.Load(_imagenes[0].ImagenUrl);
+                }else
+                {
+                    pbArticulo.Load("https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg");
+                }
+
+            }catch (System.Net.WebException ex)
+            {
+                pbArticulo.Load("https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg");
+            }
+        }
     }
 }
