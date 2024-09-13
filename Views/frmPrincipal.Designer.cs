@@ -55,10 +55,10 @@
             this.tslUTNFRGP = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tlsLArticulos = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tlsbCargarArticulo = new System.Windows.Forms.ToolStripButton();
             this.tlsbEditarArticulo = new System.Windows.Forms.ToolStripButton();
             this.tlsbBuscarArticulo = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.ssUTN.SuspendLayout();
@@ -96,26 +96,27 @@
             this.tlsNuevoMarca,
             this.tlsNuevoCategoria});
             this.tlsNuevo.Name = "tlsNuevo";
-            this.tlsNuevo.Size = new System.Drawing.Size(126, 22);
+            this.tlsNuevo.Size = new System.Drawing.Size(180, 22);
             this.tlsNuevo.Text = "Nuevo...";
             // 
             // tlsNuevoArticulo
             // 
             this.tlsNuevoArticulo.Name = "tlsNuevoArticulo";
-            this.tlsNuevoArticulo.Size = new System.Drawing.Size(125, 22);
+            this.tlsNuevoArticulo.Size = new System.Drawing.Size(180, 22);
             this.tlsNuevoArticulo.Text = "Articulo";
             this.tlsNuevoArticulo.Click += new System.EventHandler(this.tlsNuevoArticulo_Click);
             // 
             // tlsNuevoMarca
             // 
             this.tlsNuevoMarca.Name = "tlsNuevoMarca";
-            this.tlsNuevoMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsNuevoMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsNuevoMarca.Text = "Marca";
+            this.tlsNuevoMarca.Click += new System.EventHandler(this.tlsNuevoMarca_Click);
             // 
             // tlsNuevoCategoria
             // 
             this.tlsNuevoCategoria.Name = "tlsNuevoCategoria";
-            this.tlsNuevoCategoria.Size = new System.Drawing.Size(125, 22);
+            this.tlsNuevoCategoria.Size = new System.Drawing.Size(180, 22);
             this.tlsNuevoCategoria.Text = "Categoria";
             // 
             // tlsEditar
@@ -125,25 +126,26 @@
             this.tlsEditarMarca,
             this.tlsEditarCategoria});
             this.tlsEditar.Name = "tlsEditar";
-            this.tlsEditar.Size = new System.Drawing.Size(126, 22);
+            this.tlsEditar.Size = new System.Drawing.Size(180, 22);
             this.tlsEditar.Text = "Editar...";
             // 
             // tlsEditarArticulo
             // 
             this.tlsEditarArticulo.Name = "tlsEditarArticulo";
-            this.tlsEditarArticulo.Size = new System.Drawing.Size(125, 22);
+            this.tlsEditarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tlsEditarArticulo.Text = "Articulo";
             // 
             // tlsEditarMarca
             // 
             this.tlsEditarMarca.Name = "tlsEditarMarca";
-            this.tlsEditarMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsEditarMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsEditarMarca.Text = "Marca";
+            this.tlsEditarMarca.Click += new System.EventHandler(this.tlsEditarMarca_Click);
             // 
             // tlsEditarCategoria
             // 
             this.tlsEditarCategoria.Name = "tlsEditarCategoria";
-            this.tlsEditarCategoria.Size = new System.Drawing.Size(125, 22);
+            this.tlsEditarCategoria.Size = new System.Drawing.Size(180, 22);
             this.tlsEditarCategoria.Text = "Categoria";
             // 
             // tlsEliminar
@@ -153,7 +155,7 @@
             this.tlsEliminarMarca,
             this.tlsEliminarCategoria});
             this.tlsEliminar.Name = "tlsEliminar";
-            this.tlsEliminar.Size = new System.Drawing.Size(126, 22);
+            this.tlsEliminar.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminar.Text = "Eliminar...";
             // 
             // tlsEliminarArticulo
@@ -179,7 +181,7 @@
             this.tlsBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsBuscarArticulo});
             this.tlsBuscar.Name = "tlsBuscar";
-            this.tlsBuscar.Size = new System.Drawing.Size(126, 22);
+            this.tlsBuscar.Size = new System.Drawing.Size(180, 22);
             this.tlsBuscar.Text = "Buscar...";
             // 
             // tlsBuscarArticulo
@@ -196,7 +198,7 @@
             this.tlsMostrarListMarcas,
             this.tlsMostrarListCategorias});
             this.tlsMostrar.Name = "tlsMostrar";
-            this.tlsMostrar.Size = new System.Drawing.Size(126, 22);
+            this.tlsMostrar.Size = new System.Drawing.Size(180, 22);
             this.tlsMostrar.Text = "Mostrar";
             // 
             // tlsMostrarListArticulos
@@ -220,7 +222,7 @@
             // tlsSalir
             // 
             this.tlsSalir.Name = "tlsSalir";
-            this.tlsSalir.Size = new System.Drawing.Size(126, 22);
+            this.tlsSalir.Size = new System.Drawing.Size(180, 22);
             this.tlsSalir.Text = "Salir...";
             // 
             // tlsLeeme
@@ -266,6 +268,11 @@
             this.tlsLArticulos.Size = new System.Drawing.Size(54, 22);
             this.tlsLArticulos.Text = "Articulos";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // tlsbCargarArticulo
             // 
             this.tlsbCargarArticulo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -292,11 +299,6 @@
             this.tlsbBuscarArticulo.Name = "tlsbBuscarArticulo";
             this.tlsbBuscarArticulo.Size = new System.Drawing.Size(23, 22);
             this.tlsbBuscarArticulo.Click += new System.EventHandler(this.tlsbBuscarArticulo_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton4
             // 

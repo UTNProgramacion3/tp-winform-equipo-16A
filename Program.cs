@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Managers;
+using System;
 using System.Windows.Forms;
 using TPWinForm_16A.Views;
 
@@ -11,7 +12,7 @@ namespace TPWinForm_16A
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        {            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmPrincipal());
