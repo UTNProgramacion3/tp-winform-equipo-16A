@@ -60,9 +60,13 @@
             this.tlsbBuscarArticulo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.dgvArticulos = new System.Windows.Forms.DataGridView();
+            this.pbArticulo = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.ssUTN.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -96,7 +100,7 @@
             this.tlsNuevoMarca,
             this.tlsNuevoCategoria});
             this.tlsNuevo.Name = "tlsNuevo";
-            this.tlsNuevo.Size = new System.Drawing.Size(180, 22);
+            this.tlsNuevo.Size = new System.Drawing.Size(126, 22);
             this.tlsNuevo.Text = "Nuevo...";
             // 
             // tlsNuevoArticulo
@@ -126,7 +130,7 @@
             this.tlsEditarMarca,
             this.tlsEditarCategoria});
             this.tlsEditar.Name = "tlsEditar";
-            this.tlsEditar.Size = new System.Drawing.Size(180, 22);
+            this.tlsEditar.Size = new System.Drawing.Size(126, 22);
             this.tlsEditar.Text = "Editar...";
             // 
             // tlsEditarArticulo
@@ -155,7 +159,7 @@
             this.tlsEliminarMarca,
             this.tlsEliminarCategoria});
             this.tlsEliminar.Name = "tlsEliminar";
-            this.tlsEliminar.Size = new System.Drawing.Size(180, 22);
+            this.tlsEliminar.Size = new System.Drawing.Size(126, 22);
             this.tlsEliminar.Text = "Eliminar...";
             // 
             // tlsEliminarArticulo
@@ -182,7 +186,7 @@
             this.tlsBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsBuscarArticulo});
             this.tlsBuscar.Name = "tlsBuscar";
-            this.tlsBuscar.Size = new System.Drawing.Size(180, 22);
+            this.tlsBuscar.Size = new System.Drawing.Size(126, 22);
             this.tlsBuscar.Text = "Buscar...";
             // 
             // tlsBuscarArticulo
@@ -199,7 +203,7 @@
             this.tlsMostrarListMarcas,
             this.tlsMostrarListCategorias});
             this.tlsMostrar.Name = "tlsMostrar";
-            this.tlsMostrar.Size = new System.Drawing.Size(180, 22);
+            this.tlsMostrar.Size = new System.Drawing.Size(126, 22);
             this.tlsMostrar.Text = "Mostrar";
             // 
             // tlsMostrarListArticulos
@@ -223,7 +227,7 @@
             // tlsSalir
             // 
             this.tlsSalir.Name = "tlsSalir";
-            this.tlsSalir.Size = new System.Drawing.Size(180, 22);
+            this.tlsSalir.Size = new System.Drawing.Size(126, 22);
             this.tlsSalir.Text = "Salir...";
             // 
             // tlsLeeme
@@ -236,7 +240,7 @@
             // 
             this.ssUTN.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslUTNFRGP});
-            this.ssUTN.Location = new System.Drawing.Point(0, 739);
+            this.ssUTN.Location = new System.Drawing.Point(0, 467);
             this.ssUTN.Name = "ssUTN";
             this.ssUTN.Size = new System.Drawing.Size(1008, 22);
             this.ssUTN.TabIndex = 1;
@@ -310,12 +314,36 @@
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton4.Text = "toolStripButton4";
             // 
+            // dgvArticulos
+            // 
+            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvArticulos.Location = new System.Drawing.Point(0, 52);
+            this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvArticulos.Size = new System.Drawing.Size(835, 320);
+            this.dgvArticulos.TabIndex = 3;
+            this.dgvArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellContentClick);
+            this.dgvArticulos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvArticulos_CellFormatting);
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
+            // 
+            // pbArticulo
+            // 
+            this.pbArticulo.Location = new System.Drawing.Point(841, 52);
+            this.pbArticulo.Name = "pbArticulo";
+            this.pbArticulo.Size = new System.Drawing.Size(167, 149);
+            this.pbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbArticulo.TabIndex = 4;
+            this.pbArticulo.TabStop = false;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(1008, 761);
+            this.ClientSize = new System.Drawing.Size(1008, 489);
+            this.Controls.Add(this.pbArticulo);
+            this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.ssUTN);
             this.Controls.Add(this.menuStrip1);
@@ -323,12 +351,15 @@
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema Gestion";
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ssUTN.ResumeLayout(false);
             this.ssUTN.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,5 +398,7 @@
         private System.Windows.Forms.ToolStripButton tlsbBuscarArticulo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.DataGridView dgvArticulos;
+        private System.Windows.Forms.PictureBox pbArticulo;
     }
 }
