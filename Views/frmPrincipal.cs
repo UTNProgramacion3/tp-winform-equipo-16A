@@ -9,8 +9,6 @@ using System.Windows.Forms;
 using Business.Managers;
 using TPWinForm_equipo_16A.Views;
 using Business.Dtos;
-using Utils.Interfaces;
-using Utils;
 
 namespace TPWinForm_equipo_16A.Views
 {
