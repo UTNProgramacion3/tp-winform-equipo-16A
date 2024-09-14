@@ -18,12 +18,15 @@ namespace TPWinForm_16A.Views
         protected List<Imagen> _imagenes;
         protected ArticuloManager _artManager;
         protected ImagenManager _imgManager;
+        protected MarcaManager _marcManager;
+        protected CategoriaManager _catManager;
 
         public frmPrincipal()
         {
             _artManager = new ArticuloManager();
             _imgManager = new ImagenManager();
-            //_articulos = new List<Articulo>();
+            _marcManager = new MarcaManager();
+            _catManager = new CategoriaManager();
             InitializeComponent();
         }
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -88,6 +91,52 @@ namespace TPWinForm_16A.Views
                 eliminarCol.Name = "Eliminar";
                 dataGridView.Columns.Add(eliminarCol);
             }
+
+            // Suscribirse al evento CellFormatting
+            //dataGridView.CellFormatting += dgvArticulos_CellFormatting;
+        }
+        private void dgvArticulos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+
+            // Asegurarse de que el valor de la celda no sea null
+            if (e.Value == null)
+            {
+                return;
+            }
+
+            if (dataGridView.Columns[e.ColumnIndex].Name == "IdCategoria" && int.TryParse(e.Value.ToString(), out int idCategoria))
+            {
+                Categoria categoria = _catManager.ObtenerPorId(idCategoria);
+
+                // Verificar que el objeto categoria no sea null
+                if (categoria != null)
+                {
+                    e.Value = !string.IsNullOrEmpty(categoria.Descripcion) ? categoria.Descripcion : "Sin Categoría";
+                }
+                else
+                {
+                    e.Value = "Categoría no encontrada";
+                }
+
+                e.FormattingApplied = true;
+            }
+            else if (dataGridView.Columns[e.ColumnIndex].Name == "IdMarca" && int.TryParse(e.Value.ToString(), out int idMarca))
+            {
+                Marca marca = _marcManager.ObtenerPorId(idMarca);
+
+                // Verificar que el objeto marca no sea null
+                if (marca != null)
+                {
+                    e.Value = !string.IsNullOrEmpty(marca.descripcion) ? marca.descripcion : "Sin Marca";
+                }
+                else
+                {
+                    e.Value = "Marca no encontrada";
+                }
+
+                e.FormattingApplied = true;
+            }
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -123,5 +172,6 @@ namespace TPWinForm_16A.Views
             frmEditarMarca ventana = new frmEditarMarca();
             ventana.ShowDialog();
         }
+
     }
 }
