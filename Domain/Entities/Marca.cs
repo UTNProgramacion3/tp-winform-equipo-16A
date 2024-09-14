@@ -9,6 +9,7 @@ namespace Domain.Entities
 {
     public class Marca
     {
+        [DisplayNameAttribute("ID")]
         public int id {  get; set; }
 
         [DisplayNameAttribute("Descripción")]
