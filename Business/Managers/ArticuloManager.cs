@@ -6,21 +6,22 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using Business.Dtos;
 
 namespace Business.Managers
 {
-    public class ArticuloManager : ICrudRepository<Articulo>
+    public class ArticuloManager : ICrudRepository<ArticuloDTO>
     {
         private DBManager _dbManager;
-        private IMapper<Articulo> _mapper;
+        private IMapper<ArticuloDTO> _mapper;
 
         public ArticuloManager()
         {
             _dbManager = new DBManager();
-            _mapper = new Mapper<Articulo>();
+            _mapper = new Mapper<ArticuloDTO>();
         }
 
-        public bool Crear(Articulo entity)
+        public bool Crear(ArticuloDTO entity)
         {
             string query = @"Insert into ARTICULOS values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)";
 
@@ -29,8 +30,8 @@ namespace Business.Managers
                     new SqlParameter("@Codigo", entity.Codigo),
                     new SqlParameter("@Nombre", entity.Nombre),
                     new SqlParameter("@Descripcion", entity.Descripcion),
-                    new SqlParameter("@IdMarca", entity.IdMarca),
-                    new SqlParameter("@IdCategoria", entity.IdCategoria),
+                    new SqlParameter("@IdMarca", entity.MarcaId),
+                    new SqlParameter("@IdCategoria", entity.CategoriaId),
                     new SqlParameter("@Precio", entity.Precio)
                 };
 
@@ -67,9 +68,22 @@ namespace Business.Managers
 
             return true;
         }
-        public Articulo ObtenerPorId(int id)
+        public ArticuloDTO ObtenerPorId(int id)
         {
-            string query = @"Select * From ARTICULO Where Id = @Id";
+            string query = @"SELECT 
+                                A.Id,
+                                A.Codigo,
+                                A.Nombre,
+                                A.Descripcion,
+                                A.Precio,
+                                M.Id AS MarcaId,
+                                M.Descripcion AS MarcaDescripcion,
+                                C.Id AS CategoriaId,
+                                C.Descripcion AS CategoriaDescripcion
+                            FROM ARTICULOS A
+                            JOIN MARCAS M ON A.IdMarca = M.Id
+                            JOIN CATEGORIAS C ON A.IdCategoria = C.Id
+                            WHERE A.Id = @Id;";
 
             SqlParameter[] parametros = new SqlParameter[]
                 {
@@ -83,15 +97,27 @@ namespace Business.Managers
                 return null;
             }
 
-            var articulo = _mapper.MapFromRow(res.Rows[0]);
+            ArticuloDTO articulo = _mapper.MapFromRow(res.Rows[0]);
 
             return articulo;
 
         }
 
-        public List<Articulo> ObtenerTodos()
+        public List<ArticuloDTO> ObtenerTodos()
         {
-            string query = @"Select * from ARTICULOS";
+            string query = @"SELECT 
+                                A.Id,
+                                A.Codigo,
+                                A.Nombre,
+                                A.Descripcion,
+                                A.Precio,
+                                M.Id AS MarcaId,
+                                M.Descripcion AS MarcaDescripcion,
+                                C.Id AS CategoriaId,
+                                C.Descripcion AS CategoriaDescripcion
+                            FROM ARTICULOS A
+                            JOIN MARCAS M ON A.IdMarca = M.Id
+                            JOIN CATEGORIAS C ON A.IdCategoria = C.Id;";
 
             DataTable res = _dbManager.ExecuteQuery(query);
 
@@ -105,7 +131,7 @@ namespace Business.Managers
             return articulosList;
         }
 
-        public bool Update(Articulo entity)
+        public bool Update(ArticuloDTO entity)
         {
             string query = @"Update ARTICULOS 
                             Set Codigo = @Codigo,
@@ -121,8 +147,8 @@ namespace Business.Managers
                     new SqlParameter("@Codigo", entity.Codigo),
                     new SqlParameter("@Nombre", entity.Nombre),
                     new SqlParameter("@Descripcion", entity.Descripcion),
-                    new SqlParameter("@IdMarca", entity.IdMarca),
-                    new SqlParameter("@IdCategoria", entity.IdCategoria),
+                    new SqlParameter("@IdMarca", entity.MarcaId),
+                    new SqlParameter("@IdCategoria", entity.CategoriaId),
                     new SqlParameter("@Precio", entity.Precio)
                 };
 
