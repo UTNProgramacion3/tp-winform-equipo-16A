@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,7 +7,6 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Business.Managers;
-using Domain.Entities;
 using TPWinForm_equipo_16A.Views;
 using Business.Dtos;
 
@@ -21,7 +21,7 @@ namespace TPWinForm_16A.Views
         protected ImagenManager _imgManager;
         protected MarcaManager _marcManager;
         protected CategoriaManager _catManager;
-
+        protected int indexActual = 0;
         public frmPrincipal()
         {
             InitializeComponent();
@@ -74,7 +74,7 @@ namespace TPWinForm_16A.Views
 
         private void tlsEditarMarca_Click(object sender, EventArgs e)
         {
-            OpenForm<frmEditarMarca>();
+            OpenForm<frmListaMarcas>();
         }
 
         private void OpenForm<T>() where T : Form, new()
@@ -218,6 +218,34 @@ namespace TPWinForm_16A.Views
                     }
                 }
             }
+        }
+
+
+        private void btnBackImg_Click(object sender, EventArgs e)
+        {
+            if (indexActual > 0 && _imagenes != null)
+            {
+                indexActual--;
+                CargarImagen(pbArticulo, _imagenes[indexActual].ImagenUrl);
+            }
+        }
+        private void btnNextImg_Click(object sender, EventArgs e)
+        {
+            if (indexActual < _imagenes.Count - 1 && _imagenes != null)
+            {
+                indexActual++;
+                CargarImagen(pbArticulo, _imagenes[indexActual].ImagenUrl);
+            }
+
+        //private void tlsEliminarMarca_Click(object sender, EventArgs e)
+        //{
+        //    Marca _marca = new Marca();
+
+        //    frmListaMarcas listado = new frmListaMarcas(_marca);
+
+        //    listado.ShowDialog();
+
+        //}
         }
     }
 }
