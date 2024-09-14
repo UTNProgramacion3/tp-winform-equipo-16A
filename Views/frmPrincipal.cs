@@ -8,13 +8,14 @@ using System.IO;
 using System.Windows.Forms;
 using Business.Managers;
 using TPWinForm_equipo_16A.Views;
+using Business.Dtos;
 
 
 namespace TPWinForm_16A.Views
 {
     public partial class frmPrincipal : Form
     {
-        protected List<Articulo> _articulos;
+        protected List<ArticuloDTO> _articulos;
         protected List<Imagen> _imagenes;
         protected ArticuloManager _artManager;
         protected ImagenManager _imgManager;
@@ -91,14 +92,14 @@ namespace TPWinForm_16A.Views
             string rutaIconoEliminar = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Icons\eliminar.png");
 
             ConfigurarColumnas(dataGridView, rutaIconoEditar, rutaIconoEliminar);
-            dataGridView.CellFormatting += dgvArticulos_CellFormatting;
+            //dataGridView.CellFormatting += dgvArticulos_CellFormatting;
         }
 
         private void ConfigurarColumnas(DataGridView dataGridView, string rutaIconoEditar, string rutaIconoEliminar)
         {
             dataGridView.Columns["Id"].Visible = false;
-            dataGridView.Columns["IdMarca"].HeaderText = "Marca";
-            dataGridView.Columns["IdCategoria"].HeaderText = "Categoria";
+            //dataGridView.Columns["IdMarca"].HeaderText = "Marca";
+            //dataGridView.Columns["IdCategoria"].HeaderText = "Categoria";
 
             AgregarColumnaImagen(dataGridView, "Editar", rutaIconoEditar);
             AgregarColumnaImagen(dataGridView, "Eliminar", rutaIconoEliminar);
@@ -121,24 +122,24 @@ namespace TPWinForm_16A.Views
         //Esto no es practico para nada, funciona pero imaginate si tienes 1000 articulos, 
         //es una saturacion completa de llamados a la bd
         //voy a correjirlo mañana.
-        private void dgvArticulos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            DataGridView dataGridView = sender as DataGridView;
+        //private void dgvArticulos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        //{
+        //    DataGridView dataGridView = sender as DataGridView;
 
-            if (e.Value == null)
-                return;
+        //    if (e.Value == null)
+        //        return;
 
-            if (dataGridView.Columns[e.ColumnIndex].Name == "IdCategoria" && int.TryParse(e.Value.ToString(), out int idCategoria))
-            {
-                e.Value = ObtenerDescripcionCategoria(idCategoria);
-                e.FormattingApplied = true;
-            }
-            else if (dataGridView.Columns[e.ColumnIndex].Name == "IdMarca" && int.TryParse(e.Value.ToString(), out int idMarca))
-            {
-                e.Value = ObtenerDescripcionMarca(idMarca);
-                e.FormattingApplied = true;
-            }
-        }
+        //    if (dataGridView.Columns[e.ColumnIndex].Name == "IdCategoria" && int.TryParse(e.Value.ToString(), out int idCategoria))
+        //    {
+        //        e.Value = ObtenerDescripcionCategoria(idCategoria);
+        //        e.FormattingApplied = true;
+        //    }
+        //    else if (dataGridView.Columns[e.ColumnIndex].Name == "IdMarca" && int.TryParse(e.Value.ToString(), out int idMarca))
+        //    {
+        //        e.Value = ObtenerDescripcionMarca(idMarca);
+        //        e.FormattingApplied = true;
+        //    }
+        //}
 
         private string ObtenerDescripcionCategoria(int idCategoria)
         {
@@ -149,7 +150,7 @@ namespace TPWinForm_16A.Views
         private string ObtenerDescripcionMarca(int idMarca)
         {
             Marca marca = _marcManager.ObtenerPorId(idMarca);
-            return marca?.descripcion ?? "Sin Marca";
+            return marca?.Descripcion ?? "Sin Marca";
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -159,7 +160,7 @@ namespace TPWinForm_16A.Views
 
         private void CargarImagenArticulo()
         {
-            Articulo art = (Articulo)dgvArticulos.CurrentRow?.DataBoundItem;
+            ArticuloDTO art = (ArticuloDTO)dgvArticulos.CurrentRow?.DataBoundItem;
             if (art != null)
             {
                 _imagenes = _imgManager.ObtenerImagenesPorArticulo(art.Id);
@@ -195,22 +196,22 @@ namespace TPWinForm_16A.Views
 
         private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridView dataGridView = sender as DataGridView;
 
-                if(dataGridView.Columns[e.ColumnIndex].Name == "Editar")
+                if (dataGridView.Columns[e.ColumnIndex].Name == "Editar")
                 {
                     Articulo art = (Articulo)dataGridView.Rows[e.RowIndex].DataBoundItem;
                     frmEditarArticulo view = new frmEditarArticulo(art);
                     view.ShowDialog();
                 }
-                else if(dataGridView.Columns[e.ColumnIndex].Name == "Eliminar")
+                else if (dataGridView.Columns[e.ColumnIndex].Name == "Eliminar")
                 {
                     int id = ObtenerIdArticuloSeleccionado();
 
                     DialogResult res = MessageBox.Show("¿Estás seguro de que quieres eliminar este artículo?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
-                    if(res == DialogResult.Yes)
+                    if (res == DialogResult.Yes)
                     {
                         _artManager.Eliminar(id);
                         CargarArticulos(dgvArticulos);
@@ -236,14 +237,15 @@ namespace TPWinForm_16A.Views
                 CargarImagen(pbArticulo, _imagenes[indexActual].ImagenUrl);
             }
 
-        private void tlsEliminarMarca_Click(object sender, EventArgs e)
-        {
-            Marca _marca = new Marca();
-            
-            frmListaMarcas listado = new frmListaMarcas(_marca);
+        //private void tlsEliminarMarca_Click(object sender, EventArgs e)
+        //{
+        //    Marca _marca = new Marca();
 
-            listado.ShowDialog();
+        //    frmListaMarcas listado = new frmListaMarcas(_marca);
 
+        //    listado.ShowDialog();
+
+        //}
         }
     }
 }

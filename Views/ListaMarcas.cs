@@ -72,12 +72,12 @@ namespace TPWinForm_equipo_16A.Views
 
                 marcaSelccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
 
-                DialogResult resultado = MessageBox.Show("Estas seguro que deseas eliminar la Marca: " + marcaSelccionada.descripcion, "Eliminar Marca", MessageBoxButtons.YesNo);
+                DialogResult resultado = MessageBox.Show("Estas seguro que deseas eliminar la Marca: " + marcaSelccionada.Descripcion, "Eliminar Marca", MessageBoxButtons.YesNo);
 
                 if(resultado == DialogResult.Yes)
                 {
 
-                    manager.Eliminar(marcaSelccionada.id);
+                    manager.Eliminar(marcaSelccionada.Id);
                     MessageBox.Show("Marca eliminada correctamente");
                 }
                 else

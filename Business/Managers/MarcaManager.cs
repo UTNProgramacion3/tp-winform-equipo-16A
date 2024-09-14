@@ -73,7 +73,7 @@ namespace Business.Managers
 
             SqlParameter[] parametros = new SqlParameter[]
             {
-                new SqlParameter("@Descripcion", m.descripcion)
+                new SqlParameter("@Descripcion", m.Descripcion)
             };
 
             var res = dataBManager.ExecuteNonQuery(query, parametros);    
@@ -91,8 +91,7 @@ namespace Business.Managers
 
             SqlParameter[] parametro = new SqlParameter[]
             {
-                new SqlParameter("@id", m.id),
-                new SqlParameter("@descripcion", m.descripcion)
+                new SqlParameter("@descripcion", m.Descripcion)
             };
 
             var res = dataBManager.ExecuteNonQuery(query, parametro);

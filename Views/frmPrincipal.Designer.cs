@@ -172,7 +172,7 @@
             this.tlsEliminarMarca.Name = "tlsEliminarMarca";
             this.tlsEliminarMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarMarca.Text = "Marca";
-            this.tlsEliminarMarca.Click += new System.EventHandler(this.tlsEliminarMarca_Click);
+            //this.tlsEliminarMarca.Click += new System.EventHandler(this.tlsEliminarMarca_Click);
             // 
             // tlsEliminarCategoria
             // 
@@ -293,7 +293,7 @@
             this.dgvArticulos.Size = new System.Drawing.Size(835, 320);
             this.dgvArticulos.TabIndex = 3;
             this.dgvArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellContentClick);
-            this.dgvArticulos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvArticulos_CellFormatting);
+            //this.dgvArticulos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvArticulos_CellFormatting);
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // pbArticulo

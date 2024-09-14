@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\ArticuloDTO.cs" />
     <Compile Include="Managers\ArticuloManager.cs" />
     <Compile Include="Interfaces\ICrudRepository.cs" />
     <Compile Include="Managers\CategoriaManager.cs" />
@@ -67,5 +68,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

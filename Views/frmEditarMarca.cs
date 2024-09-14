@@ -24,7 +24,7 @@ namespace TPWinForm_equipo_16A.Views
 
         private void frmEditarMarca_Load(object sender, EventArgs e)
         {
-            txtbDescripcionAnterior.Text = _marca.descripcion;
+            txtbDescripcionAnterior.Text = _marca.Descripcion;
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace TPWinForm_equipo_16A.Views
             MarcaManager manager = new MarcaManager();
             
             //Le asignamos el valor del nuevo nombre de Marca tomado del txtBox
-            _marca.descripcion = txtbNuevaDescripcion.Text;
+            _marca.Descripcion = txtbNuevaDescripcion.Text;
 
             manager.Update(_marca);
             Close();
