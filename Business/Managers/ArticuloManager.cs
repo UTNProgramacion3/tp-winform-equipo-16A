@@ -102,7 +102,6 @@ namespace Business.Managers
             return articulo;
 
         }
-
         public List<ArticuloDTO> ObtenerTodos()
         {
             string query = @"SELECT 
@@ -116,8 +115,8 @@ namespace Business.Managers
                     C.Id AS Categoria_Id,
                     C.Descripcion AS Categoria_Descripcion
                 FROM ARTICULOS A
-                JOIN MARCAS M ON A.IdMarca = M.Id
-                JOIN CATEGORIAS C ON A.IdCategoria = C.Id;";
+                LEFT JOIN MARCAS M ON A.IdMarca = M.Id
+                LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id;";
 
             DataTable res = _dbManager.ExecuteQuery(query);
 

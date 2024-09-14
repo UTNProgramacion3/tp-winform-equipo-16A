@@ -89,7 +89,7 @@ namespace TPWinForm_16A.Views
         private void CargarArticulos(DataGridView dataGridView)
         {
             _articulos = _artManager.ObtenerTodos();
-            dataGridView.DataSource = _mapper.MapFromDtoToTable(_articulos); // Cambiado a DataTable
+            dataGridView.DataSource = _mapper.MapFromDtoToTable(_articulos);
 
             string rutaIconoEditar = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Icons\editar.png");
             string rutaIconoEliminar = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Icons\eliminar.png");
@@ -237,16 +237,16 @@ namespace TPWinForm_16A.Views
                 indexActual++;
                 CargarImagen(pbArticulo, _imagenes[indexActual].ImagenUrl);
             }
+        }
+        private void tlsEliminarMarca_Click(object sender, EventArgs e)
+        {
+            Marca _marca = new Marca();
 
-        //private void tlsEliminarMarca_Click(object sender, EventArgs e)
-        //{
-        //    Marca _marca = new Marca();
+            frmListaMarcas listado = new frmListaMarcas(_marca);
 
-        //    frmListaMarcas listado = new frmListaMarcas(_marca);
+            listado.ShowDialog();
 
-        //    listado.ShowDialog();
-
-        //}
+        }
         }
     }
 }
