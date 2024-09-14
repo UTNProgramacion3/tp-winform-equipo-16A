@@ -58,9 +58,10 @@
             this.tlsbCargarArticulo = new System.Windows.Forms.ToolStripButton();
             this.tlsbEditarArticulo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.pbArticulo = new System.Windows.Forms.PictureBox();
+            this.btnBackImg = new System.Windows.Forms.Button();
+            this.btnNextImg = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.ssUTN.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -137,7 +138,7 @@
             this.tlsEditarArticulo.Name = "tlsEditarArticulo";
             this.tlsEditarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tlsEditarArticulo.Text = "Articulo";
-            this.tlsEditarArticulo.Click += new System.EventHandler(this.tlsEditarArticulo_Click);
+            //this.tlsEditarArticulo.Click += new System.EventHandler(this.tlsEditarArticulo_Click);
             // 
             // tlsEditarMarca
             // 
@@ -165,20 +166,19 @@
             // tlsEliminarArticulo
             // 
             this.tlsEliminarArticulo.Name = "tlsEliminarArticulo";
-            this.tlsEliminarArticulo.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarArticulo.Text = "Articulo";
             // 
             // tlsEliminarMarca
             // 
             this.tlsEliminarMarca.Name = "tlsEliminarMarca";
-            this.tlsEliminarMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarMarca.Text = "Marca";
-            this.tlsEliminarMarca.Click += new System.EventHandler(this.tlsEliminarMarca_Click);
             // 
             // tlsEliminarCategoria
             // 
             this.tlsEliminarCategoria.Name = "tlsEliminarCategoria";
-            this.tlsEliminarCategoria.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarCategoria.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarCategoria.Text = "Categoria";
             // 
             // tlsBuscar
@@ -192,7 +192,7 @@
             // tlsBuscarArticulo
             // 
             this.tlsBuscarArticulo.Name = "tlsBuscarArticulo";
-            this.tlsBuscarArticulo.Size = new System.Drawing.Size(116, 22);
+            this.tlsBuscarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tlsBuscarArticulo.Text = "Articulo";
             this.tlsBuscarArticulo.Click += new System.EventHandler(this.tlsBuscarArticulo_Click);
             // 
@@ -258,8 +258,7 @@
             this.tlsLArticulos,
             this.tlsbCargarArticulo,
             this.tlsbEditarArticulo,
-            this.toolStripSeparator1,
-            this.toolStripButton4});
+            this.toolStripSeparator1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1008, 25);
@@ -284,7 +283,6 @@
             // tlsbEditarArticulo
             // 
             this.tlsbEditarArticulo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlsbEditarArticulo.Image = ((System.Drawing.Image)(resources.GetObject("tlsbEditarArticulo.Image")));
             this.tlsbEditarArticulo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsbEditarArticulo.Name = "tlsbEditarArticulo";
             this.tlsbEditarArticulo.Size = new System.Drawing.Size(23, 22);
@@ -294,15 +292,6 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
             // 
             // dgvArticulos
             // 
@@ -314,7 +303,6 @@
             this.dgvArticulos.Size = new System.Drawing.Size(835, 320);
             this.dgvArticulos.TabIndex = 3;
             this.dgvArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellContentClick);
-            this.dgvArticulos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvArticulos_CellFormatting);
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // pbArticulo
@@ -326,12 +314,34 @@
             this.pbArticulo.TabIndex = 4;
             this.pbArticulo.TabStop = false;
             // 
+            // btnBackImg
+            // 
+            this.btnBackImg.Location = new System.Drawing.Point(900, 207);
+            this.btnBackImg.Name = "btnBackImg";
+            this.btnBackImg.Size = new System.Drawing.Size(27, 23);
+            this.btnBackImg.TabIndex = 5;
+            this.btnBackImg.Text = "<";
+            this.btnBackImg.UseVisualStyleBackColor = true;
+            this.btnBackImg.Click += new System.EventHandler(this.btnBackImg_Click);
+            // 
+            // btnNextImg
+            // 
+            this.btnNextImg.Location = new System.Drawing.Point(933, 207);
+            this.btnNextImg.Name = "btnNextImg";
+            this.btnNextImg.Size = new System.Drawing.Size(27, 23);
+            this.btnNextImg.TabIndex = 6;
+            this.btnNextImg.Text = ">";
+            this.btnNextImg.UseVisualStyleBackColor = true;
+            this.btnNextImg.Click += new System.EventHandler(this.btnNextImg_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(1008, 489);
+            this.Controls.Add(this.btnNextImg);
+            this.Controls.Add(this.btnBackImg);
             this.Controls.Add(this.pbArticulo);
             this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.toolStrip1);
@@ -386,8 +396,9 @@
         private System.Windows.Forms.ToolStripButton tlsbCargarArticulo;
         private System.Windows.Forms.ToolStripButton tlsbEditarArticulo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.PictureBox pbArticulo;
+        private System.Windows.Forms.Button btnBackImg;
+        private System.Windows.Forms.Button btnNextImg;
     }
 }

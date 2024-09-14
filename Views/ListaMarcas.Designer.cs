@@ -58,12 +58,13 @@
             // 
             this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMarcas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvMarcas.Location = new System.Drawing.Point(38, 12);
+            this.dgvMarcas.Location = new System.Drawing.Point(101, 22);
             this.dgvMarcas.MultiSelect = false;
             this.dgvMarcas.Name = "dgvMarcas";
             this.dgvMarcas.ReadOnly = true;
+            this.dgvMarcas.RowHeadersWidth = 75;
             this.dgvMarcas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMarcas.Size = new System.Drawing.Size(397, 249);
+            this.dgvMarcas.Size = new System.Drawing.Size(272, 249);
             this.dgvMarcas.TabIndex = 0;
             // 
             // frmListaMarcas
@@ -71,11 +72,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(485, 338);
+            this.ClientSize = new System.Drawing.Size(484, 341);
             this.Controls.Add(this.dgvMarcas);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAtras);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(500, 380);
+            this.MinimumSize = new System.Drawing.Size(500, 380);
             this.Name = "frmListaMarcas";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ListaMarcas";
             this.Load += new System.EventHandler(this.frmListaMarcas_Load);

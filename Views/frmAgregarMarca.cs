@@ -24,7 +24,7 @@ namespace TPWinForm_equipo_16A.Views
             MarcaManager marcaManager = new MarcaManager();
             Marca obj = new Marca();
 
-            obj.descripcion = txtbDescripcion.Text;
+            obj.Descripcion = txtbDescripcion.Text;
 
             marcaManager.Crear(obj);
             Close();

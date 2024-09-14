@@ -134,7 +134,6 @@
             // 
             this.btnBuscarPorCodigo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBuscarPorCodigo.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnBuscarPorCodigo.BackgroundImage = global::TPWinForm_16A.Properties.Resources.lupa_01;
             this.btnBuscarPorCodigo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarPorCodigo.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnBuscarPorCodigo.Location = new System.Drawing.Point(325, 155);
@@ -160,7 +159,6 @@
             // 
             this.btnBuscarPorNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBuscarPorNombre.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnBuscarPorNombre.BackgroundImage = global::TPWinForm_16A.Properties.Resources.lupa_01;
             this.btnBuscarPorNombre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarPorNombre.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnBuscarPorNombre.Location = new System.Drawing.Point(325, 186);
@@ -173,7 +171,6 @@
             // 
             this.btnBuscarPorMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBuscarPorMarca.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnBuscarPorMarca.BackgroundImage = global::TPWinForm_16A.Properties.Resources.lupa_01;
             this.btnBuscarPorMarca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarPorMarca.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnBuscarPorMarca.Location = new System.Drawing.Point(325, 221);
@@ -186,7 +183,6 @@
             // 
             this.btnBuscarPorCategoria.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBuscarPorCategoria.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnBuscarPorCategoria.BackgroundImage = global::TPWinForm_16A.Properties.Resources.lupa_01;
             this.btnBuscarPorCategoria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarPorCategoria.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnBuscarPorCategoria.Location = new System.Drawing.Point(325, 251);
