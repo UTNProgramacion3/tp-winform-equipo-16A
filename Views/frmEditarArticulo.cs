@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Domain.Entities;
 using Business.Managers;
 
-namespace TPWinForm_16A.Views
+namespace TPWinForm_equipo_16A.Views
 {
     public partial class frmEditarArticulo : Form
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TPWinForm_16A.Views
+namespace TPWinForm_equipo_16A.Views
 {
     public partial class frmAgregarArticulo : Form
     {

@@ -12,7 +12,7 @@ using Business.Dtos;
 using Utils.Interfaces;
 using Utils;
 
-namespace TPWinForm_16A.Views
+namespace TPWinForm_equipo_16A.Views
 {
     public partial class frmPrincipal : Form
     {
@@ -249,4 +249,3 @@ namespace TPWinForm_16A.Views
         }
         }
     }
-}
