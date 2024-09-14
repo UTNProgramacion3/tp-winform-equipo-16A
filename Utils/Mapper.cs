@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 using Utils.Interfaces;
 
 namespace Utils
@@ -16,52 +18,123 @@ namespace Utils
 
             foreach (var prop in properties)
             {
-                if (row.Table.Columns.Contains(prop.Name) && prop.CanWrite)
+                if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
                 {
-                    object value = row[prop.Name];
-                    if (value != DBNull.Value)
+                    // Handle nested class properties
+                    PropertyInfo[] nestedProperties = prop.PropertyType.GetProperties();
+                    object nestedObject = Activator.CreateInstance(prop.PropertyType);
+                    foreach (var nestedProp in nestedProperties)
                     {
-                        object convertedValue = Convert.ChangeType(value, prop.PropertyType);
-                        prop.SetValue(obj, convertedValue);
+                        string columnName = $"{prop.Name}_{nestedProp.Name}";
+                        if (row.Table.Columns.Contains(columnName))
+                        {
+                            var value = row[columnName];
+                            if (value != DBNull.Value)
+                            {
+                                object convertedValue = Convert.ChangeType(value, nestedProp.PropertyType);
+                                nestedProp.SetValue(nestedObject, convertedValue);
+                            }
+                        }
+                    }
+                    prop.SetValue(obj, nestedObject);
+                }
+                else
+                {
+                    // Handle simple properties
+                    if (row.Table.Columns.Contains(prop.Name))
+                    {
+                        var value = row[prop.Name];
+                        if (value != DBNull.Value)
+                        {
+                            object convertedValue = Convert.ChangeType(value, prop.PropertyType);
+                            prop.SetValue(obj, convertedValue);
+                        }
                     }
                 }
-                else if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
+            }
+            return obj;
+        }
+
+        public List<T> ListMapFromRow(DataTable table)
+        {
+            List<T> objList = new List<T>();
+            foreach (DataRow row in table.Rows)
+            {
+                var res = MapFromRow(row);
+                objList.Add(res);
+            }
+            return objList;
+        }
+    public DataTable MapFromDtoToTable(List<T> dtos)
+        {
+            DataTable table = new DataTable();
+
+            if (dtos == null || !dtos.Any())
+                return table;
+
+            PropertyInfo[] properties = typeof(T).GetProperties();
+
+            // Agregamos las columnas al DataTable
+            foreach (var prop in properties)
+            {
+                if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
                 {
-                    object nestedObj = Activator.CreateInstance(prop.PropertyType);
+                    // Para las clases anidadas como Marca o Categoría
                     PropertyInfo[] nestedProperties = prop.PropertyType.GetProperties();
 
                     foreach (var nestedProp in nestedProperties)
                     {
-                        if (row.Table.Columns.Contains(nestedProp.Name) && nestedProp.CanWrite)
-                        {
-                            object nestedValue = row[nestedProp.Name];
-                            if (nestedValue != DBNull.Value)
-                            {
-                                object convertedNestedValue = Convert.ChangeType(nestedValue, nestedProp.PropertyType);
-                                nestedProp.SetValue(nestedObj, convertedNestedValue);
-                            }
-                        }
+                        table.Columns.Add($"{prop.Name}_{nestedProp.Name}", typeof(string));
                     }
-
-                    prop.SetValue(obj, nestedObj);
+                }
+                else
+                {
+                    table.Columns.Add(prop.Name, typeof(string));
                 }
             }
 
-            return obj;
-        }
-        public List<T> ListMapFromRow(DataTable row)
-        {
-            List<T> objList = new List<T>();
-
-            //Iteramos cada row de la tabla:
-            foreach (DataRow r in row.Rows)
+            // Agregamos las filas al DataTable
+            foreach (var dto in dtos)
             {
-                //Y utilizamos el método que ya tenemos para mapear:
-                var res = MapFromRow(r);
-                objList.Add(res);
+                DataRow row = table.NewRow();
+                foreach (var prop in properties)
+                {
+                    if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
+                    {
+                        var nestedObject = prop.GetValue(dto); // Obtenemos el objeto anidado
+
+                        if (nestedObject != null) // Verificamos si el objeto no es nulo
+                        {
+                            PropertyInfo[] nestedProperties = prop.PropertyType.GetProperties();
+
+                            foreach (var nestedProp in nestedProperties)
+                            {
+                                var nestedValue = nestedProp.GetValue(nestedObject) ?? DBNull.Value;
+                                row[$"{prop.Name}_{nestedProp.Name}"] = nestedValue.ToString();
+                            }
+                        }
+                        else
+                        {
+                            // Si el objeto anidado es nulo, asignamos DBNull para las columnas correspondientes
+                            PropertyInfo[] nestedProperties = prop.PropertyType.GetProperties();
+
+                            foreach (var nestedProp in nestedProperties)
+                            {
+                                row[$"{prop.Name}_{nestedProp.Name}"] = DBNull.Value;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        var value = prop.GetValue(dto) ?? DBNull.Value;
+                        row[prop.Name] = value.ToString();
+                    }
+                }
+
+                table.Rows.Add(row);
             }
 
-            return objList;
+            return table;
         }
     }
 }

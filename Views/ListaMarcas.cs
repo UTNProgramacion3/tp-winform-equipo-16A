@@ -89,10 +89,6 @@ namespace TPWinForm_equipo_16A.Views
                 dgvMarcas.DataSource = manager.ObtenerTodos();
 
             }
-            
-
         }
-
-
     }
 }

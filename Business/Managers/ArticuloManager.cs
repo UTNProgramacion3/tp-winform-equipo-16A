@@ -27,12 +27,12 @@ namespace Business.Managers
 
             SqlParameter[] parametros = new SqlParameter[]
                 {
-                    new SqlParameter("@Codigo", entity.Codigo),
-                    new SqlParameter("@Nombre", entity.Nombre),
-                    new SqlParameter("@Descripcion", entity.Descripcion),
-                    new SqlParameter("@IdMarca", entity.MarcaId),
-                    new SqlParameter("@IdCategoria", entity.CategoriaId),
-                    new SqlParameter("@Precio", entity.Precio)
+                    new SqlParameter("@Codigo", entity.Articulo.Codigo),
+                    new SqlParameter("@Nombre", entity.Articulo.Nombre),
+                    new SqlParameter("@Descripcion", entity.Articulo.Descripcion),
+                    new SqlParameter("@IdMarca", entity.Articulo.IdMarca),
+                    new SqlParameter("@IdCategoria", entity.Articulo.IdCategoria),
+                    new SqlParameter("@Precio", entity.Articulo.Precio)
                 };
 
             var res = _dbManager.ExecuteNonQuery(query, parametros);
@@ -106,18 +106,18 @@ namespace Business.Managers
         public List<ArticuloDTO> ObtenerTodos()
         {
             string query = @"SELECT 
-                                A.Id,
-                                A.Codigo,
-                                A.Nombre,
-                                A.Descripcion,
-                                A.Precio,
-                                M.Id AS MarcaId,
-                                M.Descripcion AS MarcaDescripcion,
-                                C.Id AS CategoriaId,
-                                C.Descripcion AS CategoriaDescripcion
-                            FROM ARTICULOS A
-                            JOIN MARCAS M ON A.IdMarca = M.Id
-                            JOIN CATEGORIAS C ON A.IdCategoria = C.Id;";
+                    A.Id AS Articulo_Id,
+                    A.Codigo AS Articulo_Codigo,
+                    A.Nombre AS Articulo_Nombre,
+                    A.Descripcion AS Articulo_Descripcion,
+                    A.Precio AS Articulo_Precio,
+                    M.Id AS Marca_Id,
+                    M.Descripcion AS Marca_Descripcion,
+                    C.Id AS Categoria_Id,
+                    C.Descripcion AS Categoria_Descripcion
+                FROM ARTICULOS A
+                JOIN MARCAS M ON A.IdMarca = M.Id
+                JOIN CATEGORIAS C ON A.IdCategoria = C.Id;";
 
             DataTable res = _dbManager.ExecuteQuery(query);
 
@@ -144,12 +144,12 @@ namespace Business.Managers
 
             SqlParameter[] parametros = new SqlParameter[]
                 {
-                    new SqlParameter("@Codigo", entity.Codigo),
-                    new SqlParameter("@Nombre", entity.Nombre),
-                    new SqlParameter("@Descripcion", entity.Descripcion),
-                    new SqlParameter("@IdMarca", entity.MarcaId),
-                    new SqlParameter("@IdCategoria", entity.CategoriaId),
-                    new SqlParameter("@Precio", entity.Precio)
+                    new SqlParameter("@Codigo", entity.Articulo.Codigo),
+                    new SqlParameter("@Nombre", entity.Articulo.Nombre),
+                    new SqlParameter("@Descripcion", entity.Articulo.Descripcion),
+                    new SqlParameter("@IdMarca", entity.Articulo.IdMarca),
+                    new SqlParameter("@IdCategoria", entity.Articulo.IdCategoria),
+                    new SqlParameter("@Precio", entity.Articulo.Precio)
                 };
 
             var res = _dbManager.ExecuteNonQuery(query, parametros);
