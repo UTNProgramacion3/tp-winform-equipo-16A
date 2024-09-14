@@ -118,6 +118,9 @@ namespace TPWinForm_16A.Views
             }
         }
 
+        //Esto no es practico para nada, funciona pero imaginate si tienes 1000 articulos, 
+        //es una saturacion completa de llamados a la bd
+        //voy a correjirlo mañana.
         private void dgvArticulos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridView dataGridView = sender as DataGridView;
@@ -190,5 +193,30 @@ namespace TPWinForm_16A.Views
             return 0;
         }
 
+        private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                DataGridView dataGridView = sender as DataGridView;
+
+                if(dataGridView.Columns[e.ColumnIndex].Name == "Editar")
+                {
+                    Articulo art = (Articulo)dataGridView.Rows[e.RowIndex].DataBoundItem;
+                    frmEditarArticulo view = new frmEditarArticulo(art);
+                    view.ShowDialog();
+                }
+                else if(dataGridView.Columns[e.ColumnIndex].Name == "Eliminar")
+                {
+                    int id = ObtenerIdArticuloSeleccionado();
+
+                    DialogResult res = MessageBox.Show("¿Estás seguro de que quieres eliminar este artículo?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
+                    if(res == DialogResult.Yes)
+                    {
+                        _artManager.Eliminar(id);
+                        CargarArticulos(dgvArticulos);
+                    }
+                }
+            }
+        }
     }
 }
