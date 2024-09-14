@@ -320,16 +320,16 @@
             this.dgvArticulos.Location = new System.Drawing.Point(0, 52);
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(835, 255);
+            this.dgvArticulos.Size = new System.Drawing.Size(835, 320);
             this.dgvArticulos.TabIndex = 3;
             this.dgvArticulos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvArticulos_CellFormatting);
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // pbArticulo
             // 
-            this.pbArticulo.Location = new System.Drawing.Point(834, 52);
+            this.pbArticulo.Location = new System.Drawing.Point(841, 52);
             this.pbArticulo.Name = "pbArticulo";
-            this.pbArticulo.Size = new System.Drawing.Size(174, 149);
+            this.pbArticulo.Size = new System.Drawing.Size(167, 149);
             this.pbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbArticulo.TabIndex = 4;
             this.pbArticulo.TabStop = false;
