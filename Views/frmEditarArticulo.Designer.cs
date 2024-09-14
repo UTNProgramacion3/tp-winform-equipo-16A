@@ -272,6 +272,7 @@
             this.Name = "frmEditarArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Articulo";
+            this.Load += new System.EventHandler(this.frmEditarArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbEaArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

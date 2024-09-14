@@ -142,5 +142,9 @@
   <ItemGroup>
     <None Include="Icons\lupa-01.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\editar.png" />
+    <Content Include="Icons\eliminar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -46,9 +46,9 @@
     <Compile Include="Managers\ArticuloManager.cs" />
     <Compile Include="Interfaces\ICrudRepository.cs" />
     <Compile Include="Managers\CategoriaManager.cs" />
+    <Compile Include="Managers\ImagenManager.cs" />
     <Compile Include="Managers\MarcaManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servicios\ImagenService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
