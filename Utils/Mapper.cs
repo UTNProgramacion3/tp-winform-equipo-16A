@@ -20,7 +20,7 @@ namespace Utils
             {
                 if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
                 {
-                    // Handle nested class properties
+                    // Handle p/ nested class properties
                     PropertyInfo[] nestedProperties = prop.PropertyType.GetProperties();
                     object nestedObject = Activator.CreateInstance(prop.PropertyType);
                     foreach (var nestedProp in nestedProperties)
@@ -40,7 +40,7 @@ namespace Utils
                 }
                 else
                 {
-                    // Handle simple properties
+                    // Handle p/ simple properties
                     if (row.Table.Columns.Contains(prop.Name))
                     {
                         var value = row[prop.Name];
@@ -79,7 +79,6 @@ namespace Utils
             {
                 if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
                 {
-                    // Para las clases anidadas como Marca o Categoría
                     PropertyInfo[] nestedProperties = prop.PropertyType.GetProperties();
 
                     foreach (var nestedProp in nestedProperties)
@@ -101,7 +100,7 @@ namespace Utils
                 {
                     if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
                     {
-                        var nestedObject = prop.GetValue(dto); // Obtenemos el objeto anidado
+                        var nestedObject = prop.GetValue(dto); 
 
                         if (nestedObject != null) // Verificamos si el objeto no es nulo
                         {
@@ -115,7 +114,7 @@ namespace Utils
                         }
                         else
                         {
-                            // Si el objeto anidado es nulo, asignamos DBNull para las columnas correspondientes
+                           
                             PropertyInfo[] nestedProperties = prop.PropertyType.GetProperties();
 
                             foreach (var nestedProp in nestedProperties)

@@ -94,7 +94,7 @@ namespace Business.Managers
 
             if (res.Rows.Count == 0)
             {
-                return null;
+                return new ArticuloDTO();
             }
 
             ArticuloDTO articulo = _mapper.MapFromRow(res.Rows[0]);
@@ -123,7 +123,7 @@ namespace Business.Managers
 
             if (res.Rows.Count == 0)
             {
-                return null;
+                return new List<ArticuloDTO>();
             }
 
             var articulosList = _mapper.ListMapFromRow(res);
