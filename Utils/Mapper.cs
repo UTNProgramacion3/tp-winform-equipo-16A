@@ -11,27 +11,42 @@ namespace Utils
         public T MapFromRow(DataRow row)
         {
             T obj = new T();
-            Type type = typeof(T); // Obtiene el tipo de T directamente
+            Type type = typeof(T);
             PropertyInfo[] properties = type.GetProperties();
 
             foreach (var prop in properties)
             {
-                // Validamos si la propiedad existe en la tabla y si puede escribirse
                 if (row.Table.Columns.Contains(prop.Name) && prop.CanWrite)
                 {
-                    // Obtener el valor de la columna
                     object value = row[prop.Name];
-
-                    // Manejar valores nulos
                     if (value != DBNull.Value)
                     {
-                        // Convertir el valor al tipo de la propiedad
                         object convertedValue = Convert.ChangeType(value, prop.PropertyType);
                         prop.SetValue(obj, convertedValue);
                     }
                 }
+                else if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
+                {
+                    object nestedObj = Activator.CreateInstance(prop.PropertyType);
+                    PropertyInfo[] nestedProperties = prop.PropertyType.GetProperties();
+
+                    foreach (var nestedProp in nestedProperties)
+                    {
+                        if (row.Table.Columns.Contains(nestedProp.Name) && nestedProp.CanWrite)
+                        {
+                            object nestedValue = row[nestedProp.Name];
+                            if (nestedValue != DBNull.Value)
+                            {
+                                object convertedNestedValue = Convert.ChangeType(nestedValue, nestedProp.PropertyType);
+                                nestedProp.SetValue(nestedObj, convertedNestedValue);
+                            }
+                        }
+                    }
+
+                    prop.SetValue(obj, nestedObj);
+                }
             }
-            // Retornamos el objeto con los valores asignados
+
             return obj;
         }
         public List<T> ListMapFromRow(DataTable row)

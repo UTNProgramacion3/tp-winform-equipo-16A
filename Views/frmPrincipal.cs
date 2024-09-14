@@ -122,24 +122,24 @@ namespace TPWinForm_16A.Views
         //Esto no es practico para nada, funciona pero imaginate si tienes 1000 articulos, 
         //es una saturacion completa de llamados a la bd
         //voy a correjirlo mañana.
-        //private void dgvArticulos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    DataGridView dataGridView = sender as DataGridView;
+        private void dgvArticulos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
 
-        //    if (e.Value == null)
-        //        return;
+            if (e.Value == null)
+                return;
 
-        //    if (dataGridView.Columns[e.ColumnIndex].Name == "IdCategoria" && int.TryParse(e.Value.ToString(), out int idCategoria))
-        //    {
-        //        e.Value = ObtenerDescripcionCategoria(idCategoria);
-        //        e.FormattingApplied = true;
-        //    }
-        //    else if (dataGridView.Columns[e.ColumnIndex].Name == "IdMarca" && int.TryParse(e.Value.ToString(), out int idMarca))
-        //    {
-        //        e.Value = ObtenerDescripcionMarca(idMarca);
-        //        e.FormattingApplied = true;
-        //    }
-        //}
+            if (dataGridView.Columns[e.ColumnIndex].Name == "IdCategoria" && int.TryParse(e.Value.ToString(), out int idCategoria))
+            {
+                e.Value = ObtenerDescripcionCategoria(idCategoria);
+                e.FormattingApplied = true;
+            }
+            else if (dataGridView.Columns[e.ColumnIndex].Name == "IdMarca" && int.TryParse(e.Value.ToString(), out int idMarca))
+            {
+                e.Value = ObtenerDescripcionMarca(idMarca);
+                e.FormattingApplied = true;
+            }
+        }
 
         private string ObtenerDescripcionCategoria(int idCategoria)
         {
