@@ -9,7 +9,8 @@ using System.Windows.Forms;
 using Business.Managers;
 using TPWinForm_equipo_16A.Views;
 using Business.Dtos;
-
+using Utils.Interfaces;
+using Utils;
 
 namespace TPWinForm_16A.Views
 {
@@ -21,6 +22,7 @@ namespace TPWinForm_16A.Views
         protected ImagenManager _imgManager;
         protected MarcaManager _marcManager;
         protected CategoriaManager _catManager;
+        protected IMapper<ArticuloDTO> _mapper;
         protected int indexActual = 0;
         public frmPrincipal()
         {
@@ -34,6 +36,7 @@ namespace TPWinForm_16A.Views
             _imgManager = new ImagenManager();
             _marcManager = new MarcaManager();
             _catManager = new CategoriaManager();
+            _mapper = new Mapper<ArticuloDTO>();
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -86,20 +89,34 @@ namespace TPWinForm_16A.Views
         private void CargarArticulos(DataGridView dataGridView)
         {
             _articulos = _artManager.ObtenerTodos();
-            dataGridView.DataSource = _articulos;
+            dataGridView.DataSource = _mapper.MapFromDtoToTable(_articulos); // Cambiado a DataTable
 
             string rutaIconoEditar = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Icons\editar.png");
             string rutaIconoEliminar = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Icons\eliminar.png");
 
             ConfigurarColumnas(dataGridView, rutaIconoEditar, rutaIconoEliminar);
-            //dataGridView.CellFormatting += dgvArticulos_CellFormatting;
         }
 
         private void ConfigurarColumnas(DataGridView dataGridView, string rutaIconoEditar, string rutaIconoEliminar)
         {
-            dataGridView.Columns["Id"].Visible = false;
-            //dataGridView.Columns["IdMarca"].HeaderText = "Marca";
-            //dataGridView.Columns["IdCategoria"].HeaderText = "Categoria";
+            for (int i = dataGridView.Columns.Count - 1; i >= 0; i--)
+            {
+                DataGridViewColumn column = dataGridView.Columns[i];
+                if (column.Name.ToLower().Contains("_id"))
+                {
+                    dataGridView.Columns.RemoveAt(i);
+                }
+            }
+
+            if (dataGridView.Columns.Contains("Marca_Nombre"))
+            {
+                dataGridView.Columns["Marca_Nombre"].HeaderText = "Marca";
+            }
+
+            if (dataGridView.Columns.Contains("Categoria_Nombre"))
+            {
+                dataGridView.Columns["Categoria_Nombre"].HeaderText = "Categoría";
+            }
 
             AgregarColumnaImagen(dataGridView, "Editar", rutaIconoEditar);
             AgregarColumnaImagen(dataGridView, "Eliminar", rutaIconoEliminar);
@@ -118,28 +135,6 @@ namespace TPWinForm_16A.Views
                 dataGridView.Columns.Add(columnaImagen);
             }
         }
-
-        //Esto no es practico para nada, funciona pero imaginate si tienes 1000 articulos, 
-        //es una saturacion completa de llamados a la bd
-        //voy a correjirlo mañana.
-        //private void dgvArticulos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    DataGridView dataGridView = sender as DataGridView;
-
-        //    if (e.Value == null)
-        //        return;
-
-        //    if (dataGridView.Columns[e.ColumnIndex].Name == "IdCategoria" && int.TryParse(e.Value.ToString(), out int idCategoria))
-        //    {
-        //        e.Value = ObtenerDescripcionCategoria(idCategoria);
-        //        e.FormattingApplied = true;
-        //    }
-        //    else if (dataGridView.Columns[e.ColumnIndex].Name == "IdMarca" && int.TryParse(e.Value.ToString(), out int idMarca))
-        //    {
-        //        e.Value = ObtenerDescripcionMarca(idMarca);
-        //        e.FormattingApplied = true;
-        //    }
-        //}
 
         private string ObtenerDescripcionCategoria(int idCategoria)
         {
@@ -160,15 +155,20 @@ namespace TPWinForm_16A.Views
 
         private void CargarImagenArticulo()
         {
-            ArticuloDTO art = (ArticuloDTO)dgvArticulos.CurrentRow?.DataBoundItem;
-            if (art != null)
+            if (dgvArticulos.CurrentRow != null)
             {
-                _imagenes = _imgManager.ObtenerImagenesPorArticulo(art.Id);
-                string imagenUrl = _imagenes != null && _imagenes.Count > 0
-                    ? _imagenes[0].ImagenUrl
-                    : "https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminada-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg";
+                int rowIndex = dgvArticulos.CurrentRow.Index;
+                ArticuloDTO art = _articulos[rowIndex]; 
 
-                CargarImagen(pbArticulo, imagenUrl);
+                if (art != null)
+                {
+                    _imagenes = _imgManager.ObtenerImagenesPorArticulo(art.Articulo.Id);
+                    string imagenUrl = _imagenes != null && _imagenes.Count > 0
+                        ? _imagenes[0].ImagenUrl
+                        : "https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminada-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg";
+
+                    CargarImagen(pbArticulo, imagenUrl);
+                }
             }
         }
 
@@ -188,8 +188,9 @@ namespace TPWinForm_16A.Views
         {
             if (dgvArticulos.SelectedRows.Count > 0)
             {
-                Articulo art = (Articulo)dgvArticulos.SelectedRows[0].DataBoundItem;
-                return art.Id;
+                int rowIndex = dgvArticulos.CurrentRow.Index;
+                ArticuloDTO art = _articulos[rowIndex];
+                return art.Articulo.Id;
             }
             return 0;
         }
@@ -202,8 +203,9 @@ namespace TPWinForm_16A.Views
 
                 if (dataGridView.Columns[e.ColumnIndex].Name == "Editar")
                 {
-                    Articulo art = (Articulo)dataGridView.Rows[e.RowIndex].DataBoundItem;
-                    frmEditarArticulo view = new frmEditarArticulo(art);
+                    int rowIndex = dgvArticulos.CurrentRow.Index;
+                    ArticuloDTO art = _articulos[rowIndex];
+                    frmEditarArticulo view = new frmEditarArticulo(art.Articulo);
                     view.ShowDialog();
                 }
                 else if (dataGridView.Columns[e.ColumnIndex].Name == "Eliminar")
@@ -219,7 +221,6 @@ namespace TPWinForm_16A.Views
                 }
             }
         }
-
 
         private void btnBackImg_Click(object sender, EventArgs e)
         {
