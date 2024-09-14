@@ -79,6 +79,8 @@ namespace Business.Managers
         {
             string query = "SELECT * FROM Categorias";
 
+            string.IsNullOrEmpty(query);
+
             DataTable res = _dbManager.ExecuteQuery(query);
 
             if(res.Rows.Count == 0)

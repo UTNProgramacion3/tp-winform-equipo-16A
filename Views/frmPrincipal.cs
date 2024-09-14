@@ -20,7 +20,7 @@ namespace TPWinForm_16A.Views
         protected ImagenManager _imgManager;
         protected MarcaManager _marcManager;
         protected CategoriaManager _catManager;
-
+        protected int indexActual = 0;
         public frmPrincipal()
         {
             InitializeComponent();
@@ -216,6 +216,23 @@ namespace TPWinForm_16A.Views
                         CargarArticulos(dgvArticulos);
                     }
                 }
+            }
+        }
+
+        private void btnBackImg_Click(object sender, EventArgs e)
+        {
+            if (indexActual > 0 && _imagenes != null)
+            {
+                indexActual--;
+                CargarImagen(pbArticulo, _imagenes[indexActual].ImagenUrl);
+            }
+        }
+        private void btnNextImg_Click(object sender, EventArgs e)
+        {
+            if (indexActual < _imagenes.Count - 1 && _imagenes != null)
+            {
+                indexActual++;
+                CargarImagen(pbArticulo, _imagenes[indexActual].ImagenUrl);
             }
         }
     }
