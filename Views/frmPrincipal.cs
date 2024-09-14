@@ -227,5 +227,13 @@ namespace TPWinForm_16A.Views
 
             listado.ShowDialog();
         }
+
+        private void tlsEditarArticulo_Click(object sender, EventArgs e)
+        {
+            Articulo seleccion = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+            frmEditarArticulo ventana = new frmEditarArticulo(seleccion);
+            ventana.Show();
+        }
     }
 }
