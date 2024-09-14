@@ -7,6 +7,8 @@ using System.IO;
 using System.Windows.Forms;
 using Business.Managers;
 using Domain.Entities;
+using TPWinForm_equipo_16A.Views;
+
 
 namespace TPWinForm_16A.Views
 {
@@ -59,7 +61,6 @@ namespace TPWinForm_16A.Views
             frmBuscarArticulo ventanaArticulo = new frmBuscarArticulo();
             ventanaArticulo.ShowDialog();
         }
-
         private void CargarArticulos(DataGridView dataGridView)
         {
             _articulos = _artManager.ObtenerTodos();
@@ -96,18 +97,31 @@ namespace TPWinForm_16A.Views
 
             try
             {
-                if(_imagenes != null)
+                if (_imagenes != null)
                 {
                     pbArticulo.Load(_imagenes[0].ImagenUrl);
-                }else
+                }
+                else
                 {
                     pbArticulo.Load("https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg");
                 }
 
-            }catch (System.Net.WebException ex)
+            }
+            catch (System.Net.WebException ex)
             {
                 pbArticulo.Load("https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminado-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg");
             }
+        }
+        private void tlsNuevoMarca_Click(object sender, EventArgs e)
+        {
+            frmAgregarMarca ventana = new frmAgregarMarca();
+            ventana.ShowDialog();
+        }
+
+        private void tlsEditarMarca_Click(object sender, EventArgs e)
+        {
+            frmEditarMarca ventana = new frmEditarMarca();
+            ventana.ShowDialog();
         }
     }
 }
