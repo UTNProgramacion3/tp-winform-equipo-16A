@@ -108,14 +108,14 @@ namespace TPWinForm_equipo_16A.Views
                 }
             }
 
-            if (dataGridView.Columns.Contains("Marca_Nombre"))
+            if (dataGridView.Columns.Contains("Marca_Descripcion"))
             {
-                dataGridView.Columns["Marca_Nombre"].HeaderText = "Marca";
+                dataGridView.Columns["Marca_Descripcion"].HeaderText = "Marca";
             }
 
-            if (dataGridView.Columns.Contains("Categoria_Nombre"))
+            if (dataGridView.Columns.Contains("Categoria_Descripcion"))
             {
-                dataGridView.Columns["Categoria_Nombre"].HeaderText = "Categoría";
+                dataGridView.Columns["Categoria_Descripcion"].HeaderText = "Categoría";
             }
 
             AgregarColumnaImagen(dataGridView, "Editar", rutaIconoEditar);
@@ -158,7 +158,7 @@ namespace TPWinForm_equipo_16A.Views
             if (dgvArticulos.CurrentRow != null)
             {
                 int rowIndex = dgvArticulos.CurrentRow.Index;
-                ArticuloDTO art = _articulos[rowIndex]; 
+                ArticuloDTO art = _articulos[rowIndex];
 
                 if (art != null)
                 {
@@ -237,16 +237,17 @@ namespace TPWinForm_equipo_16A.Views
                 indexActual++;
                 CargarImagen(pbArticulo, _imagenes[indexActual].ImagenUrl);
             }
-
-        //private void tlsEliminarMarca_Click(object sender, EventArgs e)
-        //{
-        //    Marca _marca = new Marca();
-
-        //    frmListaMarcas listado = new frmListaMarcas(_marca);
-
-        //    listado.ShowDialog();
-
-        //}
         }
+
+        private void tlsEliminarMarca_Click(object sender, EventArgs e)
+        {
+            Marca _marca = new Marca();
+
+            frmListaMarcas listado = new frmListaMarcas(_marca);
+
+            listado.ShowDialog();
+
+        }
+
     }
 }
