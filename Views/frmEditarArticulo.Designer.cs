@@ -68,7 +68,8 @@
             this.pcbEaArticulo.BackColor = System.Drawing.SystemColors.Window;
             this.pcbEaArticulo.Location = new System.Drawing.Point(84, 386);
             this.pcbEaArticulo.Name = "pcbEaArticulo";
-            this.pcbEaArticulo.Size = new System.Drawing.Size(301, 133);
+            this.pcbEaArticulo.Size = new System.Drawing.Size(301, 184);
+            this.pcbEaArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbEaArticulo.TabIndex = 23;
             this.pcbEaArticulo.TabStop = false;
             // 
