@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,8 +56,17 @@ namespace TPWinForm_16A.Views
 
         private void tlsEditarMarca_Click(object sender, EventArgs e)
         {
-            frmEditarMarca ventana = new frmEditarMarca();
+            frmListaMarcas ventana = new frmListaMarcas();
             ventana.ShowDialog();
+        }
+
+        private void tlsEliminarMarca_Click(object sender, EventArgs e)
+        {
+            Marca _marca = new Marca();
+            
+            frmListaMarcas listado = new frmListaMarcas(_marca);
+
+            listado.ShowDialog();
         }
     }
 }
