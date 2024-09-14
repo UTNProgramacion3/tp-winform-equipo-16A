@@ -1,9 +1,9 @@
 ﻿using Business.Managers;
 using System;
 using System.Windows.Forms;
-using TPWinForm_16A.Views;
+using TPWinForm_equipo_16A.Views;
 
-namespace TPWinForm_16A
+namespace TPWinForm_equipo_16A
 {
     internal static class Program
     {

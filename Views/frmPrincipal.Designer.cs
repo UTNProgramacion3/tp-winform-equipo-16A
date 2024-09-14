@@ -1,4 +1,4 @@
-﻿namespace TPWinForm_16A.Views
+﻿namespace TPWinForm_equipo_16A.Views
 {
     partial class frmPrincipal
     {
