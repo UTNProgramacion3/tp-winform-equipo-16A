@@ -1,6 +1,6 @@
 ﻿namespace TPWinForm_equipo_16A.Views
 {
-    partial class frmEditarMarca
+    partial class frmListaMarcas
     {
         /// <summary>
         /// Required designer variable.
@@ -36,17 +36,17 @@
             // 
             // btnAtras
             // 
-            this.btnAtras.Location = new System.Drawing.Point(82, 217);
+            this.btnAtras.Location = new System.Drawing.Point(38, 289);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(75, 23);
-            this.btnAtras.TabIndex = 0;
+            this.btnAtras.TabIndex = 2;
             this.btnAtras.Text = "Atras";
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(307, 217);
+            this.btnEditar.Location = new System.Drawing.Point(360, 289);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 1;
@@ -58,26 +58,27 @@
             // 
             this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMarcas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvMarcas.Location = new System.Drawing.Point(82, 33);
+            this.dgvMarcas.Location = new System.Drawing.Point(38, 12);
             this.dgvMarcas.MultiSelect = false;
             this.dgvMarcas.Name = "dgvMarcas";
+            this.dgvMarcas.ReadOnly = true;
             this.dgvMarcas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMarcas.Size = new System.Drawing.Size(300, 150);
-            this.dgvMarcas.TabIndex = 2;
+            this.dgvMarcas.Size = new System.Drawing.Size(397, 249);
+            this.dgvMarcas.TabIndex = 0;
             // 
-            // frmEditarMarca
+            // frmListaMarcas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(470, 264);
+            this.ClientSize = new System.Drawing.Size(485, 338);
             this.Controls.Add(this.dgvMarcas);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAtras);
-            this.Name = "frmEditarMarca";
+            this.Name = "frmListaMarcas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Editar Marca";
-            this.Load += new System.EventHandler(this.frmEditarMarca_Load);
+            this.Text = "ListaMarcas";
+            this.Load += new System.EventHandler(this.frmListaMarcas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
             this.ResumeLayout(false);
 

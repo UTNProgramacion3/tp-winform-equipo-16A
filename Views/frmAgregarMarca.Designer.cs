@@ -36,7 +36,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(216, 101);
+            this.btnAceptar.Location = new System.Drawing.Point(292, 136);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 0;
@@ -46,27 +46,28 @@
             // 
             // btnAtras
             // 
-            this.btnAtras.Location = new System.Drawing.Point(53, 101);
+            this.btnAtras.Location = new System.Drawing.Point(26, 136);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(75, 23);
             this.btnAtras.TabIndex = 1;
             this.btnAtras.Text = "Atrás";
             this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(50, 38);
+            this.lblDescripcion.Location = new System.Drawing.Point(23, 85);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(66, 13);
             this.lblDescripcion.TabIndex = 2;
-            this.lblDescripcion.Text = "Descripcion:";
+            this.lblDescripcion.Text = "Descripción:";
             // 
             // txtbDescripcion
             // 
-            this.txtbDescripcion.Location = new System.Drawing.Point(122, 35);
+            this.txtbDescripcion.Location = new System.Drawing.Point(169, 78);
             this.txtbDescripcion.Name = "txtbDescripcion";
-            this.txtbDescripcion.Size = new System.Drawing.Size(159, 20);
+            this.txtbDescripcion.Size = new System.Drawing.Size(198, 20);
             this.txtbDescripcion.TabIndex = 3;
             // 
             // frmAgregarMarca
@@ -74,7 +75,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(348, 136);
+            this.ClientSize = new System.Drawing.Size(389, 171);
             this.Controls.Add(this.txtbDescripcion);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.btnAtras);

@@ -164,19 +164,20 @@
             // tlsEliminarArticulo
             // 
             this.tlsEliminarArticulo.Name = "tlsEliminarArticulo";
-            this.tlsEliminarArticulo.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarArticulo.Text = "Articulo";
             // 
             // tlsEliminarMarca
             // 
             this.tlsEliminarMarca.Name = "tlsEliminarMarca";
-            this.tlsEliminarMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarMarca.Text = "Marca";
+            this.tlsEliminarMarca.Click += new System.EventHandler(this.tlsEliminarMarca_Click);
             // 
             // tlsEliminarCategoria
             // 
             this.tlsEliminarCategoria.Name = "tlsEliminarCategoria";
-            this.tlsEliminarCategoria.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarCategoria.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarCategoria.Text = "Categoria";
             // 
             // tlsBuscar

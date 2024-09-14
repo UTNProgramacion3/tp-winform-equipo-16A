@@ -19,13 +19,6 @@ namespace TPWinForm_equipo_16A.Views
             InitializeComponent();
         }
 
-        public frmAgregarMarca(Marca m)
-        {
-            InitializeComponent();
-            Text = "Modificar Marca";
-
-        }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             MarcaManager marcaManager = new MarcaManager();
@@ -34,6 +27,11 @@ namespace TPWinForm_equipo_16A.Views
             obj.descripcion = txtbDescripcion.Text;
 
             marcaManager.Crear(obj);
+            Close();
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }

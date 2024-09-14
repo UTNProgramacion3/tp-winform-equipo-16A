@@ -87,10 +87,11 @@ namespace Business.Managers
 
         public bool Update(Marca m)
         {
-            string query = "update MARCAS SET Descripcion = @descripcion where id = @id";
+            string query = @"update MARCAS SET Descripcion = @descripcion where id = @id";
 
             SqlParameter[] parametro = new SqlParameter[]
             {
+                new SqlParameter("@id", m.id),
                 new SqlParameter("@descripcion", m.descripcion)
             };
 
@@ -103,8 +104,21 @@ namespace Business.Managers
         }
 
         public bool Eliminar(int id)
-        {
-            return true;
+        {           
+            string query = "delete from MARCAS where id = @id";
+
+            SqlParameter[] parametro = new SqlParameter[]
+                {
+                new SqlParameter("@id", id)
+                };
+
+            var res = dataBManager.ExecuteNonQuery(query, parametro);
+
+            if(res == 0) return false;
+
+            return true;  
         }
+
+
     }
 }
