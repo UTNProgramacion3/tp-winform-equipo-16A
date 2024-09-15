@@ -62,7 +62,8 @@ namespace TPWinForm_equipo_16A.Views
 
         private void tlsBuscarArticulo_Click(object sender, EventArgs e)
         {
-            OpenForm<frmBuscarArticulo>();
+            frmBuscarArticulo ventana = new frmBuscarArticulo();
+            ventana.ShowDialog();
         }
 
         private void tlsbCargarArticulo_Click(object sender, EventArgs e)
@@ -73,11 +74,6 @@ namespace TPWinForm_equipo_16A.Views
         private void tlsbEditarArticulo_Click(object sender, EventArgs e)
         {
             OpenForm<frmEditarArticulo>();
-        }
-
-        private void tlsbBuscarArticulo_Click(object sender, EventArgs e)
-        {
-            OpenForm<frmBuscarArticulo>();
         }
 
         private void tlsNuevoMarca_Click(object sender, EventArgs e)
