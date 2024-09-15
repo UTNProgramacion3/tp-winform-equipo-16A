@@ -52,7 +52,7 @@
             this.cmbCategoriaEdt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbCategoriaEdt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoriaEdt.FormattingEnabled = true;
-            this.cmbCategoriaEdt.Location = new System.Drawing.Point(119, 253);
+            this.cmbCategoriaEdt.Location = new System.Drawing.Point(535, 188);
             this.cmbCategoriaEdt.MaxDropDownItems = 50;
             this.cmbCategoriaEdt.Name = "cmbCategoriaEdt";
             this.cmbCategoriaEdt.Size = new System.Drawing.Size(200, 21);
@@ -64,7 +64,7 @@
             this.cmbMarcaEdt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbMarcaEdt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMarcaEdt.FormattingEnabled = true;
-            this.cmbMarcaEdt.Location = new System.Drawing.Point(119, 220);
+            this.cmbMarcaEdt.Location = new System.Drawing.Point(535, 155);
             this.cmbMarcaEdt.MaxDropDownItems = 50;
             this.cmbMarcaEdt.Name = "cmbMarcaEdt";
             this.cmbMarcaEdt.Size = new System.Drawing.Size(200, 21);
@@ -73,7 +73,7 @@
             // txtbNombreEdt
             // 
             this.txtbNombreEdt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtbNombreEdt.Location = new System.Drawing.Point(119, 188);
+            this.txtbNombreEdt.Location = new System.Drawing.Point(176, 189);
             this.txtbNombreEdt.Name = "txtbNombreEdt";
             this.txtbNombreEdt.Size = new System.Drawing.Size(200, 20);
             this.txtbNombreEdt.TabIndex = 23;
@@ -81,17 +81,18 @@
             // txtbCodigoBa
             // 
             this.txtbCodigoBa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtbCodigoBa.Location = new System.Drawing.Point(119, 155);
+            this.txtbCodigoBa.Location = new System.Drawing.Point(176, 156);
             this.txtbCodigoBa.Name = "txtbCodigoBa";
             this.txtbCodigoBa.Size = new System.Drawing.Size(200, 20);
             this.txtbCodigoBa.TabIndex = 22;
+            this.txtbCodigoBa.TextChanged += new System.EventHandler(this.txtbCodigoBa_TextChanged);
             // 
             // lblBaNombre
             // 
             this.lblBaNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblBaNombre.AutoSize = true;
             this.lblBaNombre.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBaNombre.Location = new System.Drawing.Point(14, 189);
+            this.lblBaNombre.Location = new System.Drawing.Point(94, 190);
             this.lblBaNombre.Name = "lblBaNombre";
             this.lblBaNombre.Size = new System.Drawing.Size(68, 18);
             this.lblBaNombre.TabIndex = 30;
@@ -102,7 +103,7 @@
             this.lblBaCategoria.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblBaCategoria.AutoSize = true;
             this.lblBaCategoria.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBaCategoria.Location = new System.Drawing.Point(14, 254);
+            this.lblBaCategoria.Location = new System.Drawing.Point(441, 189);
             this.lblBaCategoria.Name = "lblBaCategoria";
             this.lblBaCategoria.Size = new System.Drawing.Size(82, 18);
             this.lblBaCategoria.TabIndex = 25;
@@ -113,7 +114,7 @@
             this.lblBaMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblBaMarca.AutoSize = true;
             this.lblBaMarca.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBaMarca.Location = new System.Drawing.Point(14, 221);
+            this.lblBaMarca.Location = new System.Drawing.Point(441, 156);
             this.lblBaMarca.Name = "lblBaMarca";
             this.lblBaMarca.Size = new System.Drawing.Size(56, 18);
             this.lblBaMarca.TabIndex = 24;
@@ -124,7 +125,7 @@
             this.lblBaCodigo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblBaCodigo.AutoSize = true;
             this.lblBaCodigo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBaCodigo.Location = new System.Drawing.Point(14, 156);
+            this.lblBaCodigo.Location = new System.Drawing.Point(94, 156);
             this.lblBaCodigo.Name = "lblBaCodigo";
             this.lblBaCodigo.Size = new System.Drawing.Size(64, 18);
             this.lblBaCodigo.TabIndex = 28;
@@ -137,7 +138,7 @@
             this.btnBuscarPorCodigo.BackgroundImage = global::TPWinForm_equipo_16A.Properties.Resources.lupa_01;
             this.btnBuscarPorCodigo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarPorCodigo.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnBuscarPorCodigo.Location = new System.Drawing.Point(325, 155);
+            this.btnBuscarPorCodigo.Location = new System.Drawing.Point(382, 156);
             this.btnBuscarPorCodigo.Name = "btnBuscarPorCodigo";
             this.btnBuscarPorCodigo.Size = new System.Drawing.Size(21, 21);
             this.btnBuscarPorCodigo.TabIndex = 33;
@@ -163,7 +164,7 @@
             this.btnBuscarPorNombre.BackgroundImage = global::TPWinForm_equipo_16A.Properties.Resources.lupa_01;
             this.btnBuscarPorNombre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarPorNombre.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnBuscarPorNombre.Location = new System.Drawing.Point(325, 186);
+            this.btnBuscarPorNombre.Location = new System.Drawing.Point(382, 187);
             this.btnBuscarPorNombre.Name = "btnBuscarPorNombre";
             this.btnBuscarPorNombre.Size = new System.Drawing.Size(21, 21);
             this.btnBuscarPorNombre.TabIndex = 33;
@@ -176,7 +177,7 @@
             this.btnBuscarPorMarca.BackgroundImage = global::TPWinForm_equipo_16A.Properties.Resources.lupa_01;
             this.btnBuscarPorMarca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarPorMarca.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnBuscarPorMarca.Location = new System.Drawing.Point(325, 221);
+            this.btnBuscarPorMarca.Location = new System.Drawing.Point(741, 156);
             this.btnBuscarPorMarca.Name = "btnBuscarPorMarca";
             this.btnBuscarPorMarca.Size = new System.Drawing.Size(21, 21);
             this.btnBuscarPorMarca.TabIndex = 33;
@@ -189,7 +190,7 @@
             this.btnBuscarPorCategoria.BackgroundImage = global::TPWinForm_equipo_16A.Properties.Resources.lupa_01;
             this.btnBuscarPorCategoria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarPorCategoria.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnBuscarPorCategoria.Location = new System.Drawing.Point(325, 251);
+            this.btnBuscarPorCategoria.Location = new System.Drawing.Point(741, 186);
             this.btnBuscarPorCategoria.Name = "btnBuscarPorCategoria";
             this.btnBuscarPorCategoria.Size = new System.Drawing.Size(21, 21);
             this.btnBuscarPorCategoria.TabIndex = 33;
@@ -200,20 +201,23 @@
             this.btnBaAtras.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBaAtras.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBaAtras.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnBaAtras.Location = new System.Drawing.Point(17, 511);
+            this.btnBaAtras.Location = new System.Drawing.Point(97, 512);
             this.btnBaAtras.Name = "btnBaAtras";
             this.btnBaAtras.Size = new System.Drawing.Size(120, 23);
             this.btnBaAtras.TabIndex = 35;
             this.btnBaAtras.Text = "Atrás";
             this.btnBaAtras.UseVisualStyleBackColor = true;
+            this.btnBaAtras.Click += new System.EventHandler(this.btnBaAtras_Click);
             // 
             // dgvBaListadoArticulos
             // 
             this.dgvBaListadoArticulos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvBaListadoArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBaListadoArticulos.Location = new System.Drawing.Point(366, 156);
+            this.dgvBaListadoArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvBaListadoArticulos.Location = new System.Drawing.Point(114, 250);
             this.dgvBaListadoArticulos.Name = "dgvBaListadoArticulos";
-            this.dgvBaListadoArticulos.Size = new System.Drawing.Size(471, 381);
+            this.dgvBaListadoArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBaListadoArticulos.Size = new System.Drawing.Size(616, 225);
             this.dgvBaListadoArticulos.TabIndex = 36;
             // 
             // frmBuscarArticulo
@@ -241,6 +245,7 @@
             this.MaximizeBox = false;
             this.Name = "frmBuscarArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmBuscarArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBaListadoArticulos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
