@@ -178,6 +178,7 @@
             this.cmbAgrCategoria.Name = "cmbAgrCategoria";
             this.cmbAgrCategoria.Size = new System.Drawing.Size(200, 21);
             this.cmbAgrCategoria.TabIndex = 4;
+            this.cmbAgrCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbAgrCategoria_SelectedIndexChanged);
             // 
             // txtbAgrPrecio
             // 
