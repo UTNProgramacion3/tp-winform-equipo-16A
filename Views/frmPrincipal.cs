@@ -7,10 +7,10 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Business.Managers;
-using TPWinForm_equipo_16A.Views;
 using Business.Dtos;
 using Utils.Interfaces;
 using Utils;
+using System.Diagnostics;
 
 namespace TPWinForm_equipo_16A.Views
 {
@@ -80,7 +80,7 @@ namespace TPWinForm_equipo_16A.Views
             OpenForm<frmListaMarcas>();
         }
 
-        private void OpenForm<T>() where T : Form, new()
+        private void OpenForm<T>(T entity = null) where T : Form, new()
         {
             T form = new T();
             form.ShowDialog();
@@ -157,25 +157,35 @@ namespace TPWinForm_equipo_16A.Views
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            CargarImagenArticulo();
+            if(dgvArticulos.CurrentRow != null)
+            {
+                CargarImagenArticulo();
+            }
         }
 
         private void CargarImagenArticulo()
         {
-            if (dgvArticulos.CurrentRow != null)
+            try
             {
-                int rowIndex = dgvArticulos.CurrentRow.Index;
-                ArticuloDTO art = _articulos[rowIndex];
 
-                if (art != null)
+                if (dgvArticulos.CurrentRow != null)
                 {
-                    _imagenes = _imgManager.ObtenerImagenesPorArticulo(art.Articulo.Id);
-                    string imagenUrl = _imagenes != null && _imagenes.Count > 0
-                        ? _imagenes[0].ImagenUrl
-                        : "https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminada-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg";
+                    int rowIndex = dgvArticulos.CurrentRow.Index;
+                    ArticuloDTO art = _articulos[rowIndex];
 
-                    CargarImagen(pbArticulo, imagenUrl);
+                    if (art != null)
+                    {
+                        _imagenes = _imgManager.ObtenerImagenesPorArticulo(art.Articulo.Id);
+                        string imagenUrl = _imagenes != null && _imagenes.Count > 0
+                            ? _imagenes[0].ImagenUrl
+                            : "https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminada-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg";
+
+                        CargarImagen(pbArticulo, imagenUrl);
+                    }
                 }
+            }catch (System.ArgumentOutOfRangeException)
+            {
+                CargarImagen(pbArticulo, _imagenes[0].ImagenUrl);
             }
         }
 
@@ -269,14 +279,13 @@ namespace TPWinForm_equipo_16A.Views
         {
             frmAgregarCategoria ventana = new frmAgregarCategoria();
 
-            ventana.ShowDialog();
+            OpenForm<frmAgregarCategoria>();
         }
 
         private void tlsEditarCategoria_Click(object sender, EventArgs e)
         {
-            frmListaCategorias ventana = new frmListaCategorias();
 
-            ventana.ShowDialog();
+            OpenForm<frmListaCategorias>();
         }
 
         private void tlsEliminarCategoria_Click(object sender, EventArgs e)
@@ -286,6 +295,22 @@ namespace TPWinForm_equipo_16A.Views
             frmListaCategorias ventana = new frmListaCategorias(delete);
 
             ventana.ShowDialog();
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tlsLeeme_Click(object sender, EventArgs e)
+        {
+            string url = "https://github.com/UTNProgramacion3/tp-winform-equipo-16A";
+
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true
+            });
         }
     }
 }
