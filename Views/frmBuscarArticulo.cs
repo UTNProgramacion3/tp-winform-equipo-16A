@@ -22,10 +22,16 @@ namespace TPWinForm_equipo_16A.Views
         Mapper<ArticuloDTO> _mapper = new Mapper<ArticuloDTO>();
         ArticuloManager _manager = new ArticuloManager();
         List<ArticuloDTO> _list = new List<ArticuloDTO>();
+
+        private readonly MarcaManager _marcaManager;
+        private readonly CategoriaManager _categoriaManager;
+
         public frmBuscarArticulo()
         {
             InitializeComponent();
             _list = _manager.ObtenerTodos();
+            _marcaManager = new MarcaManager();
+            _categoriaManager = new CategoriaManager();
         }
 
         private void frmBuscarArticulo_Load(object sender, EventArgs e)
@@ -37,6 +43,10 @@ namespace TPWinForm_equipo_16A.Views
             dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(_list);
 
             ConfigurarColumnas(dgvBaListadoArticulos);
+
+            //cargarMarca();
+
+            //cargarCategoria();
 
         }
     
@@ -107,6 +117,107 @@ namespace TPWinForm_equipo_16A.Views
             dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
             ConfigurarColumnas(dgvBaListadoArticulos);
         }
+
+        private void txtbNombre_TextChanged(object sender, EventArgs e)
+        {
+            List<ArticuloDTO> listaFiltrada;
+
+            string filter = txtbNombre.Text;
+
+            if (filter != "")
+            {
+                listaFiltrada = _list.FindAll(item => item.Articulo.Nombre.ToString().ToUpper().Contains(filter.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = _list;
+            }
+
+            dgvBaListadoArticulos.AllowUserToAddRows = false;
+            dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
+            ConfigurarColumnas(dgvBaListadoArticulos);
+        }
+
+        private void txtbDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            List<ArticuloDTO> listaFiltrada;
+
+            string filter = txtbDescripcion.Text;
+
+            if (filter != "")
+            {
+                listaFiltrada = _list.FindAll(item => item.Articulo.Descripcion.ToString().ToUpper().Contains(filter.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = _list;
+            }
+
+            dgvBaListadoArticulos.AllowUserToAddRows = false;
+            dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
+            ConfigurarColumnas(dgvBaListadoArticulos);
+        }
+
+
+        private void txtbMarca_TextChanged(object sender, EventArgs e)
+        {
+            List<ArticuloDTO> listaFiltrada;
+
+            string filter = txtbMarca.Text;
+
+            if (filter != "")
+            {
+                listaFiltrada = _list.FindAll(item => item.Marca.Descripcion.ToString().ToUpper().Contains(filter.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = _list;
+            }
+
+            dgvBaListadoArticulos.AllowUserToAddRows = false;
+            dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
+            ConfigurarColumnas(dgvBaListadoArticulos);
+        }
+
+        private void txtbCategoria_TextChanged(object sender, EventArgs e)
+        {
+            List<ArticuloDTO> listaFiltrada;
+
+            string filter = txtbCategoria.Text;
+
+            if (filter != "")
+            {
+                listaFiltrada = _list.FindAll(item => item.Categoria.Descripcion.ToString().ToUpper().Contains(filter.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = _list;
+            }
+
+            dgvBaListadoArticulos.AllowUserToAddRows = false;
+            dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
+            ConfigurarColumnas(dgvBaListadoArticulos);
+        }
+
+
+        /*private void cargarMarca()
+        {
+            List<Marca> marcas = _marcaManager.ObtenerTodos();
+            cmbMarca.DataSource = marcas;
+            cmbMarca.DisplayMember = "Descripcion";
+            cmbMarca.ValueMember = "Id";
+        }
+
+        private void cargarCategoria()
+        {
+            List<Categoria> categorias = _categoriaManager.ObtenerTodos();
+            cmbCategoria.DataSource = categorias;
+            cmbCategoria.DisplayMember = "Descripcion";
+            cmbCategoria.ValueMember = "Id";
+        }*/
+
     }
+
+
 
 }
