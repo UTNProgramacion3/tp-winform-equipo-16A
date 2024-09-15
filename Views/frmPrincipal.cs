@@ -271,5 +271,12 @@ namespace TPWinForm_equipo_16A.Views
 
             ventana.ShowDialog();
         }
+
+        private void tlsEditarCategoria_Click(object sender, EventArgs e)
+        {
+            frmListaCategorias ventana = new frmListaCategorias();
+
+            ventana.ShowDialog();
+        }
     }
 }
