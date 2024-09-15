@@ -265,6 +265,16 @@ namespace TPWinForm_equipo_16A.Views
                 return false;
             }
 
+            if(!decimal.TryParse(txtbEaPrecio.Text, out decimal precio))
+            {
+                MessageBox.Show("El campo Precio solo acepta numeros.");
+                return false;
+            }else if(precio <= 0)
+            {
+                MessageBox.Show("El campo Precio solo acepta numeros mayores a cero.");
+                return false;
+            }
+
             return true;
         }
     }
