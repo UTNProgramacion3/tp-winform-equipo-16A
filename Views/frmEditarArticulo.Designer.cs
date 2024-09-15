@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditarArticulo));
             this.lblEditarArticulo = new System.Windows.Forms.Label();
             this.btnGuardarCambiosEdt = new System.Windows.Forms.Button();
             this.btnSalirSinGuardarEdt = new System.Windows.Forms.Button();
@@ -295,6 +296,8 @@
             this.Controls.Add(this.lblEaDescripcion);
             this.Controls.Add(this.lblEaCodigo);
             this.Controls.Add(this.lblEditarArticulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1000, 800);
             this.MinimumSize = new System.Drawing.Size(710, 605);
             this.Name = "frmEditarArticulo";
