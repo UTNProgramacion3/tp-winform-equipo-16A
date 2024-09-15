@@ -135,6 +135,7 @@
             this.txtbAgrCodigo.Name = "txtbAgrCodigo";
             this.txtbAgrCodigo.Size = new System.Drawing.Size(200, 20);
             this.txtbAgrCodigo.TabIndex = 0;
+            this.txtbAgrCodigo.TextChanged += new System.EventHandler(this.txtbAgrCodigo_TextChanged);
             // 
             // txtbAgrNombre
             // 
@@ -210,6 +211,7 @@
             this.btnAgrCargarImagen.TabIndex = 6;
             this.btnAgrCargarImagen.Text = "Cargar";
             this.btnAgrCargarImagen.UseVisualStyleBackColor = true;
+            this.btnAgrCargarImagen.Click += new System.EventHandler(this.btnAgrCargarImagen_Click);
             // 
             // pcbAgrArticulo
             // 
@@ -243,8 +245,9 @@
             this.btnAgrCargarArticulo.Name = "btnAgrCargarArticulo";
             this.btnAgrCargarArticulo.Size = new System.Drawing.Size(120, 23);
             this.btnAgrCargarArticulo.TabIndex = 7;
-            this.btnAgrCargarArticulo.Text = "Cargar Artiulo";
+            this.btnAgrCargarArticulo.Text = "Cargar Articulo";
             this.btnAgrCargarArticulo.UseVisualStyleBackColor = true;
+            this.btnAgrCargarArticulo.Click += new System.EventHandler(this.btnAgrCargarArticulo_Click);
             // 
             // frmAgregarArticulo
             // 
@@ -301,5 +304,10 @@
         private System.Windows.Forms.PictureBox pcbAgrArticulo;
         private System.Windows.Forms.Button btnAgrSalirSinGuardar;
         private System.Windows.Forms.Button btnAgrCargarArticulo;
+        private System.Windows.Forms.TextBox txtAgrCodigo;
+        private System.Windows.Forms.TextBox txtAgrNombre;
+        private System.Windows.Forms.TextBox txtAgrDescripcion;
+        private System.Windows.Forms.TextBox txtAgrPrecio;
+
     }
 }
