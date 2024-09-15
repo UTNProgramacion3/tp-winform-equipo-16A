@@ -164,10 +164,8 @@ namespace Business.Managers
 
         }
 
-        public List<ArticuloDTO> Filtrar(string campo, string condicion, string filtro, bool eliminados)
+        private string FilterQueryBuilder(string campo, string condicion, string filtro, bool eliminados)
         {
-            List<ArticuloDTO> listaFiltrada;
-
             string query = @"SELECT 
                     A.Id AS Articulo_Id,
                     A.Codigo AS Articulo_Codigo,
@@ -183,7 +181,7 @@ namespace Business.Managers
                 LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id 
                 Where ";
 
-            if(eliminados == false)
+            if (eliminados == false)
             {
                 query += "A.Codigo != '0000' And ";
             }
@@ -235,6 +233,15 @@ namespace Business.Managers
                 }
 
             }
+
+            return query;
+        }
+
+        public List<ArticuloDTO> Filtrar(string campo, string condicion, string filtro, bool eliminados)
+        {
+            List<ArticuloDTO> listaFiltrada;
+
+            string query = FilterQueryBuilder(campo, condicion, filtro, eliminados);
 
             try
             {
