@@ -86,8 +86,15 @@ namespace TPWinForm_equipo_16A.Views
             form.ShowDialog();
         }
 
-        private void CargarArticulos(DataGridView dataGridView)
+        private void CargarArticulos(DataGridView dataGridView, bool isReload = false)
         {
+            if(isReload)
+            {
+                dataGridView.DataSource = null;
+                dgvArticulos.Columns.Remove("Editar");
+                dgvArticulos.Columns.Remove("Eliminar");
+
+            }
             _articulos = _artManager.ObtenerTodos();
             dataGridView.DataSource = _mapper.MapFromDtoToTable(_articulos); // Cambiado a DataTable
 
@@ -108,14 +115,14 @@ namespace TPWinForm_equipo_16A.Views
                 }
             }
 
-            if (dataGridView.Columns.Contains("Marca_Nombre"))
+            if (dataGridView.Columns.Contains("Marca_Descripcion"))
             {
-                dataGridView.Columns["Marca_Nombre"].HeaderText = "Marca";
+                dataGridView.Columns["Marca_Descripcion"].HeaderText = "Marca";
             }
 
-            if (dataGridView.Columns.Contains("Categoria_Nombre"))
+            if (dataGridView.Columns.Contains("Categoria_Descripcion"))
             {
-                dataGridView.Columns["Categoria_Nombre"].HeaderText = "Categoría";
+                dataGridView.Columns["Categoria_Descripcion"].HeaderText = "Categoría";
             }
 
             AgregarColumnaImagen(dataGridView, "Editar", rutaIconoEditar);
@@ -158,7 +165,7 @@ namespace TPWinForm_equipo_16A.Views
             if (dgvArticulos.CurrentRow != null)
             {
                 int rowIndex = dgvArticulos.CurrentRow.Index;
-                ArticuloDTO art = _articulos[rowIndex]; 
+                ArticuloDTO art = _articulos[rowIndex];
 
                 if (art != null)
                 {
@@ -205,8 +212,17 @@ namespace TPWinForm_equipo_16A.Views
                 {
                     int rowIndex = dgvArticulos.CurrentRow.Index;
                     ArticuloDTO art = _articulos[rowIndex];
-                    frmEditarArticulo view = new frmEditarArticulo(art.Articulo);
-                    view.ShowDialog();
+                    using (frmEditarArticulo view = new frmEditarArticulo(art))
+                    {
+                        DialogResult result = view.ShowDialog();
+
+                        if(result == DialogResult.OK)
+                        {
+                           CargarArticulos(dgvArticulos, true);
+
+                        }
+                    }
+                        
                 }
                 else if (dataGridView.Columns[e.ColumnIndex].Name == "Eliminar")
                 {
@@ -216,7 +232,7 @@ namespace TPWinForm_equipo_16A.Views
                     if (res == DialogResult.Yes)
                     {
                         _artManager.Eliminar(id);
-                        CargarArticulos(dgvArticulos);
+                        CargarArticulos(dgvArticulos, true);
                     }
                 }
             }
@@ -237,16 +253,17 @@ namespace TPWinForm_equipo_16A.Views
                 indexActual++;
                 CargarImagen(pbArticulo, _imagenes[indexActual].ImagenUrl);
             }
-
-        //private void tlsEliminarMarca_Click(object sender, EventArgs e)
-        //{
-        //    Marca _marca = new Marca();
-
-        //    frmListaMarcas listado = new frmListaMarcas(_marca);
-
-        //    listado.ShowDialog();
-
-        //}
         }
+
+        private void tlsEliminarMarca_Click(object sender, EventArgs e)
+        {
+            Marca _marca = new Marca();
+
+            frmListaMarcas listado = new frmListaMarcas(_marca);
+
+            listado.ShowDialog();
+
+        }
+
     }
 }

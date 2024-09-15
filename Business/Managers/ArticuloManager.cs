@@ -149,7 +149,8 @@ namespace Business.Managers
                     new SqlParameter("@Descripcion", entity.Articulo.Descripcion),
                     new SqlParameter("@IdMarca", entity.Articulo.IdMarca),
                     new SqlParameter("@IdCategoria", entity.Articulo.IdCategoria),
-                    new SqlParameter("@Precio", entity.Articulo.Precio)
+                    new SqlParameter("@Precio", entity.Articulo.Precio),
+                    new SqlParameter("@Id", entity.Articulo.Id)
                 };
 
             var res = _dbManager.ExecuteNonQuery(query, parametros);
