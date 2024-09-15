@@ -48,6 +48,18 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\frmAgregarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmAgregarCategoria.Designer.cs">
+      <DependentUpon>frmAgregarCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmEditarCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmEditarCategoria.Designer.cs">
+      <DependentUpon>frmEditarCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmEditarImagen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,11 +72,17 @@
     <Compile Include="Views\frmEditarMarca.Designer.cs">
       <DependentUpon>frmEditarMarca.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ListaMarcas.cs">
+    <Compile Include="Views\frmListaCategorias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ListaMarcas.Designer.cs">
-      <DependentUpon>ListaMarcas.cs</DependentUpon>
+    <Compile Include="Views\frmListaCategorias.Designer.cs">
+      <DependentUpon>frmListaCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmListaMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmListaMarcas.Designer.cs">
+      <DependentUpon>frmListaMarcas.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmAgregarMarca.cs">
       <SubType>Form</SubType>
@@ -106,14 +124,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\frmAgregarCategoria.resx">
+      <DependentUpon>frmAgregarCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmEditarCategoria.resx">
+      <DependentUpon>frmEditarCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmEditarImagen.resx">
       <DependentUpon>frmEditarImagen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmEditarMarca.resx">
       <DependentUpon>frmEditarMarca.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ListaMarcas.resx">
-      <DependentUpon>ListaMarcas.cs</DependentUpon>
+    <EmbeddedResource Include="Views\frmListaCategorias.resx">
+      <DependentUpon>frmListaCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmListaMarcas.resx">
+      <DependentUpon>frmListaMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmAgregarArticulo.resx">
       <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
