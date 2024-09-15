@@ -62,6 +62,7 @@
             this.cboCampo = new System.Windows.Forms.ComboBox();
             this.cboCondicion = new System.Windows.Forms.ComboBox();
             this.cbEliminados = new System.Windows.Forms.CheckBox();
+            this.btnFiltrar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.ssUTN.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -100,27 +101,27 @@
             this.tlsNuevoMarca,
             this.tlsNuevoCategoria});
             this.tlsNuevo.Name = "tlsNuevo";
-            this.tlsNuevo.Size = new System.Drawing.Size(126, 22);
+            this.tlsNuevo.Size = new System.Drawing.Size(180, 22);
             this.tlsNuevo.Text = "Nuevo...";
             // 
             // tlsNuevoArticulo
             // 
             this.tlsNuevoArticulo.Name = "tlsNuevoArticulo";
-            this.tlsNuevoArticulo.Size = new System.Drawing.Size(125, 22);
+            this.tlsNuevoArticulo.Size = new System.Drawing.Size(180, 22);
             this.tlsNuevoArticulo.Text = "Articulo";
             this.tlsNuevoArticulo.Click += new System.EventHandler(this.tlsNuevoArticulo_Click);
             // 
             // tlsNuevoMarca
             // 
             this.tlsNuevoMarca.Name = "tlsNuevoMarca";
-            this.tlsNuevoMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsNuevoMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsNuevoMarca.Text = "Marca";
             this.tlsNuevoMarca.Click += new System.EventHandler(this.tlsNuevoMarca_Click);
             // 
             // tlsNuevoCategoria
             // 
             this.tlsNuevoCategoria.Name = "tlsNuevoCategoria";
-            this.tlsNuevoCategoria.Size = new System.Drawing.Size(125, 22);
+            this.tlsNuevoCategoria.Size = new System.Drawing.Size(180, 22);
             this.tlsNuevoCategoria.Text = "Categoria";
             this.tlsNuevoCategoria.Click += new System.EventHandler(this.tlsNuevoCategoria_Click);
             // 
@@ -136,14 +137,14 @@
             // tlsEditarMarca
             // 
             this.tlsEditarMarca.Name = "tlsEditarMarca";
-            this.tlsEditarMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsEditarMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsEditarMarca.Text = "Marca";
             this.tlsEditarMarca.Click += new System.EventHandler(this.tlsEditarMarca_Click);
             // 
             // tlsEditarCategoria
             // 
             this.tlsEditarCategoria.Name = "tlsEditarCategoria";
-            this.tlsEditarCategoria.Size = new System.Drawing.Size(125, 22);
+            this.tlsEditarCategoria.Size = new System.Drawing.Size(180, 22);
             this.tlsEditarCategoria.Text = "Categoria";
             this.tlsEditarCategoria.Click += new System.EventHandler(this.tlsEditarCategoria_Click);
             // 
@@ -159,14 +160,14 @@
             // tlsEliminarMarca
             // 
             this.tlsEliminarMarca.Name = "tlsEliminarMarca";
-            this.tlsEliminarMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarMarca.Text = "Marca";
             this.tlsEliminarMarca.Click += new System.EventHandler(this.tlsEliminarMarca_Click);
             // 
             // tlsEliminarCategoria
             // 
             this.tlsEliminarCategoria.Name = "tlsEliminarCategoria";
-            this.tlsEliminarCategoria.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarCategoria.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarCategoria.Text = "Categoria";
             this.tlsEliminarCategoria.Click += new System.EventHandler(this.tlsEliminarCategoria_Click);
             // 
@@ -175,13 +176,13 @@
             this.tlsBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsBuscarArticulo});
             this.tlsBuscar.Name = "tlsBuscar";
-            this.tlsBuscar.Size = new System.Drawing.Size(126, 22);
+            this.tlsBuscar.Size = new System.Drawing.Size(180, 22);
             this.tlsBuscar.Text = "Buscar...";
             // 
             // tlsBuscarArticulo
             // 
             this.tlsBuscarArticulo.Name = "tlsBuscarArticulo";
-            this.tlsBuscarArticulo.Size = new System.Drawing.Size(116, 22);
+            this.tlsBuscarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tlsBuscarArticulo.Text = "Articulo";
             this.tlsBuscarArticulo.Click += new System.EventHandler(this.tlsBuscarArticulo_Click);
             // 
@@ -197,19 +198,19 @@
             // tlsMostrarListMarcas
             // 
             this.tlsMostrarListMarcas.Name = "tlsMostrarListMarcas";
-            this.tlsMostrarListMarcas.Size = new System.Drawing.Size(173, 22);
+            this.tlsMostrarListMarcas.Size = new System.Drawing.Size(180, 22);
             this.tlsMostrarListMarcas.Text = "Lista de Marcas";
             // 
             // tlsMostrarListCategorias
             // 
             this.tlsMostrarListCategorias.Name = "tlsMostrarListCategorias";
-            this.tlsMostrarListCategorias.Size = new System.Drawing.Size(173, 22);
+            this.tlsMostrarListCategorias.Size = new System.Drawing.Size(180, 22);
             this.tlsMostrarListCategorias.Text = "Lista de Categorias";
             // 
             // tlsSalir
             // 
             this.tlsSalir.Name = "tlsSalir";
-            this.tlsSalir.Size = new System.Drawing.Size(126, 22);
+            this.tlsSalir.Size = new System.Drawing.Size(180, 22);
             this.tlsSalir.Text = "Salir...";
             // 
             // tlsLeeme
@@ -314,18 +315,21 @@
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(190, 20);
             this.txtFiltro.TabIndex = 7;
-            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
+
             // 
             // cboCampo
             // 
+            this.cboCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCampo.FormattingEnabled = true;
             this.cboCampo.Location = new System.Drawing.Point(196, 356);
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(82, 21);
             this.cboCampo.TabIndex = 8;
+            this.cboCampo.SelectedIndexChanged += new System.EventHandler(this.cboCampo_SelectedIndexChanged);
             // 
             // cboCondicion
             // 
+            this.cboCondicion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCondicion.FormattingEnabled = true;
             this.cboCondicion.Location = new System.Drawing.Point(284, 355);
             this.cboCondicion.Name = "cboCondicion";
@@ -342,12 +346,23 @@
             this.cbEliminados.Text = "Eliminados";
             this.cbEliminados.UseVisualStyleBackColor = true;
             // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Location = new System.Drawing.Point(455, 353);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrar.TabIndex = 12;
+            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrar.UseVisualStyleBackColor = false;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(1008, 401);
+            this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.cbEliminados);
             this.Controls.Add(this.cboCondicion);
             this.Controls.Add(this.cboCampo);
@@ -413,5 +428,6 @@
         private System.Windows.Forms.ComboBox cboCampo;
         private System.Windows.Forms.ComboBox cboCondicion;
         private System.Windows.Forms.CheckBox cbEliminados;
+        private System.Windows.Forms.Button btnFiltrar;
     }
 }

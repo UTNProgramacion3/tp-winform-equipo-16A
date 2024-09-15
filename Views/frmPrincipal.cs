@@ -43,6 +43,16 @@ namespace TPWinForm_equipo_16A.Views
         {
             CargarArticulos(dgvArticulos);
             CargarImagenArticulo();
+            CargarFiltroAvanzado();
+        }
+
+        private void CargarFiltroAvanzado()
+        {
+            cboCampo.Items.Add("Codigo");
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Marca");
+            cboCampo.Items.Add("Categoria");
+            cboCampo.Items.Add("Precio");
         }
 
         private void tlsNuevoArticulo_Click(object sender, EventArgs e)
@@ -86,22 +96,30 @@ namespace TPWinForm_equipo_16A.Views
             form.ShowDialog();
         }
 
-        private void CargarArticulos(DataGridView dataGridView, bool isReload = false)
+        private void CargarArticulos(DataGridView dataGridView, bool isFilter = false)
         {
-            if(isReload)
-            {
-                dataGridView.DataSource = null;
-                dgvArticulos.Columns.Remove("Editar");
-                dgvArticulos.Columns.Remove("Eliminar");
+            dataGridView.DataSource = null;
+            RemoverColumnasEditaryEliminar();
 
+            if (!isFilter)
+            {
+                _articulos = _artManager.ObtenerTodos();
             }
-            _articulos = _artManager.ObtenerTodos();
             dataGridView.DataSource = _mapper.MapFromDtoToTable(_articulos); // Cambiado a DataTable
 
             string rutaIconoEditar = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Icons\editar.png");
             string rutaIconoEliminar = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Icons\eliminar.png");
 
             ConfigurarColumnas(dataGridView, rutaIconoEditar, rutaIconoEliminar);
+        }
+
+        private void RemoverColumnasEditaryEliminar()
+        {
+            if (dgvArticulos.Columns["Editar"] != null && dgvArticulos.Columns["Eliminar"] != null)
+            {
+                dgvArticulos.Columns.Remove("Editar");
+                dgvArticulos.Columns.Remove("Eliminar");
+            }
         }
 
         private void ConfigurarColumnas(DataGridView dataGridView, string rutaIconoEditar, string rutaIconoEliminar)
@@ -157,7 +175,7 @@ namespace TPWinForm_equipo_16A.Views
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            if(dgvArticulos.CurrentRow != null)
+            if (dgvArticulos.CurrentRow != null)
             {
                 CargarImagenArticulo();
             }
@@ -183,7 +201,8 @@ namespace TPWinForm_equipo_16A.Views
                         CargarImagen(pbArticulo, imagenUrl);
                     }
                 }
-            }catch (System.ArgumentOutOfRangeException)
+            }
+            catch (System.ArgumentOutOfRangeException)
             {
                 CargarImagen(pbArticulo, _imagenes[0].ImagenUrl);
             }
@@ -226,13 +245,13 @@ namespace TPWinForm_equipo_16A.Views
                     {
                         DialogResult result = view.ShowDialog();
 
-                        if(result == DialogResult.OK)
+                        if (result == DialogResult.OK)
                         {
-                           CargarArticulos(dgvArticulos, true);
+                            CargarArticulos(dgvArticulos);
 
                         }
                     }
-                        
+
                 }
                 else if (dataGridView.Columns[e.ColumnIndex].Name == "Eliminar")
                 {
@@ -242,7 +261,7 @@ namespace TPWinForm_equipo_16A.Views
                     if (res == DialogResult.Yes)
                     {
                         _artManager.Eliminar(id);
-                        CargarArticulos(dgvArticulos, true);
+                        CargarArticulos(dgvArticulos);
                     }
                 }
             }
@@ -291,15 +310,10 @@ namespace TPWinForm_equipo_16A.Views
         private void tlsEliminarCategoria_Click(object sender, EventArgs e)
         {
             bool delete = true;
-            
+
             frmListaCategorias ventana = new frmListaCategorias(delete);
 
             ventana.ShowDialog();
-        }
-
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void tlsLeeme_Click(object sender, EventArgs e)
@@ -311,6 +325,78 @@ namespace TPWinForm_equipo_16A.Views
                 FileName = url,
                 UseShellExecute = true
             });
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opc = cboCampo.SelectedItem.ToString();
+
+            if (opc == "Precio")
+            {
+                cboCondicion.Items.Clear();
+                cboCondicion.Items.Add("Mayor a");
+                cboCondicion.Items.Add("Menor a");
+                cboCondicion.Items.Add("Igual a");
+
+            }
+            else
+            {
+                cboCondicion.Items.Clear();
+                cboCondicion.Items.Add("Empieza con");
+                cboCondicion.Items.Add("Termina por");
+                cboCondicion.Items.Add("Igual a");
+
+            }
+
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cboCampo.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar un campo para filtrar.");
+                    return;
+                }
+
+                if (cboCondicion.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar una condición.");
+                    return;
+                }
+
+                string campo = cboCampo.SelectedItem.ToString();
+                string condicion = cboCondicion.SelectedItem.ToString();
+                string filtro = txtFiltro.Text;
+                bool eliminados = cbEliminados.Checked;
+
+                if (campo == "Precio" && !EsNumerico(filtro))
+                {
+                    if(string.IsNullOrEmpty(filtro))
+                    {
+                        CargarArticulos(dgvArticulos);
+                        return;
+                    }
+                    MessageBox.Show("El filtro para el campo 'Precio' debe ser un número.");
+                    CargarArticulos(dgvArticulos);
+                    return;
+                }
+
+                _articulos = _artManager.Filtrar(campo, condicion, filtro, eliminados);
+                CargarArticulos(dgvArticulos, true);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+
+        private bool EsNumerico(string input)
+        {
+            return decimal.TryParse(input, out _); 
         }
     }
 }
