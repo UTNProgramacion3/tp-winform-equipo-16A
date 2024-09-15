@@ -265,5 +265,27 @@ namespace TPWinForm_equipo_16A.Views
 
         }
 
+        private void tlsNuevoCategoria_Click(object sender, EventArgs e)
+        {
+            frmAgregarCategoria ventana = new frmAgregarCategoria();
+
+            ventana.ShowDialog();
+        }
+
+        private void tlsEditarCategoria_Click(object sender, EventArgs e)
+        {
+            frmListaCategorias ventana = new frmListaCategorias();
+
+            ventana.ShowDialog();
+        }
+
+        private void tlsEliminarCategoria_Click(object sender, EventArgs e)
+        {
+            bool delete = true;
+            
+            frmListaCategorias ventana = new frmListaCategorias(delete);
+
+            ventana.ShowDialog();
+        }
     }
 }

@@ -58,9 +58,9 @@
             this.tlsbCargarArticulo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
-            this.pbArticulo = new System.Windows.Forms.PictureBox();
             this.btnBackImg = new System.Windows.Forms.Button();
             this.btnNextImg = new System.Windows.Forms.Button();
+            this.pbArticulo = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.ssUTN.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -99,7 +99,7 @@
             this.tlsNuevoMarca,
             this.tlsNuevoCategoria});
             this.tlsNuevo.Name = "tlsNuevo";
-            this.tlsNuevo.Size = new System.Drawing.Size(126, 22);
+            this.tlsNuevo.Size = new System.Drawing.Size(180, 22);
             this.tlsNuevo.Text = "Nuevo...";
             // 
             // tlsNuevoArticulo
@@ -121,6 +121,7 @@
             this.tlsNuevoCategoria.Name = "tlsNuevoCategoria";
             this.tlsNuevoCategoria.Size = new System.Drawing.Size(125, 22);
             this.tlsNuevoCategoria.Text = "Categoria";
+            this.tlsNuevoCategoria.Click += new System.EventHandler(this.tlsNuevoCategoria_Click);
             // 
             // tlsEditar
             // 
@@ -129,7 +130,7 @@
             this.tlsEditarMarca,
             this.tlsEditarCategoria});
             this.tlsEditar.Name = "tlsEditar";
-            this.tlsEditar.Size = new System.Drawing.Size(126, 22);
+            this.tlsEditar.Size = new System.Drawing.Size(180, 22);
             this.tlsEditar.Text = "Editar...";
             // 
             // tlsEditarArticulo
@@ -150,6 +151,7 @@
             this.tlsEditarCategoria.Name = "tlsEditarCategoria";
             this.tlsEditarCategoria.Size = new System.Drawing.Size(125, 22);
             this.tlsEditarCategoria.Text = "Categoria";
+            this.tlsEditarCategoria.Click += new System.EventHandler(this.tlsEditarCategoria_Click);
             // 
             // tlsEliminar
             // 
@@ -158,7 +160,7 @@
             this.tlsEliminarMarca,
             this.tlsEliminarCategoria});
             this.tlsEliminar.Name = "tlsEliminar";
-            this.tlsEliminar.Size = new System.Drawing.Size(126, 22);
+            this.tlsEliminar.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminar.Text = "Eliminar...";
             // 
             // tlsEliminarArticulo
@@ -172,20 +174,21 @@
             this.tlsEliminarMarca.Name = "tlsEliminarMarca";
             this.tlsEliminarMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarMarca.Text = "Marca";
-            //this.tlsEliminarMarca.Click += new System.EventHandler(this.tlsEliminarMarca_Click);
+            this.tlsEliminarMarca.Click += new System.EventHandler(this.tlsEliminarMarca_Click);
             // 
             // tlsEliminarCategoria
             // 
             this.tlsEliminarCategoria.Name = "tlsEliminarCategoria";
             this.tlsEliminarCategoria.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarCategoria.Text = "Categoria";
+            this.tlsEliminarCategoria.Click += new System.EventHandler(this.tlsEliminarCategoria_Click);
             // 
             // tlsBuscar
             // 
             this.tlsBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsBuscarArticulo});
             this.tlsBuscar.Name = "tlsBuscar";
-            this.tlsBuscar.Size = new System.Drawing.Size(126, 22);
+            this.tlsBuscar.Size = new System.Drawing.Size(180, 22);
             this.tlsBuscar.Text = "Buscar...";
             // 
             // tlsBuscarArticulo
@@ -202,7 +205,7 @@
             this.tlsMostrarListMarcas,
             this.tlsMostrarListCategorias});
             this.tlsMostrar.Name = "tlsMostrar";
-            this.tlsMostrar.Size = new System.Drawing.Size(126, 22);
+            this.tlsMostrar.Size = new System.Drawing.Size(180, 22);
             this.tlsMostrar.Text = "Mostrar";
             // 
             // tlsMostrarListArticulos
@@ -226,7 +229,7 @@
             // tlsSalir
             // 
             this.tlsSalir.Name = "tlsSalir";
-            this.tlsSalir.Size = new System.Drawing.Size(126, 22);
+            this.tlsSalir.Size = new System.Drawing.Size(180, 22);
             this.tlsSalir.Text = "Salir...";
             // 
             // tlsLeeme
@@ -293,17 +296,7 @@
             this.dgvArticulos.Size = new System.Drawing.Size(835, 320);
             this.dgvArticulos.TabIndex = 3;
             this.dgvArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellContentClick);
-            //this.dgvArticulos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvArticulos_CellFormatting);
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
-            // 
-            // pbArticulo
-            // 
-            this.pbArticulo.Location = new System.Drawing.Point(841, 52);
-            this.pbArticulo.Name = "pbArticulo";
-            this.pbArticulo.Size = new System.Drawing.Size(167, 149);
-            this.pbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbArticulo.TabIndex = 4;
-            this.pbArticulo.TabStop = false;
             // 
             // btnBackImg
             // 
@@ -324,6 +317,15 @@
             this.btnNextImg.Text = ">";
             this.btnNextImg.UseVisualStyleBackColor = true;
             this.btnNextImg.Click += new System.EventHandler(this.btnNextImg_Click);
+            // 
+            // pbArticulo
+            // 
+            this.pbArticulo.Location = new System.Drawing.Point(841, 52);
+            this.pbArticulo.Name = "pbArticulo";
+            this.pbArticulo.Size = new System.Drawing.Size(167, 149);
+            this.pbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbArticulo.TabIndex = 4;
+            this.pbArticulo.TabStop = false;
             // 
             // frmPrincipal
             // 

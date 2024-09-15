@@ -1,6 +1,6 @@
 ﻿namespace TPWinForm_equipo_16A.Views
 {
-    partial class frmListaMarcas
+    partial class frmListaCategorias
     {
         /// <summary>
         /// Required designer variable.
@@ -30,23 +30,23 @@
         {
             this.btnAtras = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.dgvMarcas = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
+            this.dgvCategorias = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAtras
             // 
-            this.btnAtras.Location = new System.Drawing.Point(38, 289);
+            this.btnAtras.Location = new System.Drawing.Point(40, 289);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(75, 23);
-            this.btnAtras.TabIndex = 2;
-            this.btnAtras.Text = "Atras";
+            this.btnAtras.TabIndex = 0;
+            this.btnAtras.Text = "Atrás";
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(360, 289);
+            this.btnEditar.Location = new System.Drawing.Point(365, 289);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 1;
@@ -54,32 +54,31 @@
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // dgvMarcas
+            // dgvCategorias
             // 
-            this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMarcas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvMarcas.Location = new System.Drawing.Point(38, 12);
-            this.dgvMarcas.MultiSelect = false;
-            this.dgvMarcas.Name = "dgvMarcas";
-            this.dgvMarcas.ReadOnly = true;
-            this.dgvMarcas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMarcas.Size = new System.Drawing.Size(397, 249);
-            this.dgvMarcas.TabIndex = 0;
+            this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategorias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvCategorias.Location = new System.Drawing.Point(40, 15);
+            this.dgvCategorias.Name = "dgvCategorias";
+            this.dgvCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCategorias.Size = new System.Drawing.Size(400, 250);
+            this.dgvCategorias.TabIndex = 2;
             // 
-            // frmListaMarcas
+            // frmListaCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(485, 338);
-            this.Controls.Add(this.dgvMarcas);
+            this.ClientSize = new System.Drawing.Size(484, 341);
+            this.Controls.Add(this.dgvCategorias);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAtras);
-            this.Name = "frmListaMarcas";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ListaMarcas";
-            this.Load += new System.EventHandler(this.frmListaMarcas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "frmListaCategorias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Lista Categorias";
+            this.Load += new System.EventHandler(this.frmListaCategorias_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -88,6 +87,6 @@
 
         private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.DataGridView dgvMarcas;
+        private System.Windows.Forms.DataGridView dgvCategorias;
     }
 }
