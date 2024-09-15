@@ -159,7 +159,7 @@ namespace Business.Managers
 
             SqlParameter[] parametros = new SqlParameter[]
                 {
-                    new SqlParameter("@IdArticulo", entity.Id),
+                    new SqlParameter("@IdArticulo", entity.IdArticulo),
                     new SqlParameter("@ImagenUrl", entity.ImagenUrl)
                 };
 

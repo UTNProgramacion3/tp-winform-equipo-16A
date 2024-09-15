@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lblEditarArticulo = new System.Windows.Forms.Label();
-            this.pcbEaArticulo = new System.Windows.Forms.PictureBox();
             this.btnGuardarCambiosEdt = new System.Windows.Forms.Button();
             this.btnSalirSinGuardarEdt = new System.Windows.Forms.Button();
             this.btnEaCargarImagen = new System.Windows.Forms.Button();
@@ -46,6 +45,10 @@
             this.lblEaMarca = new System.Windows.Forms.Label();
             this.lblEaDescripcion = new System.Windows.Forms.Label();
             this.lblEaCodigo = new System.Windows.Forms.Label();
+            this.dgvImagenes = new System.Windows.Forms.DataGridView();
+            this.txtbNuevaUrl = new System.Windows.Forms.TextBox();
+            this.pcbEaArticulo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvImagenes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEaArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,17 +65,6 @@
             this.lblEditarArticulo.Text = "EDITAR ARTICULO";
             this.lblEditarArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pcbEaArticulo
-            // 
-            this.pcbEaArticulo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pcbEaArticulo.BackColor = System.Drawing.SystemColors.Window;
-            this.pcbEaArticulo.Location = new System.Drawing.Point(84, 386);
-            this.pcbEaArticulo.Name = "pcbEaArticulo";
-            this.pcbEaArticulo.Size = new System.Drawing.Size(301, 184);
-            this.pcbEaArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbEaArticulo.TabIndex = 23;
-            this.pcbEaArticulo.TabStop = false;
-            // 
             // btnGuardarCambiosEdt
             // 
             this.btnGuardarCambiosEdt.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -84,6 +76,7 @@
             this.btnGuardarCambiosEdt.TabIndex = 24;
             this.btnGuardarCambiosEdt.Text = "Guardar Cambios";
             this.btnGuardarCambiosEdt.UseVisualStyleBackColor = true;
+            this.btnGuardarCambiosEdt.Click += new System.EventHandler(this.btnGuardarCambiosEdt_Click);
             // 
             // btnSalirSinGuardarEdt
             // 
@@ -96,18 +89,20 @@
             this.btnSalirSinGuardarEdt.TabIndex = 25;
             this.btnSalirSinGuardarEdt.Text = "Salir sin guardar";
             this.btnSalirSinGuardarEdt.UseVisualStyleBackColor = true;
+            this.btnSalirSinGuardarEdt.Click += new System.EventHandler(this.btnSalirSinGuardarEdt_Click);
             // 
             // btnEaCargarImagen
             // 
             this.btnEaCargarImagen.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEaCargarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEaCargarImagen.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnEaCargarImagen.Location = new System.Drawing.Point(265, 341);
+            this.btnEaCargarImagen.Location = new System.Drawing.Point(604, 296);
             this.btnEaCargarImagen.Name = "btnEaCargarImagen";
             this.btnEaCargarImagen.Size = new System.Drawing.Size(120, 23);
             this.btnEaCargarImagen.TabIndex = 22;
             this.btnEaCargarImagen.Text = "Cargar";
             this.btnEaCargarImagen.UseVisualStyleBackColor = true;
+            this.btnEaCargarImagen.Click += new System.EventHandler(this.btnEaCargarImagen_Click);
             // 
             // cmbEaCategoria
             // 
@@ -183,11 +178,11 @@
             this.lblEditarImagen.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEditarImagen.AutoSize = true;
             this.lblEditarImagen.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditarImagen.Location = new System.Drawing.Point(80, 341);
+            this.lblEditarImagen.Location = new System.Drawing.Point(80, 296);
             this.lblEditarImagen.Name = "lblEditarImagen";
-            this.lblEditarImagen.Size = new System.Drawing.Size(109, 18);
+            this.lblEditarImagen.Size = new System.Drawing.Size(164, 18);
             this.lblEditarImagen.TabIndex = 14;
-            this.lblEditarImagen.Text = "Editar Imagen:";
+            this.lblEditarImagen.Text = "Cargar Nueva Imagen:";
             // 
             // lblEaPrecio
             // 
@@ -244,12 +239,44 @@
             this.lblEaCodigo.TabIndex = 16;
             this.lblEaCodigo.Text = "Codigo:";
             // 
+            // dgvImagenes
+            // 
+            this.dgvImagenes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvImagenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvImagenes.Location = new System.Drawing.Point(390, 344);
+            this.dgvImagenes.Name = "dgvImagenes";
+            this.dgvImagenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvImagenes.Size = new System.Drawing.Size(401, 184);
+            this.dgvImagenes.TabIndex = 26;
+            this.dgvImagenes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvImagenes_CellContentClick);
+            this.dgvImagenes.SelectionChanged += new System.EventHandler(this.dgvImagenes_SelectionChanged);
+            // 
+            // txtbNuevaUrl
+            // 
+            this.txtbNuevaUrl.Location = new System.Drawing.Point(250, 296);
+            this.txtbNuevaUrl.Name = "txtbNuevaUrl";
+            this.txtbNuevaUrl.Size = new System.Drawing.Size(348, 20);
+            this.txtbNuevaUrl.TabIndex = 27;
+            // 
+            // pcbEaArticulo
+            // 
+            this.pcbEaArticulo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pcbEaArticulo.BackColor = System.Drawing.SystemColors.Window;
+            this.pcbEaArticulo.Location = new System.Drawing.Point(83, 344);
+            this.pcbEaArticulo.Name = "pcbEaArticulo";
+            this.pcbEaArticulo.Size = new System.Drawing.Size(301, 184);
+            this.pcbEaArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbEaArticulo.TabIndex = 23;
+            this.pcbEaArticulo.TabStop = false;
+            // 
             // frmEditarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(804, 661);
+            this.Controls.Add(this.txtbNuevaUrl);
+            this.Controls.Add(this.dgvImagenes);
             this.Controls.Add(this.pcbEaArticulo);
             this.Controls.Add(this.btnGuardarCambiosEdt);
             this.Controls.Add(this.btnSalirSinGuardarEdt);
@@ -274,6 +301,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Articulo";
             this.Load += new System.EventHandler(this.frmEditarArticulo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvImagenes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEaArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -300,5 +328,7 @@
         private System.Windows.Forms.Label lblEaMarca;
         private System.Windows.Forms.Label lblEaDescripcion;
         private System.Windows.Forms.Label lblEaCodigo;
+        private System.Windows.Forms.DataGridView dgvImagenes;
+        private System.Windows.Forms.TextBox txtbNuevaUrl;
     }
 }

@@ -86,8 +86,15 @@ namespace TPWinForm_equipo_16A.Views
             form.ShowDialog();
         }
 
-        private void CargarArticulos(DataGridView dataGridView)
+        private void CargarArticulos(DataGridView dataGridView, bool isReload = false)
         {
+            if(isReload)
+            {
+                dataGridView.DataSource = null;
+                dgvArticulos.Columns.Remove("Editar");
+                dgvArticulos.Columns.Remove("Eliminar");
+
+            }
             _articulos = _artManager.ObtenerTodos();
             dataGridView.DataSource = _mapper.MapFromDtoToTable(_articulos); // Cambiado a DataTable
 
@@ -205,8 +212,17 @@ namespace TPWinForm_equipo_16A.Views
                 {
                     int rowIndex = dgvArticulos.CurrentRow.Index;
                     ArticuloDTO art = _articulos[rowIndex];
-                    frmEditarArticulo view = new frmEditarArticulo(art.Articulo);
-                    view.ShowDialog();
+                    using (frmEditarArticulo view = new frmEditarArticulo(art))
+                    {
+                        DialogResult result = view.ShowDialog();
+
+                        if(result == DialogResult.OK)
+                        {
+                           CargarArticulos(dgvArticulos, true);
+
+                        }
+                    }
+                        
                 }
                 else if (dataGridView.Columns[e.ColumnIndex].Name == "Eliminar")
                 {
@@ -216,7 +232,7 @@ namespace TPWinForm_equipo_16A.Views
                     if (res == DialogResult.Yes)
                     {
                         _artManager.Eliminar(id);
-                        CargarArticulos(dgvArticulos);
+                        CargarArticulos(dgvArticulos, true);
                     }
                 }
             }

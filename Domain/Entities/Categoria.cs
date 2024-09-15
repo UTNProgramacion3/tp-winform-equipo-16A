@@ -10,5 +10,11 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
         public string Descripcion { get; set; }
+
+        public Categoria()
+        {
+            this.Id = 0;
+            this.Descripcion = "Sin Categoria";
+        }
     }
 }
