@@ -24,10 +24,6 @@ namespace TPWinForm_equipo_16A.Views
         public frmAgregarArticulo()
         {
             InitializeComponent();
-            _marcaManager = new MarcaManager();
-            _categoriaManager = new CategoriaManager();
-            CargarMarcas();
-            CargarCategorias();
 
             _articulo = new ArticuloDTO()
             {
@@ -35,17 +31,23 @@ namespace TPWinForm_equipo_16A.Views
                 Marca = new Marca(),
                 Categoria = new Categoria()
             };
-
+            _articuloManager = new ArticuloManager();
+            _marcaManager = new MarcaManager();
+            _categoriaManager = new CategoriaManager();
+            CargarMarcas();
+            CargarCategorias();
         }
 
         private void cmbAgrMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            var marca = (Marca)cmbAgrMarca.SelectedItem;
+            _articulo.Articulo.IdMarca = marca.Id;
         }
 
         private void cmbAgrCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            var categoria = (Categoria)cmbAgrCategoria.SelectedItem;
+            _articulo.Articulo.IdCategoria = categoria.Id;
         }
 
         private void btnAgrSalirSinGuardar_Click(object sender, EventArgs e)
@@ -80,28 +82,73 @@ namespace TPWinForm_equipo_16A.Views
             }
         }
 
+        private void txtbAgrCodigo_TextChanged(object sender, EventArgs e)
+        {
+            var codigo = txtbAgrCodigo.Text;
+            _articulo.Articulo.Codigo = codigo;
+        }
+
+        private void txtbAgrPrecio_TextChanged(object sender, EventArgs e)
+        {
+            _articulo.Articulo.Precio = Convert.ToDecimal(txtbAgrPrecio.Text);
+        }
+
+        private void txtbAgrDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            var descripcion = txtbAgrDescripcion.Text;
+            _articulo.Articulo.Descripcion = descripcion;
+        }
+
+        private void txtbAgrNombre_TextChanged(object sender, EventArgs e)
+        {
+            var nombre = txtbAgrNombre.Text;
+            _articulo.Articulo.Nombre = nombre;
+        }
         private void btnAgrCargarArticulo_Click(object sender, EventArgs e)
         {
-
-            //Me queda añadir validación del form y
-            //completar ArticuloDto directamente en _variable
-            if (true)
+            if (ValidarCampos())
             {
-                _articulo.Articulo.Codigo = txtAgrCodigo.Text;
-                _articulo.Articulo.Nombre = txtAgrNombre.Text;
-                _articulo.Articulo.Descripcion = txtAgrDescripcion.Text;
-                _articulo.Articulo.Precio = Convert.ToDecimal(txtAgrPrecio.Text);
-                _articulo.Marca.Id= (int)cmbAgrMarca.SelectedValue;
-                _articulo.Categoria.Id= (int)cmbAgrCategoria.SelectedValue;
-
                 _articuloManager.Crear(_articulo);
                 MessageBox.Show("Artículo agregado correctamente.");
                 this.Close();
             }
         }
 
-        private void txtbAgrCodigo_TextChanged(object sender, EventArgs e)
+        private bool ValidarCampos()
         {
+            if (string.IsNullOrEmpty(txtbAgrCodigo.Text))
+            {
+                MessageBox.Show("El campo Código es obligatorio.");
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtbAgrNombre.Text))
+            {
+                MessageBox.Show("El campo Nombre es obligatorio.");
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtbAgrDescripcion.Text))
+            {
+                MessageBox.Show("El campo Descripción es obligatorio.");
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtbAgrPrecio.Text))
+            {
+                MessageBox.Show("El campo Precio es obligatorio.");
+                return false;
+            }
+            if (cmbAgrMarca.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar una Marca.");
+                return false;
+            }
+            if (cmbAgrCategoria.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar una Categoría.");
+                return false;
+            }
+            return true;
         }
+
+
     }
 }

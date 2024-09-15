@@ -144,6 +144,7 @@
             this.txtbAgrNombre.Name = "txtbAgrNombre";
             this.txtbAgrNombre.Size = new System.Drawing.Size(200, 20);
             this.txtbAgrNombre.TabIndex = 1;
+            this.txtbAgrNombre.TextChanged += new System.EventHandler(this.txtbAgrNombre_TextChanged);
             // 
             // txtbAgrDescripcion
             // 
@@ -154,6 +155,7 @@
             this.txtbAgrDescripcion.Name = "txtbAgrDescripcion";
             this.txtbAgrDescripcion.Size = new System.Drawing.Size(200, 45);
             this.txtbAgrDescripcion.TabIndex = 2;
+            this.txtbAgrDescripcion.TextChanged += new System.EventHandler(this.txtbAgrDescripcion_TextChanged);
             // 
             // cmbAgrMarca
             // 
@@ -188,6 +190,7 @@
             this.txtbAgrPrecio.Name = "txtbAgrPrecio";
             this.txtbAgrPrecio.Size = new System.Drawing.Size(200, 20);
             this.txtbAgrPrecio.TabIndex = 5;
+            this.txtbAgrPrecio.TextChanged += new System.EventHandler(this.txtbAgrPrecio_TextChanged);
             // 
             // lblAgrAgregarImagen
             // 
