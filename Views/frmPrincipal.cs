@@ -278,5 +278,14 @@ namespace TPWinForm_equipo_16A.Views
 
             ventana.ShowDialog();
         }
+
+        private void tlsEliminarCategoria_Click(object sender, EventArgs e)
+        {
+            bool delete = true;
+            
+            frmListaCategorias ventana = new frmListaCategorias(delete);
+
+            ventana.ShowDialog();
+        }
     }
 }

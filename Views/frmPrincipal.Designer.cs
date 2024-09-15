@@ -105,21 +105,21 @@
             // tlsNuevoArticulo
             // 
             this.tlsNuevoArticulo.Name = "tlsNuevoArticulo";
-            this.tlsNuevoArticulo.Size = new System.Drawing.Size(180, 22);
+            this.tlsNuevoArticulo.Size = new System.Drawing.Size(125, 22);
             this.tlsNuevoArticulo.Text = "Articulo";
             this.tlsNuevoArticulo.Click += new System.EventHandler(this.tlsNuevoArticulo_Click);
             // 
             // tlsNuevoMarca
             // 
             this.tlsNuevoMarca.Name = "tlsNuevoMarca";
-            this.tlsNuevoMarca.Size = new System.Drawing.Size(180, 22);
+            this.tlsNuevoMarca.Size = new System.Drawing.Size(125, 22);
             this.tlsNuevoMarca.Text = "Marca";
             this.tlsNuevoMarca.Click += new System.EventHandler(this.tlsNuevoMarca_Click);
             // 
             // tlsNuevoCategoria
             // 
             this.tlsNuevoCategoria.Name = "tlsNuevoCategoria";
-            this.tlsNuevoCategoria.Size = new System.Drawing.Size(180, 22);
+            this.tlsNuevoCategoria.Size = new System.Drawing.Size(125, 22);
             this.tlsNuevoCategoria.Text = "Categoria";
             this.tlsNuevoCategoria.Click += new System.EventHandler(this.tlsNuevoCategoria_Click);
             // 
@@ -166,20 +166,21 @@
             // tlsEliminarArticulo
             // 
             this.tlsEliminarArticulo.Name = "tlsEliminarArticulo";
-            this.tlsEliminarArticulo.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarArticulo.Text = "Articulo";
             // 
             // tlsEliminarMarca
             // 
             this.tlsEliminarMarca.Name = "tlsEliminarMarca";
-            this.tlsEliminarMarca.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarMarca.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarMarca.Text = "Marca";
             // 
             // tlsEliminarCategoria
             // 
             this.tlsEliminarCategoria.Name = "tlsEliminarCategoria";
-            this.tlsEliminarCategoria.Size = new System.Drawing.Size(125, 22);
+            this.tlsEliminarCategoria.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminarCategoria.Text = "Categoria";
+            this.tlsEliminarCategoria.Click += new System.EventHandler(this.tlsEliminarCategoria_Click);
             // 
             // tlsBuscar
             // 
