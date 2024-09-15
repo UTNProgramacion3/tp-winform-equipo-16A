@@ -36,16 +36,25 @@ namespace TPWinForm_equipo_16A.Views
             _categoriaManager = new CategoriaManager();
             CargarMarcas();
             CargarCategorias();
+            ConfigurarBotones();
         }
 
         private void cmbAgrMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(cmbAgrMarca.SelectedIndex == -1)
+            {
+                return;
+            }
             var marca = (Marca)cmbAgrMarca.SelectedItem;
             _articulo.Articulo.IdMarca = marca.Id;
         }
 
         private void cmbAgrCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(cmbAgrCategoria.SelectedIndex == -1)
+            {
+                return;
+            }
             var categoria = (Categoria)cmbAgrCategoria.SelectedItem;
             _articulo.Articulo.IdCategoria = categoria.Id;
         }
@@ -61,6 +70,7 @@ namespace TPWinForm_equipo_16A.Views
             cmbAgrMarca.DataSource = marcas;
             cmbAgrMarca.DisplayMember = "Descripcion";
             cmbAgrMarca.ValueMember = "Id";
+            cmbAgrMarca.SelectedIndex = -1;
         }
 
         private void CargarCategorias()
@@ -69,18 +79,33 @@ namespace TPWinForm_equipo_16A.Views
             cmbAgrCategoria.DataSource = categorias;
             cmbAgrCategoria.DisplayMember = "Descripcion";
             cmbAgrCategoria.ValueMember = "Id";
+            cmbAgrCategoria.SelectedIndex = -1;
         }
 
         private void btnAgrCargarImagen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Imagenes|*.jpg;*.jpeg;*.png";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                string rutaImagen = dialog.FileName;
-                pcbAgrArticulo.Image = Image.FromFile(rutaImagen);
-            }
+                try
+                {
+                if(urlTextBox.Text != "")
+                {
+                    var request = System.Net.WebRequest.Create(urlTextBox.Text);
+                    using (var response = request.GetResponse())
+                    using (var stream = response.GetResponseStream())
+                    {
+                        pcbAgrArticulo.Image = Image.FromStream(stream);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe ingresar una URL.");
+                }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la imagen desde la URL: " + ex.Message);
+                }
         }
+
 
         private void txtbAgrCodigo_TextChanged(object sender, EventArgs e)
         {
@@ -116,39 +141,68 @@ namespace TPWinForm_equipo_16A.Views
 
         private bool ValidarCampos()
         {
+            List<string> camposVacios = new List<string>();
             if (string.IsNullOrEmpty(txtbAgrCodigo.Text))
             {
-                MessageBox.Show("El campo Código es obligatorio.");
-                return false;
+                camposVacios.Add("Código");
             }
             if (string.IsNullOrEmpty(txtbAgrNombre.Text))
             {
-                MessageBox.Show("El campo Nombre es obligatorio.");
-                return false;
+                camposVacios.Add("Nombre");
             }
             if (string.IsNullOrEmpty(txtbAgrDescripcion.Text))
             {
-                MessageBox.Show("El campo Descripción es obligatorio.");
-                return false;
+                camposVacios.Add("Descripción");
             }
             if (string.IsNullOrEmpty(txtbAgrPrecio.Text))
             {
-                MessageBox.Show("El campo Precio es obligatorio.");
-                return false;
+                camposVacios.Add("Precio");
             }
             if (cmbAgrMarca.SelectedIndex == -1)
             {
-                MessageBox.Show("Debe seleccionar una Marca.");
-                return false;
+                camposVacios.Add("Marca");
             }
             if (cmbAgrCategoria.SelectedIndex == -1)
             {
-                MessageBox.Show("Debe seleccionar una Categoría.");
+                camposVacios.Add("Categoría");
+            }
+
+            if (camposVacios.Count > 0)
+            {
+                MessageBox.Show("Los siguientes campos son obligatorios: " + string.Join(", ", camposVacios));
                 return false;
             }
             return true;
         }
 
+        private void pcbAgrArticulo_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void urlTextBox_TextChanged(object sender, EventArgs e)
+        {
+            btnAgrCargarImagen.Enabled = urlTextBox.Text != "";
+        }
+
+        private void ConfigurarBotones()
+        {
+            btnAgrCargarImagen.Enabled = false;
+        }
+
+        private void txtbAgrPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true; 
+            }
+
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                //Acá evitamos que puedan poner más de un '.'
+                e.Handled = true; 
+            }
+        }
     }
 }

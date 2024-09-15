@@ -46,6 +46,7 @@
             this.pcbAgrArticulo = new System.Windows.Forms.PictureBox();
             this.btnAgrSalirSinGuardar = new System.Windows.Forms.Button();
             this.btnAgrCargarArticulo = new System.Windows.Forms.Button();
+            this.urlTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcbAgrArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -191,6 +192,7 @@
             this.txtbAgrPrecio.Size = new System.Drawing.Size(200, 20);
             this.txtbAgrPrecio.TabIndex = 5;
             this.txtbAgrPrecio.TextChanged += new System.EventHandler(this.txtbAgrPrecio_TextChanged);
+            this.txtbAgrPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbAgrPrecio_KeyPress);
             // 
             // lblAgrAgregarImagen
             // 
@@ -208,7 +210,7 @@
             this.btnAgrCargarImagen.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAgrCargarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgrCargarImagen.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnAgrCargarImagen.Location = new System.Drawing.Point(265, 341);
+            this.btnAgrCargarImagen.Location = new System.Drawing.Point(536, 341);
             this.btnAgrCargarImagen.Name = "btnAgrCargarImagen";
             this.btnAgrCargarImagen.Size = new System.Drawing.Size(120, 23);
             this.btnAgrCargarImagen.TabIndex = 6;
@@ -220,11 +222,12 @@
             // 
             this.pcbAgrArticulo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pcbAgrArticulo.BackColor = System.Drawing.SystemColors.Window;
-            this.pcbAgrArticulo.Location = new System.Drawing.Point(84, 386);
+            this.pcbAgrArticulo.Location = new System.Drawing.Point(138, 389);
             this.pcbAgrArticulo.Name = "pcbAgrArticulo";
             this.pcbAgrArticulo.Size = new System.Drawing.Size(301, 133);
             this.pcbAgrArticulo.TabIndex = 6;
             this.pcbAgrArticulo.TabStop = false;
+            this.pcbAgrArticulo.Click += new System.EventHandler(this.pcbAgrArticulo_Click);
             // 
             // btnAgrSalirSinGuardar
             // 
@@ -252,12 +255,21 @@
             this.btnAgrCargarArticulo.UseVisualStyleBackColor = true;
             this.btnAgrCargarArticulo.Click += new System.EventHandler(this.btnAgrCargarArticulo_Click);
             // 
+            // urlTextBox
+            // 
+            this.urlTextBox.Location = new System.Drawing.Point(212, 341);
+            this.urlTextBox.Name = "urlTextBox";
+            this.urlTextBox.Size = new System.Drawing.Size(289, 20);
+            this.urlTextBox.TabIndex = 9;
+            this.urlTextBox.TextChanged += new System.EventHandler(this.urlTextBox_TextChanged);
+            // 
             // frmAgregarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(804, 661);
+            this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.pcbAgrArticulo);
             this.Controls.Add(this.btnAgrCargarArticulo);
             this.Controls.Add(this.btnAgrSalirSinGuardar);
@@ -311,6 +323,6 @@
         private System.Windows.Forms.TextBox txtAgrNombre;
         private System.Windows.Forms.TextBox txtAgrDescripcion;
         private System.Windows.Forms.TextBox txtAgrPrecio;
-
+        private System.Windows.Forms.TextBox urlTextBox;
     }
 }
