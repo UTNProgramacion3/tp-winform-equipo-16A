@@ -181,6 +181,7 @@ namespace TPWinForm_equipo_16A.Views
                     Name = nombreColumna
                 };
                 dataGridView.Columns.Add(columnaImagen);
+                dataGridView.AllowUserToAddRows = false;
             }
         }
 

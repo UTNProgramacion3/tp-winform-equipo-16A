@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaMarcas));
             this.btnAtras = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
@@ -75,7 +76,8 @@
             this.Controls.Add(this.dgvMarcas);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAtras);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListaMarcas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ListaMarcas";

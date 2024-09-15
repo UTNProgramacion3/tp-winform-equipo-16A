@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarCategoria));
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.txtbDescripcion = new System.Windows.Forms.TextBox();
             this.btnAtras = new System.Windows.Forms.Button();
@@ -80,7 +81,8 @@
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.txtbDescripcion);
             this.Controls.Add(this.lblDescripcion);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAgregarCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nueva Categoria";
