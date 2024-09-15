@@ -30,8 +30,8 @@ namespace Business.Managers
                     new SqlParameter("@Codigo", entity.Articulo.Codigo),
                     new SqlParameter("@Nombre", entity.Articulo.Nombre),
                     new SqlParameter("@Descripcion", entity.Articulo.Descripcion),
-                    new SqlParameter("@IdMarca", entity.Articulo.IdMarca),
-                    new SqlParameter("@IdCategoria", entity.Articulo.IdCategoria),
+                    new SqlParameter("@IdMarca", entity.Marca.Id),
+                    new SqlParameter("@IdCategoria", entity.Categoria.Id),
                     new SqlParameter("@Precio", entity.Articulo.Precio)
                 };
 
