@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarArticulo));
             this.txtbNombre = new System.Windows.Forms.TextBox();
             this.txtbCodigoBa = new System.Windows.Forms.TextBox();
             this.lblBaNombre = new System.Windows.Forms.Label();
@@ -198,7 +199,8 @@
             this.Controls.Add(this.lblBaCategoria);
             this.Controls.Add(this.lblBaMarca);
             this.Controls.Add(this.lblBaCodigo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmBuscarArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

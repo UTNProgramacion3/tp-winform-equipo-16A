@@ -36,17 +36,14 @@
             this.tlsNuevoMarca = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsNuevoCategoria = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsEditar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tlsEditarArticulo = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsEditarMarca = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsEditarCategoria = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsEliminar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tlsEliminarArticulo = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsEliminarMarca = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsEliminarCategoria = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsBuscar = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsBuscarArticulo = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsMostrar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tlsMostrarListArticulos = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsMostrarListMarcas = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsMostrarListCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsSalir = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +58,11 @@
             this.btnBackImg = new System.Windows.Forms.Button();
             this.btnNextImg = new System.Windows.Forms.Button();
             this.pbArticulo = new System.Windows.Forms.PictureBox();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.cboCampo = new System.Windows.Forms.ComboBox();
+            this.cboCondicion = new System.Windows.Forms.ComboBox();
+            this.cbEliminados = new System.Windows.Forms.CheckBox();
+            this.btnFiltrar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.ssUTN.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -99,7 +101,7 @@
             this.tlsNuevoMarca,
             this.tlsNuevoCategoria});
             this.tlsNuevo.Name = "tlsNuevo";
-            this.tlsNuevo.Size = new System.Drawing.Size(180, 22);
+            this.tlsNuevo.Size = new System.Drawing.Size(126, 22);
             this.tlsNuevo.Text = "Nuevo...";
             // 
             // tlsNuevoArticulo
@@ -126,18 +128,11 @@
             // tlsEditar
             // 
             this.tlsEditar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsEditarArticulo,
             this.tlsEditarMarca,
             this.tlsEditarCategoria});
             this.tlsEditar.Name = "tlsEditar";
-            this.tlsEditar.Size = new System.Drawing.Size(180, 22);
+            this.tlsEditar.Size = new System.Drawing.Size(126, 22);
             this.tlsEditar.Text = "Editar...";
-            // 
-            // tlsEditarArticulo
-            // 
-            this.tlsEditarArticulo.Name = "tlsEditarArticulo";
-            this.tlsEditarArticulo.Size = new System.Drawing.Size(125, 22);
-            this.tlsEditarArticulo.Text = "Articulo";
             // 
             // tlsEditarMarca
             // 
@@ -156,30 +151,23 @@
             // tlsEliminar
             // 
             this.tlsEliminar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsEliminarArticulo,
             this.tlsEliminarMarca,
             this.tlsEliminarCategoria});
             this.tlsEliminar.Name = "tlsEliminar";
-            this.tlsEliminar.Size = new System.Drawing.Size(180, 22);
+            this.tlsEliminar.Size = new System.Drawing.Size(126, 22);
             this.tlsEliminar.Text = "Eliminar...";
-            // 
-            // tlsEliminarArticulo
-            // 
-            this.tlsEliminarArticulo.Name = "tlsEliminarArticulo";
-            this.tlsEliminarArticulo.Size = new System.Drawing.Size(180, 22);
-            this.tlsEliminarArticulo.Text = "Articulo";
             // 
             // tlsEliminarMarca
             // 
             this.tlsEliminarMarca.Name = "tlsEliminarMarca";
-            this.tlsEliminarMarca.Size = new System.Drawing.Size(180, 22);
+            this.tlsEliminarMarca.Size = new System.Drawing.Size(125, 22);
             this.tlsEliminarMarca.Text = "Marca";
             this.tlsEliminarMarca.Click += new System.EventHandler(this.tlsEliminarMarca_Click);
             // 
             // tlsEliminarCategoria
             // 
             this.tlsEliminarCategoria.Name = "tlsEliminarCategoria";
-            this.tlsEliminarCategoria.Size = new System.Drawing.Size(180, 22);
+            this.tlsEliminarCategoria.Size = new System.Drawing.Size(125, 22);
             this.tlsEliminarCategoria.Text = "Categoria";
             this.tlsEliminarCategoria.Click += new System.EventHandler(this.tlsEliminarCategoria_Click);
             // 
@@ -188,7 +176,7 @@
             this.tlsBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsBuscarArticulo});
             this.tlsBuscar.Name = "tlsBuscar";
-            this.tlsBuscar.Size = new System.Drawing.Size(180, 22);
+            this.tlsBuscar.Size = new System.Drawing.Size(126, 22);
             this.tlsBuscar.Text = "Buscar...";
             // 
             // tlsBuscarArticulo
@@ -201,18 +189,11 @@
             // tlsMostrar
             // 
             this.tlsMostrar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsMostrarListArticulos,
             this.tlsMostrarListMarcas,
             this.tlsMostrarListCategorias});
             this.tlsMostrar.Name = "tlsMostrar";
-            this.tlsMostrar.Size = new System.Drawing.Size(180, 22);
+            this.tlsMostrar.Size = new System.Drawing.Size(126, 22);
             this.tlsMostrar.Text = "Mostrar";
-            // 
-            // tlsMostrarListArticulos
-            // 
-            this.tlsMostrarListArticulos.Name = "tlsMostrarListArticulos";
-            this.tlsMostrarListArticulos.Size = new System.Drawing.Size(173, 22);
-            this.tlsMostrarListArticulos.Text = "Lista de Articulos";
             // 
             // tlsMostrarListMarcas
             // 
@@ -229,7 +210,7 @@
             // tlsSalir
             // 
             this.tlsSalir.Name = "tlsSalir";
-            this.tlsSalir.Size = new System.Drawing.Size(180, 22);
+            this.tlsSalir.Size = new System.Drawing.Size(126, 22);
             this.tlsSalir.Text = "Salir...";
             // 
             // tlsLeeme
@@ -237,12 +218,13 @@
             this.tlsLeeme.Name = "tlsLeeme";
             this.tlsLeeme.Size = new System.Drawing.Size(54, 20);
             this.tlsLeeme.Text = "Léeme";
+            this.tlsLeeme.Click += new System.EventHandler(this.tlsLeeme_Click);
             // 
             // ssUTN
             // 
             this.ssUTN.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslUTNFRGP});
-            this.ssUTN.Location = new System.Drawing.Point(0, 467);
+            this.ssUTN.Location = new System.Drawing.Point(0, 379);
             this.ssUTN.Name = "ssUTN";
             this.ssUTN.Size = new System.Drawing.Size(1008, 22);
             this.ssUTN.TabIndex = 1;
@@ -293,7 +275,7 @@
             this.dgvArticulos.Location = new System.Drawing.Point(0, 52);
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(835, 320);
+            this.dgvArticulos.Size = new System.Drawing.Size(835, 298);
             this.dgvArticulos.TabIndex = 3;
             this.dgvArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellContentClick);
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
@@ -327,12 +309,63 @@
             this.pbArticulo.TabIndex = 4;
             this.pbArticulo.TabStop = false;
             // 
+            // txtFiltro
+            // 
+            this.txtFiltro.Location = new System.Drawing.Point(0, 356);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(190, 20);
+            this.txtFiltro.TabIndex = 7;
+            // 
+            // cboCampo
+            // 
+            this.cboCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCampo.FormattingEnabled = true;
+            this.cboCampo.Location = new System.Drawing.Point(196, 356);
+            this.cboCampo.Name = "cboCampo";
+            this.cboCampo.Size = new System.Drawing.Size(82, 21);
+            this.cboCampo.TabIndex = 8;
+            this.cboCampo.SelectedIndexChanged += new System.EventHandler(this.cboCampo_SelectedIndexChanged);
+            // 
+            // cboCondicion
+            // 
+            this.cboCondicion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCondicion.FormattingEnabled = true;
+            this.cboCondicion.Location = new System.Drawing.Point(284, 355);
+            this.cboCondicion.Name = "cboCondicion";
+            this.cboCondicion.Size = new System.Drawing.Size(82, 21);
+            this.cboCondicion.TabIndex = 9;
+            // 
+            // cbEliminados
+            // 
+            this.cbEliminados.AutoSize = true;
+            this.cbEliminados.Location = new System.Drawing.Point(372, 359);
+            this.cbEliminados.Name = "cbEliminados";
+            this.cbEliminados.Size = new System.Drawing.Size(76, 17);
+            this.cbEliminados.TabIndex = 11;
+            this.cbEliminados.Text = "Eliminados";
+            this.cbEliminados.UseVisualStyleBackColor = true;
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Location = new System.Drawing.Point(455, 353);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrar.TabIndex = 12;
+            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrar.UseVisualStyleBackColor = false;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(1008, 489);
+            this.ClientSize = new System.Drawing.Size(1008, 401);
+            this.Controls.Add(this.btnFiltrar);
+            this.Controls.Add(this.cbEliminados);
+            this.Controls.Add(this.cboCondicion);
+            this.Controls.Add(this.cboCampo);
+            this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.btnNextImg);
             this.Controls.Add(this.btnBackImg);
             this.Controls.Add(this.pbArticulo);
@@ -340,6 +373,8 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.ssUTN);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -367,15 +402,12 @@
         private System.Windows.Forms.ToolStripMenuItem tlsNuevoMarca;
         private System.Windows.Forms.ToolStripMenuItem tlsNuevoCategoria;
         private System.Windows.Forms.ToolStripMenuItem tlsEditar;
-        private System.Windows.Forms.ToolStripMenuItem tlsEditarArticulo;
         private System.Windows.Forms.ToolStripMenuItem tlsEditarMarca;
         private System.Windows.Forms.ToolStripMenuItem tlsEditarCategoria;
         private System.Windows.Forms.ToolStripMenuItem tlsEliminar;
-        private System.Windows.Forms.ToolStripMenuItem tlsEliminarArticulo;
         private System.Windows.Forms.ToolStripMenuItem tlsEliminarMarca;
         private System.Windows.Forms.ToolStripMenuItem tlsEliminarCategoria;
         private System.Windows.Forms.ToolStripMenuItem tlsMostrar;
-        private System.Windows.Forms.ToolStripMenuItem tlsMostrarListArticulos;
         private System.Windows.Forms.ToolStripMenuItem tlsMostrarListMarcas;
         private System.Windows.Forms.ToolStripMenuItem tlsMostrarListCategorias;
         private System.Windows.Forms.ToolStripMenuItem tlsSalir;
@@ -392,5 +424,10 @@
         private System.Windows.Forms.PictureBox pbArticulo;
         private System.Windows.Forms.Button btnBackImg;
         private System.Windows.Forms.Button btnNextImg;
+        private System.Windows.Forms.TextBox txtFiltro;
+        private System.Windows.Forms.ComboBox cboCampo;
+        private System.Windows.Forms.ComboBox cboCondicion;
+        private System.Windows.Forms.CheckBox cbEliminados;
+        private System.Windows.Forms.Button btnFiltrar;
     }
 }

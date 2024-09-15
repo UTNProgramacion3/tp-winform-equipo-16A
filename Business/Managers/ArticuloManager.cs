@@ -30,8 +30,8 @@ namespace Business.Managers
                     new SqlParameter("@Codigo", entity.Articulo.Codigo),
                     new SqlParameter("@Nombre", entity.Articulo.Nombre),
                     new SqlParameter("@Descripcion", entity.Articulo.Descripcion),
-                    new SqlParameter("@IdMarca", entity.Articulo.IdMarca),
-                    new SqlParameter("@IdCategoria", entity.Articulo.IdCategoria),
+                    new SqlParameter("@IdMarca", entity.Marca.Id),
+                    new SqlParameter("@IdCategoria", entity.Categoria.Id),
                     new SqlParameter("@Precio", entity.Articulo.Precio)
                 };
 
@@ -164,5 +164,94 @@ namespace Business.Managers
 
         }
 
+        public List<ArticuloDTO> Filtrar(string campo, string condicion, string filtro, bool eliminados)
+        {
+            List<ArticuloDTO> listaFiltrada;
+
+            string query = @"SELECT 
+                    A.Id AS Articulo_Id,
+                    A.Codigo AS Articulo_Codigo,
+                    A.Nombre AS Articulo_Nombre,
+                    A.Descripcion AS Articulo_Descripcion,
+                    A.Precio AS Articulo_Precio,
+                    M.Id AS Marca_Id,
+                    M.Descripcion AS Marca_Descripcion,
+                    C.Id AS Categoria_Id,
+                    C.Descripcion AS Categoria_Descripcion
+                FROM ARTICULOS A
+                LEFT JOIN MARCAS M ON A.IdMarca = M.Id
+                LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id 
+                Where ";
+
+            if(eliminados == false)
+            {
+                query += "A.Codigo != '0000' And ";
+            }
+
+            if (campo == "Precio")
+            {
+                switch (condicion)
+                {
+                    case "Mayor a":
+                        query += "A.Precio > " + filtro;
+                        break;
+                    case "Menor a":
+                        query += "A.Precio < " + filtro;
+                        break;
+                    case "Igual a":
+                        query += "A.Precio = " + filtro;
+                        break;
+                }
+            }
+            else
+            {
+                switch (campo)
+                {
+                    case "Codigo":
+                        query += "A.Codigo ";
+                        break;
+                    case "Nombre":
+                        query += "A.Nombre ";
+                        break;
+                    case "Marca":
+                        query += "M.Descripcion ";
+                        break;
+                    case "Categoria":
+                        query += "C.Descripcion ";
+                        break;
+                }
+
+                switch (condicion)
+                {
+                    case "Empieza con":
+                        query += "like  '" + filtro + "%' ";
+                        break;
+                    case "Termina por":
+                        query += "like '%" + filtro + "' ";
+                        break;
+                    case "Igual a":
+                        query += "like '%" + filtro + "%' ";
+                        break;
+                }
+
+            }
+
+            try
+            {
+                DataTable res = _dbManager.ExecuteQuery(query);
+
+                if (res.Rows.Count == 0)
+                {
+                    return new List<ArticuloDTO>();
+                }
+
+                listaFiltrada = _mapper.ListMapFromRow(res);
+
+                return listaFiltrada;
+            }catch (Exception ex)
+            {
+                throw new Exception("Error al filtrar " + ex.ToString());
+            }
+        }
     }
 }

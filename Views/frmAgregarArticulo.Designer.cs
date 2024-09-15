@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarArticulo));
             this.lblAgregarArticulo = new System.Windows.Forms.Label();
             this.lblAgrCodigo = new System.Windows.Forms.Label();
             this.lblAgrDescripcion = new System.Windows.Forms.Label();
@@ -135,6 +136,7 @@
             this.txtbAgrCodigo.Name = "txtbAgrCodigo";
             this.txtbAgrCodigo.Size = new System.Drawing.Size(200, 20);
             this.txtbAgrCodigo.TabIndex = 0;
+            this.txtbAgrCodigo.TextChanged += new System.EventHandler(this.txtbAgrCodigo_TextChanged);
             // 
             // txtbAgrNombre
             // 
@@ -143,6 +145,7 @@
             this.txtbAgrNombre.Name = "txtbAgrNombre";
             this.txtbAgrNombre.Size = new System.Drawing.Size(200, 20);
             this.txtbAgrNombre.TabIndex = 1;
+            this.txtbAgrNombre.TextChanged += new System.EventHandler(this.txtbAgrNombre_TextChanged);
             // 
             // txtbAgrDescripcion
             // 
@@ -153,6 +156,7 @@
             this.txtbAgrDescripcion.Name = "txtbAgrDescripcion";
             this.txtbAgrDescripcion.Size = new System.Drawing.Size(200, 45);
             this.txtbAgrDescripcion.TabIndex = 2;
+            this.txtbAgrDescripcion.TextChanged += new System.EventHandler(this.txtbAgrDescripcion_TextChanged);
             // 
             // cmbAgrMarca
             // 
@@ -165,6 +169,7 @@
             this.cmbAgrMarca.Name = "cmbAgrMarca";
             this.cmbAgrMarca.Size = new System.Drawing.Size(200, 21);
             this.cmbAgrMarca.TabIndex = 3;
+            this.cmbAgrMarca.SelectedIndexChanged += new System.EventHandler(this.cmbAgrMarca_SelectedIndexChanged);
             // 
             // cmbAgrCategoria
             // 
@@ -177,6 +182,7 @@
             this.cmbAgrCategoria.Name = "cmbAgrCategoria";
             this.cmbAgrCategoria.Size = new System.Drawing.Size(200, 21);
             this.cmbAgrCategoria.TabIndex = 4;
+            this.cmbAgrCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbAgrCategoria_SelectedIndexChanged);
             // 
             // txtbAgrPrecio
             // 
@@ -185,6 +191,7 @@
             this.txtbAgrPrecio.Name = "txtbAgrPrecio";
             this.txtbAgrPrecio.Size = new System.Drawing.Size(200, 20);
             this.txtbAgrPrecio.TabIndex = 5;
+            this.txtbAgrPrecio.TextChanged += new System.EventHandler(this.txtbAgrPrecio_TextChanged);
             // 
             // lblAgrAgregarImagen
             // 
@@ -208,6 +215,7 @@
             this.btnAgrCargarImagen.TabIndex = 6;
             this.btnAgrCargarImagen.Text = "Cargar";
             this.btnAgrCargarImagen.UseVisualStyleBackColor = true;
+            this.btnAgrCargarImagen.Click += new System.EventHandler(this.btnAgrCargarImagen_Click);
             // 
             // pcbAgrArticulo
             // 
@@ -230,6 +238,7 @@
             this.btnAgrSalirSinGuardar.TabIndex = 8;
             this.btnAgrSalirSinGuardar.Text = "Salir sin guardar";
             this.btnAgrSalirSinGuardar.UseVisualStyleBackColor = true;
+            this.btnAgrSalirSinGuardar.Click += new System.EventHandler(this.btnAgrSalirSinGuardar_Click);
             // 
             // btnAgrCargarArticulo
             // 
@@ -240,8 +249,9 @@
             this.btnAgrCargarArticulo.Name = "btnAgrCargarArticulo";
             this.btnAgrCargarArticulo.Size = new System.Drawing.Size(120, 23);
             this.btnAgrCargarArticulo.TabIndex = 7;
-            this.btnAgrCargarArticulo.Text = "Cargar Artiulo";
+            this.btnAgrCargarArticulo.Text = "Cargar Articulo";
             this.btnAgrCargarArticulo.UseVisualStyleBackColor = true;
+            this.btnAgrCargarArticulo.Click += new System.EventHandler(this.btnAgrCargarArticulo_Click);
             // 
             // frmAgregarArticulo
             // 
@@ -267,6 +277,8 @@
             this.Controls.Add(this.lblAgrDescripcion);
             this.Controls.Add(this.lblAgrCodigo);
             this.Controls.Add(this.lblAgregarArticulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1000, 800);
             this.MinimumSize = new System.Drawing.Size(710, 605);
             this.Name = "frmAgregarArticulo";
@@ -298,5 +310,10 @@
         private System.Windows.Forms.PictureBox pcbAgrArticulo;
         private System.Windows.Forms.Button btnAgrSalirSinGuardar;
         private System.Windows.Forms.Button btnAgrCargarArticulo;
+        private System.Windows.Forms.TextBox txtAgrCodigo;
+        private System.Windows.Forms.TextBox txtAgrNombre;
+        private System.Windows.Forms.TextBox txtAgrDescripcion;
+        private System.Windows.Forms.TextBox txtAgrPrecio;
+
     }
 }
