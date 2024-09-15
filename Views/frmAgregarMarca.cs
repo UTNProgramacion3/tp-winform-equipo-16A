@@ -34,6 +34,11 @@ namespace TPWinForm_equipo_16A.Views
         {
             Close();
         }
+
+        private void frmAgregarMarca_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }

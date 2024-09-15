@@ -165,6 +165,7 @@
             this.cmbAgrMarca.Name = "cmbAgrMarca";
             this.cmbAgrMarca.Size = new System.Drawing.Size(200, 21);
             this.cmbAgrMarca.TabIndex = 3;
+            this.cmbAgrMarca.SelectedIndexChanged += new System.EventHandler(this.cmbAgrMarca_SelectedIndexChanged);
             // 
             // cmbAgrCategoria
             // 
@@ -230,6 +231,7 @@
             this.btnAgrSalirSinGuardar.TabIndex = 8;
             this.btnAgrSalirSinGuardar.Text = "Salir sin guardar";
             this.btnAgrSalirSinGuardar.UseVisualStyleBackColor = true;
+            this.btnAgrSalirSinGuardar.Click += new System.EventHandler(this.btnAgrSalirSinGuardar_Click);
             // 
             // btnAgrCargarArticulo
             // 
