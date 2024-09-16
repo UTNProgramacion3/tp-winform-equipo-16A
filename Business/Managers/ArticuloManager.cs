@@ -35,14 +35,21 @@ namespace Business.Managers
                     new SqlParameter("@Precio", entity.Articulo.Precio)
                 };
 
-            var res = _dbManager.ExecuteNonQuery(query, parametros);
-
-            if (res == 0)
+            try
             {
-                return false;
-            }
 
-            return true;
+                var res = _dbManager.ExecuteNonQuery(query, parametros);
+
+                if (res == 0)
+                {
+                    return false;
+                }
+
+                return true;
+            }catch (Exception ex)
+            {
+                throw new Exception("Problemas al crear un articulo: " + ex.Message.ToString());
+            }
         }
 
         public bool Eliminar(int id)
@@ -59,14 +66,21 @@ namespace Business.Managers
                     new SqlParameter("@Id", id)
                 };
 
-            var res = _dbManager.ExecuteNonQuery(query, parametros);
-
-            if (res == 0)
+            try
             {
-                return false;
-            }
 
-            return true;
+                var res = _dbManager.ExecuteNonQuery(query, parametros);
+
+                if (res == 0)
+                {
+                    return false;
+                }
+
+                return true;
+            }catch (Exception ex)
+            {
+                throw new Exception("Problemas al eliminar articulo: " + ex.Message.ToString());
+            }
         }
         public ArticuloDTO ObtenerPorId(int id)
         {
@@ -90,16 +104,24 @@ namespace Business.Managers
                     new SqlParameter("@Id", id)
                 };
 
-            DataTable res = _dbManager.ExecuteQuery(query, parametros);
-
-            if (res.Rows.Count == 0)
+            try
             {
-                return new ArticuloDTO();
+
+                DataTable res = _dbManager.ExecuteQuery(query, parametros);
+
+                if (res.Rows.Count == 0)
+                {
+                    return new ArticuloDTO();
+                }
+
+                ArticuloDTO articulo = _mapper.MapFromRow(res.Rows[0]);
+
+                return articulo;
+            }catch (Exception ex)
+            {
+                throw new Exception("Problemas al obtener articulo por id: " + ex.Message.ToString());
             }
 
-            ArticuloDTO articulo = _mapper.MapFromRow(res.Rows[0]);
-
-            return articulo;
 
         }
 
@@ -119,16 +141,23 @@ namespace Business.Managers
                 LEFT JOIN MARCAS M ON A.IdMarca = M.Id
                 LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id;";
 
-            DataTable res = _dbManager.ExecuteQuery(query);
-
-            if (res.Rows.Count == 0)
+            try
             {
-                return new List<ArticuloDTO>();
+
+                DataTable res = _dbManager.ExecuteQuery(query);
+
+                if (res.Rows.Count == 0)
+                {
+                    return new List<ArticuloDTO>();
+                }
+
+                var articulosList = _mapper.ListMapFromRow(res);
+
+                return articulosList;
+            }catch(Exception ex)
+            {
+                throw new Exception("Problemas al obtener todos los articulos: " + ex.ToString());
             }
-
-            var articulosList = _mapper.ListMapFromRow(res);
-
-            return articulosList;
         }
 
         public bool Update(ArticuloDTO entity)
@@ -153,14 +182,21 @@ namespace Business.Managers
                     new SqlParameter("@Id", entity.Articulo.Id)
                 };
 
-            var res = _dbManager.ExecuteNonQuery(query, parametros);
-
-            if(res == 0)
+            try
             {
-                return false;
-            }
 
-            return true;
+                var res = _dbManager.ExecuteNonQuery(query, parametros);
+
+                if(res == 0)
+                {
+                    return false;
+                }
+
+                return true;
+            }catch (Exception ex)
+            {
+                throw new Exception("Error al hacer update: " + ex.ToString());
+            }
 
         }
 
