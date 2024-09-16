@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditarCategoria));
             this.lblDescripcionActual = new System.Windows.Forms.Label();
             this.lblNuevaDescripcion = new System.Windows.Forms.Label();
             this.txtbDescripcionActual = new System.Windows.Forms.TextBox();
@@ -102,7 +103,8 @@
             this.Controls.Add(this.txtbDescripcionActual);
             this.Controls.Add(this.lblNuevaDescripcion);
             this.Controls.Add(this.lblDescripcionActual);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEditarCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEditarCategoria";

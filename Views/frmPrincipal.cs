@@ -7,10 +7,10 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Business.Managers;
-using TPWinForm_equipo_16A.Views;
 using Business.Dtos;
 using Utils.Interfaces;
 using Utils;
+using System.Diagnostics;
 
 namespace TPWinForm_equipo_16A.Views
 {
@@ -43,6 +43,16 @@ namespace TPWinForm_equipo_16A.Views
         {
             CargarArticulos(dgvArticulos);
             CargarImagenArticulo();
+            CargarFiltroAvanzado();
+        }
+
+        private void CargarFiltroAvanzado()
+        {
+            cboCampo.Items.Add("Codigo");
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Marca");
+            cboCampo.Items.Add("Categoria");
+            cboCampo.Items.Add("Precio");
         }
 
         private void tlsNuevoArticulo_Click(object sender, EventArgs e)
@@ -52,7 +62,8 @@ namespace TPWinForm_equipo_16A.Views
 
         private void tlsBuscarArticulo_Click(object sender, EventArgs e)
         {
-            OpenForm<frmBuscarArticulo>();
+            frmBuscarArticulo ventana = new frmBuscarArticulo();
+            ventana.ShowDialog();
         }
 
         private void tlsbCargarArticulo_Click(object sender, EventArgs e)
@@ -65,11 +76,6 @@ namespace TPWinForm_equipo_16A.Views
             OpenForm<frmEditarArticulo>();
         }
 
-        private void tlsbBuscarArticulo_Click(object sender, EventArgs e)
-        {
-            OpenForm<frmBuscarArticulo>();
-        }
-
         private void tlsNuevoMarca_Click(object sender, EventArgs e)
         {
             OpenForm<frmAgregarMarca>();
@@ -80,28 +86,36 @@ namespace TPWinForm_equipo_16A.Views
             OpenForm<frmListaMarcas>();
         }
 
-        private void OpenForm<T>() where T : Form, new()
+        private void OpenForm<T>(T entity = null) where T : Form, new()
         {
             T form = new T();
             form.ShowDialog();
         }
 
-        private void CargarArticulos(DataGridView dataGridView, bool isReload = false)
+        private void CargarArticulos(DataGridView dataGridView, bool isFilter = false)
         {
-            if(isReload)
-            {
-                dataGridView.DataSource = null;
-                dgvArticulos.Columns.Remove("Editar");
-                dgvArticulos.Columns.Remove("Eliminar");
+            dataGridView.DataSource = null;
+            RemoverColumnasEditaryEliminar();
 
+            if (!isFilter)
+            {
+                _articulos = _artManager.ObtenerTodos();
             }
-            _articulos = _artManager.ObtenerTodos();
             dataGridView.DataSource = _mapper.MapFromDtoToTable(_articulos); // Cambiado a DataTable
 
             string rutaIconoEditar = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Icons\editar.png");
             string rutaIconoEliminar = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Icons\eliminar.png");
 
             ConfigurarColumnas(dataGridView, rutaIconoEditar, rutaIconoEliminar);
+        }
+
+        private void RemoverColumnasEditaryEliminar()
+        {
+            if (dgvArticulos.Columns["Editar"] != null && dgvArticulos.Columns["Eliminar"] != null)
+            {
+                dgvArticulos.Columns.Remove("Editar");
+                dgvArticulos.Columns.Remove("Eliminar");
+            }
         }
 
         private void ConfigurarColumnas(DataGridView dataGridView, string rutaIconoEditar, string rutaIconoEliminar)
@@ -125,6 +139,26 @@ namespace TPWinForm_equipo_16A.Views
                 dataGridView.Columns["Categoria_Descripcion"].HeaderText = "Categoría";
             }
 
+            if (dataGridView.Columns.Contains("Articulo_Codigo"))
+            {
+                dataGridView.Columns["Articulo_Codigo"].HeaderText = "Codigo";
+            }
+
+            if (dataGridView.Columns.Contains("Articulo_Nombre"))
+            {
+                dataGridView.Columns["Articulo_Nombre"].HeaderText = "Nombre";
+            }
+
+            if (dataGridView.Columns.Contains("Articulo_Descripcion"))
+            {
+                dataGridView.Columns["Articulo_Descripcion"].HeaderText = "Descripcion";
+            }
+
+            if (dataGridView.Columns.Contains("Articulo_Precio"))
+            {
+                dataGridView.Columns["Articulo_Precio"].HeaderText = "Precio";
+            }
+
             AgregarColumnaImagen(dataGridView, "Editar", rutaIconoEditar);
             AgregarColumnaImagen(dataGridView, "Eliminar", rutaIconoEliminar);
         }
@@ -140,42 +174,42 @@ namespace TPWinForm_equipo_16A.Views
                     Name = nombreColumna
                 };
                 dataGridView.Columns.Add(columnaImagen);
+                dataGridView.AllowUserToAddRows = false;
             }
-        }
-
-        private string ObtenerDescripcionCategoria(int idCategoria)
-        {
-            Categoria categoria = _catManager.ObtenerPorId(idCategoria);
-            return categoria?.Descripcion ?? "Sin Categoría";
-        }
-
-        private string ObtenerDescripcionMarca(int idMarca)
-        {
-            Marca marca = _marcManager.ObtenerPorId(idMarca);
-            return marca?.Descripcion ?? "Sin Marca";
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            CargarImagenArticulo();
+            if (dgvArticulos.CurrentRow != null)
+            {
+                CargarImagenArticulo();
+            }
         }
 
         private void CargarImagenArticulo()
         {
-            if (dgvArticulos.CurrentRow != null)
+            try
             {
-                int rowIndex = dgvArticulos.CurrentRow.Index;
-                ArticuloDTO art = _articulos[rowIndex];
 
-                if (art != null)
+                if (dgvArticulos.CurrentRow != null)
                 {
-                    _imagenes = _imgManager.ObtenerImagenesPorArticulo(art.Articulo.Id);
-                    string imagenUrl = _imagenes != null && _imagenes.Count > 0
-                        ? _imagenes[0].ImagenUrl
-                        : "https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminada-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg";
+                    int rowIndex = dgvArticulos.CurrentRow.Index;
+                    ArticuloDTO art = _articulos[rowIndex];
 
-                    CargarImagen(pbArticulo, imagenUrl);
+                    if (art != null)
+                    {
+                        _imagenes = _imgManager.ObtenerImagenesPorArticulo(art.Articulo.Id);
+                        string imagenUrl = _imagenes != null && _imagenes.Count > 0
+                            ? _imagenes[0].ImagenUrl
+                            : "https://img.freepik.com/vector-premium/no-hay-foto-disponible-icono-vector-simbolo-imagen-predeterminada-imagen-proximamente-sitio-web-o-aplicacion-movil_87543-10615.jpg";
+
+                        CargarImagen(pbArticulo, imagenUrl);
+                    }
                 }
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                CargarImagen(pbArticulo, _imagenes[0].ImagenUrl);
             }
         }
 
@@ -216,13 +250,13 @@ namespace TPWinForm_equipo_16A.Views
                     {
                         DialogResult result = view.ShowDialog();
 
-                        if(result == DialogResult.OK)
+                        if (result == DialogResult.OK)
                         {
-                           CargarArticulos(dgvArticulos, true);
+                            CargarArticulos(dgvArticulos);
 
                         }
                     }
-                        
+
                 }
                 else if (dataGridView.Columns[e.ColumnIndex].Name == "Eliminar")
                 {
@@ -232,7 +266,7 @@ namespace TPWinForm_equipo_16A.Views
                     if (res == DialogResult.Yes)
                     {
                         _artManager.Eliminar(id);
-                        CargarArticulos(dgvArticulos, true);
+                        CargarArticulos(dgvArticulos);
                     }
                 }
             }
@@ -269,28 +303,112 @@ namespace TPWinForm_equipo_16A.Views
         {
             frmAgregarCategoria ventana = new frmAgregarCategoria();
 
-            ventana.ShowDialog();
+            OpenForm<frmAgregarCategoria>();
         }
 
         private void tlsEditarCategoria_Click(object sender, EventArgs e)
         {
-            frmListaCategorias ventana = new frmListaCategorias();
 
-            ventana.ShowDialog();
+            OpenForm<frmListaCategorias>();
         }
 
         private void tlsEliminarCategoria_Click(object sender, EventArgs e)
         {
             bool delete = true;
-            
+
             frmListaCategorias ventana = new frmListaCategorias(delete);
 
             ventana.ShowDialog();
         }
 
-        private void pbArticulo_Click(object sender, EventArgs e)
+        private void tlsLeeme_Click(object sender, EventArgs e)
         {
+            string url = "https://github.com/UTNProgramacion3/tp-winform-equipo-16A";
 
+            try
+            {
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+            }catch (Exception ex)
+            {
+                throw new Exception("Problemas con el readme: " + ex.Message.ToString());
+            }
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opc = cboCampo.SelectedItem.ToString();
+
+            if (opc == "Precio")
+            {
+                cboCondicion.Items.Clear();
+                cboCondicion.Items.Add("Mayor a");
+                cboCondicion.Items.Add("Menor a");
+                cboCondicion.Items.Add("Igual a");
+
+            }
+            else
+            {
+                cboCondicion.Items.Clear();
+                cboCondicion.Items.Add("Empieza con");
+                cboCondicion.Items.Add("Termina por");
+                cboCondicion.Items.Add("Igual a");
+
+            }
+
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cboCampo.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar un campo para filtrar.");
+                    return;
+                }
+
+                if (cboCondicion.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar una condición.");
+                    return;
+                }
+
+                string campo = cboCampo.SelectedItem.ToString();
+                string condicion = cboCondicion.SelectedItem.ToString();
+                string filtro = txtFiltro.Text;
+                bool eliminados = cbEliminados.Checked;
+
+                if (campo == "Precio" && !EsNumerico(filtro))
+                {
+                    if(string.IsNullOrEmpty(filtro))
+                    {
+                        CargarArticulos(dgvArticulos);
+                        return;
+                    }
+                    MessageBox.Show("El filtro para el campo 'Precio' debe ser un número.");
+                    CargarArticulos(dgvArticulos);
+                    return;
+                }
+
+                _articulos = _artManager.Filtrar(campo, condicion, filtro, eliminados);
+                CargarArticulos(dgvArticulos, true);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+
+        private bool EsNumerico(string input)
+        {
+            return decimal.TryParse(input, out _); 
         }
     }
 }
