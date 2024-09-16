@@ -104,7 +104,8 @@ namespace TPWinForm_equipo_16A.Views
 
             string filter = txtbCodigoBa.Text;
 
-            if (filter != "")
+            ///Usamos !string.IsNullOrEmpty(...) por que con caracteres especiales eliminaba los headers
+            if (!string.IsNullOrEmpty(filter))
             {
                 listaFiltrada = _list.FindAll(item => item.Articulo.Codigo.ToString().ToUpper().Contains(filter.ToUpper()));
             }
@@ -113,8 +114,18 @@ namespace TPWinForm_equipo_16A.Views
                 listaFiltrada = _list;
             }
 
+            if (listaFiltrada.Count > 0)
+            {
+                dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
+            }
+            else
+            {
+                var dataSource = (DataTable)dgvBaListadoArticulos.DataSource;
+                dataSource.Rows.Clear();
+            }
+
+
             dgvBaListadoArticulos.AllowUserToAddRows = false;
-            dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
             ConfigurarColumnas(dgvBaListadoArticulos);
         }
 
@@ -124,7 +135,7 @@ namespace TPWinForm_equipo_16A.Views
 
             string filter = txtbNombre.Text;
 
-            if (filter != "")
+            if (!string.IsNullOrEmpty(filter))
             {
                 listaFiltrada = _list.FindAll(item => item.Articulo.Nombre.ToString().ToUpper().Contains(filter.ToUpper()));
             }
@@ -133,8 +144,17 @@ namespace TPWinForm_equipo_16A.Views
                 listaFiltrada = _list;
             }
 
+            if (listaFiltrada.Count > 0)
+            {
+                dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
+            }
+            else
+            {
+                var dataSource = (DataTable)dgvBaListadoArticulos.DataSource;
+                dataSource.Rows.Clear();
+            }
+
             dgvBaListadoArticulos.AllowUserToAddRows = false;
-            dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
             ConfigurarColumnas(dgvBaListadoArticulos);
         }
 
@@ -144,7 +164,7 @@ namespace TPWinForm_equipo_16A.Views
 
             string filter = txtbDescripcion.Text;
 
-            if (filter != "")
+            if (!string.IsNullOrEmpty(filter))
             {
                 listaFiltrada = _list.FindAll(item => item.Articulo.Descripcion.ToString().ToUpper().Contains(filter.ToUpper()));
             }
@@ -153,8 +173,17 @@ namespace TPWinForm_equipo_16A.Views
                 listaFiltrada = _list;
             }
 
+            if (listaFiltrada.Count > 0)
+            {
+                dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
+            }
+            else
+            {
+                var dataSource = (DataTable)dgvBaListadoArticulos.DataSource;
+                dataSource.Rows.Clear();
+            }
+
             dgvBaListadoArticulos.AllowUserToAddRows = false;
-            dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
             ConfigurarColumnas(dgvBaListadoArticulos);
         }
 
@@ -165,7 +194,7 @@ namespace TPWinForm_equipo_16A.Views
 
             string filter = txtbMarca.Text;
 
-            if (filter != "")
+            if (!string.IsNullOrEmpty(filter))
             {
                 listaFiltrada = _list.FindAll(item => item.Marca.Descripcion.ToString().ToUpper().Contains(filter.ToUpper()));
             }
@@ -173,9 +202,18 @@ namespace TPWinForm_equipo_16A.Views
             {
                 listaFiltrada = _list;
             }
+            
+            if (listaFiltrada.Count > 0)
+            {
+                dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
+            }
+            else
+            {
+                var dataSource = (DataTable)dgvBaListadoArticulos.DataSource;
+                dataSource.Rows.Clear();
+            }
 
             dgvBaListadoArticulos.AllowUserToAddRows = false;
-            dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
             ConfigurarColumnas(dgvBaListadoArticulos);
         }
 
@@ -185,7 +223,7 @@ namespace TPWinForm_equipo_16A.Views
 
             string filter = txtbCategoria.Text;
 
-            if (filter != "")
+            if (!string.IsNullOrEmpty(filter))
             {
                 listaFiltrada = _list.FindAll(item => item.Categoria.Descripcion.ToString().ToUpper().Contains(filter.ToUpper()));
             }
@@ -194,8 +232,17 @@ namespace TPWinForm_equipo_16A.Views
                 listaFiltrada = _list;
             }
 
+            if (listaFiltrada.Count > 0)
+            {
+                dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
+            }
+            else
+            {
+                var dataSource = (DataTable)dgvBaListadoArticulos.DataSource;
+                dataSource.Rows.Clear();
+            }
+
             dgvBaListadoArticulos.AllowUserToAddRows = false;
-            dgvBaListadoArticulos.DataSource = _mapper.MapFromDtoToTable(listaFiltrada);
             ConfigurarColumnas(dgvBaListadoArticulos);
         }
 
