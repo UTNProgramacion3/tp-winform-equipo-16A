@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,8 @@ namespace TPWinForm_equipo_16A.Views
         private readonly MarcaManager _marcaManager;
         private readonly CategoriaManager _categoriaManager;
         private readonly ArticuloManager _articuloManager;
-        private ArticuloDTO _articulo;
+        private readonly ArticuloDTO _articulo;
+        private readonly List<string> _imagenes;
 
         public frmAgregarArticulo()
         {
@@ -34,9 +36,12 @@ namespace TPWinForm_equipo_16A.Views
             _articuloManager = new ArticuloManager();
             _marcaManager = new MarcaManager();
             _categoriaManager = new CategoriaManager();
-            CargarMarcas();
-            CargarCategorias();
-            ConfigurarBotones();
+
+            _imagenes = new List<string>();
+            this.Load += frmAgregarArticulo_Load;
+
+
+
         }
 
         private void cmbAgrMarca_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,26 +89,25 @@ namespace TPWinForm_equipo_16A.Views
 
         private void btnAgrCargarImagen_Click(object sender, EventArgs e)
         {
-                try
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(urlTextBox.Text))
                 {
-                if(urlTextBox.Text != "")
-                {
-                    var request = System.Net.WebRequest.Create(urlTextBox.Text);
-                    using (var response = request.GetResponse())
-                    using (var stream = response.GetResponseStream())
-                    {
-                        pcbAgrArticulo.Image = Image.FromStream(stream);
-                    }
+                    var url = urlTextBox.Text;
+                    _imagenes.Add(url);
+                    CargarImagenesDataGrid(); // Recargamos las imágenes
+
+                    MessageBox.Show("Imagen cargada exitosamente.");
                 }
                 else
                 {
                     MessageBox.Show("Debe ingresar una URL.");
                 }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar la imagen desde la URL: " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la imagen desde la URL: " + ex.Message);
+            }
         }
 
 
@@ -135,6 +139,13 @@ namespace TPWinForm_equipo_16A.Views
             {
                 _articuloManager.Crear(_articulo);
                 MessageBox.Show("Artículo agregado correctamente.");
+                if(_imagenes.Count > 0)
+                {
+                    foreach (var url in _imagenes)
+                    {
+                        //_imagenes.CrearImagen(_articulo.Articulo.Id, url);
+                    }
+                }
                 this.Close();
             }
         }
@@ -204,5 +215,75 @@ namespace TPWinForm_equipo_16A.Views
                 e.Handled = true; 
             }
         }
+
+        private void CargarImagenesDataGrid()
+        {
+            if (_imagenes.Count > 0)
+            {
+                urlGrid.RowTemplate.Height = 100;
+                urlGrid.Visible = true;
+                urlGrid.Rows.Clear(); 
+
+                foreach (var url in _imagenes)
+                {
+                    var index = urlGrid.Rows.Add(url, null, "Eliminar"); 
+                    var row = urlGrid.Rows[index];
+
+                    try
+                    {
+                        using (var webClient = new WebClient())
+                        {
+                            byte[] imageBytes = webClient.DownloadData(url);
+                            using (var ms = new System.IO.MemoryStream(imageBytes))
+                            {
+                                Image originalImage = Image.FromStream(ms);
+                                Image resizedImage = ResizeImage(originalImage, 100, 100); 
+                                row.Cells["image"].Value = resizedImage;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al cargar la imagen desde la URL: {url}\n{ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                urlGrid.Visible = false;
+            }
+        }
+
+        private void urlGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == urlGrid.Columns["Accion"].Index && e.RowIndex >= 0)
+            {
+                string urlToRemove = urlGrid.Rows[e.RowIndex].Cells["URL"].Value.ToString();
+
+                _imagenes.Remove(urlToRemove);
+
+                CargarImagenesDataGrid();
+            }
+        }
+
+        private void frmAgregarArticulo_Load(object sender, EventArgs e)
+        {
+            CargarImagenesDataGrid();
+            CargarMarcas();
+            CargarCategorias();
+            ConfigurarBotones();
+        }
+
+        private Image ResizeImage(Image image, int width, int height)
+        {
+            var resizedImage = new Bitmap(width, height);
+            using (var graphics = Graphics.FromImage(resizedImage))
+            {
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.DrawImage(image, 0, 0, width, height);
+            }
+            return resizedImage;
+        }
+
     }
 }

@@ -287,5 +287,10 @@ namespace TPWinForm_equipo_16A.Views
 
             ventana.ShowDialog();
         }
+
+        private void pbArticulo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

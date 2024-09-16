@@ -43,11 +43,14 @@
             this.txtbAgrPrecio = new System.Windows.Forms.TextBox();
             this.lblAgrAgregarImagen = new System.Windows.Forms.Label();
             this.btnAgrCargarImagen = new System.Windows.Forms.Button();
-            this.pcbAgrArticulo = new System.Windows.Forms.PictureBox();
             this.btnAgrSalirSinGuardar = new System.Windows.Forms.Button();
             this.btnAgrCargarArticulo = new System.Windows.Forms.Button();
             this.urlTextBox = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbAgrArticulo)).BeginInit();
+            this.urlGrid = new System.Windows.Forms.DataGridView();
+            this.URL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.image = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Accion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.urlGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAgregarArticulo
@@ -199,7 +202,7 @@
             this.lblAgrAgregarImagen.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAgrAgregarImagen.AutoSize = true;
             this.lblAgrAgregarImagen.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAgrAgregarImagen.Location = new System.Drawing.Point(80, 341);
+            this.lblAgrAgregarImagen.Location = new System.Drawing.Point(80, 298);
             this.lblAgrAgregarImagen.Name = "lblAgrAgregarImagen";
             this.lblAgrAgregarImagen.Size = new System.Drawing.Size(116, 18);
             this.lblAgrAgregarImagen.TabIndex = 1;
@@ -210,24 +213,13 @@
             this.btnAgrCargarImagen.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAgrCargarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgrCargarImagen.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnAgrCargarImagen.Location = new System.Drawing.Point(536, 341);
+            this.btnAgrCargarImagen.Location = new System.Drawing.Point(524, 297);
             this.btnAgrCargarImagen.Name = "btnAgrCargarImagen";
             this.btnAgrCargarImagen.Size = new System.Drawing.Size(120, 23);
             this.btnAgrCargarImagen.TabIndex = 6;
             this.btnAgrCargarImagen.Text = "Cargar";
             this.btnAgrCargarImagen.UseVisualStyleBackColor = true;
             this.btnAgrCargarImagen.Click += new System.EventHandler(this.btnAgrCargarImagen_Click);
-            // 
-            // pcbAgrArticulo
-            // 
-            this.pcbAgrArticulo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pcbAgrArticulo.BackColor = System.Drawing.SystemColors.Window;
-            this.pcbAgrArticulo.Location = new System.Drawing.Point(138, 389);
-            this.pcbAgrArticulo.Name = "pcbAgrArticulo";
-            this.pcbAgrArticulo.Size = new System.Drawing.Size(301, 133);
-            this.pcbAgrArticulo.TabIndex = 6;
-            this.pcbAgrArticulo.TabStop = false;
-            this.pcbAgrArticulo.Click += new System.EventHandler(this.pcbAgrArticulo_Click);
             // 
             // btnAgrSalirSinGuardar
             // 
@@ -257,11 +249,45 @@
             // 
             // urlTextBox
             // 
-            this.urlTextBox.Location = new System.Drawing.Point(212, 341);
+            this.urlTextBox.Location = new System.Drawing.Point(212, 298);
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(289, 20);
             this.urlTextBox.TabIndex = 9;
             this.urlTextBox.TextChanged += new System.EventHandler(this.urlTextBox_TextChanged);
+            // 
+            // urlGrid
+            // 
+            this.urlGrid.AllowUserToAddRows = false;
+            this.urlGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.urlGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.URL,
+            this.image,
+            this.Accion});
+            this.urlGrid.Location = new System.Drawing.Point(59, 336);
+            this.urlGrid.Name = "urlGrid";
+            this.urlGrid.Size = new System.Drawing.Size(695, 220);
+            this.urlGrid.TabIndex = 10;
+            this.urlGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.urlGrid_CellContentClick);
+            // 
+            // URL
+            // 
+            this.URL.HeaderText = "URL";
+            this.URL.Name = "URL";
+            this.URL.Width = 150;
+            // 
+            // image
+            // 
+            this.image.HeaderText = "Imagen";
+            this.image.MinimumWidth = 100;
+            this.image.Name = "image";
+            this.image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.image.Width = 400;
+            // 
+            // Accion
+            // 
+            this.Accion.HeaderText = "Accion";
+            this.Accion.Name = "Accion";
             // 
             // frmAgregarArticulo
             // 
@@ -269,8 +295,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(804, 661);
+            this.Controls.Add(this.urlGrid);
             this.Controls.Add(this.urlTextBox);
-            this.Controls.Add(this.pcbAgrArticulo);
             this.Controls.Add(this.btnAgrCargarArticulo);
             this.Controls.Add(this.btnAgrSalirSinGuardar);
             this.Controls.Add(this.btnAgrCargarImagen);
@@ -293,7 +319,8 @@
             this.Name = "frmAgregarArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
-            ((System.ComponentModel.ISupportInitialize)(this.pcbAgrArticulo)).EndInit();
+            this.Load += new System.EventHandler(this.frmAgregarArticulo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.urlGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,7 +343,6 @@
         private System.Windows.Forms.TextBox txtbAgrPrecio;
         private System.Windows.Forms.Label lblAgrAgregarImagen;
         private System.Windows.Forms.Button btnAgrCargarImagen;
-        private System.Windows.Forms.PictureBox pcbAgrArticulo;
         private System.Windows.Forms.Button btnAgrSalirSinGuardar;
         private System.Windows.Forms.Button btnAgrCargarArticulo;
         private System.Windows.Forms.TextBox txtAgrCodigo;
@@ -324,5 +350,9 @@
         private System.Windows.Forms.TextBox txtAgrDescripcion;
         private System.Windows.Forms.TextBox txtAgrPrecio;
         private System.Windows.Forms.TextBox urlTextBox;
+        private System.Windows.Forms.DataGridView urlGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn URL;
+        private System.Windows.Forms.DataGridViewImageColumn image;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Accion;
     }
 }

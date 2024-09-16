@@ -99,7 +99,7 @@
             this.tlsNuevoMarca,
             this.tlsNuevoCategoria});
             this.tlsNuevo.Name = "tlsNuevo";
-            this.tlsNuevo.Size = new System.Drawing.Size(180, 22);
+            this.tlsNuevo.Size = new System.Drawing.Size(126, 22);
             this.tlsNuevo.Text = "Nuevo...";
             // 
             // tlsNuevoArticulo
@@ -130,7 +130,7 @@
             this.tlsEditarMarca,
             this.tlsEditarCategoria});
             this.tlsEditar.Name = "tlsEditar";
-            this.tlsEditar.Size = new System.Drawing.Size(180, 22);
+            this.tlsEditar.Size = new System.Drawing.Size(126, 22);
             this.tlsEditar.Text = "Editar...";
             // 
             // tlsEditarArticulo
@@ -160,26 +160,26 @@
             this.tlsEliminarMarca,
             this.tlsEliminarCategoria});
             this.tlsEliminar.Name = "tlsEliminar";
-            this.tlsEliminar.Size = new System.Drawing.Size(180, 22);
+            this.tlsEliminar.Size = new System.Drawing.Size(126, 22);
             this.tlsEliminar.Text = "Eliminar...";
             // 
             // tlsEliminarArticulo
             // 
             this.tlsEliminarArticulo.Name = "tlsEliminarArticulo";
-            this.tlsEliminarArticulo.Size = new System.Drawing.Size(180, 22);
+            this.tlsEliminarArticulo.Size = new System.Drawing.Size(125, 22);
             this.tlsEliminarArticulo.Text = "Articulo";
             // 
             // tlsEliminarMarca
             // 
             this.tlsEliminarMarca.Name = "tlsEliminarMarca";
-            this.tlsEliminarMarca.Size = new System.Drawing.Size(180, 22);
+            this.tlsEliminarMarca.Size = new System.Drawing.Size(125, 22);
             this.tlsEliminarMarca.Text = "Marca";
             this.tlsEliminarMarca.Click += new System.EventHandler(this.tlsEliminarMarca_Click);
             // 
             // tlsEliminarCategoria
             // 
             this.tlsEliminarCategoria.Name = "tlsEliminarCategoria";
-            this.tlsEliminarCategoria.Size = new System.Drawing.Size(180, 22);
+            this.tlsEliminarCategoria.Size = new System.Drawing.Size(125, 22);
             this.tlsEliminarCategoria.Text = "Categoria";
             this.tlsEliminarCategoria.Click += new System.EventHandler(this.tlsEliminarCategoria_Click);
             // 
@@ -188,7 +188,7 @@
             this.tlsBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsBuscarArticulo});
             this.tlsBuscar.Name = "tlsBuscar";
-            this.tlsBuscar.Size = new System.Drawing.Size(180, 22);
+            this.tlsBuscar.Size = new System.Drawing.Size(126, 22);
             this.tlsBuscar.Text = "Buscar...";
             // 
             // tlsBuscarArticulo
@@ -205,7 +205,7 @@
             this.tlsMostrarListMarcas,
             this.tlsMostrarListCategorias});
             this.tlsMostrar.Name = "tlsMostrar";
-            this.tlsMostrar.Size = new System.Drawing.Size(180, 22);
+            this.tlsMostrar.Size = new System.Drawing.Size(126, 22);
             this.tlsMostrar.Text = "Mostrar";
             // 
             // tlsMostrarListArticulos
@@ -229,7 +229,7 @@
             // tlsSalir
             // 
             this.tlsSalir.Name = "tlsSalir";
-            this.tlsSalir.Size = new System.Drawing.Size(180, 22);
+            this.tlsSalir.Size = new System.Drawing.Size(126, 22);
             this.tlsSalir.Text = "Salir...";
             // 
             // tlsLeeme
@@ -326,6 +326,7 @@
             this.pbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbArticulo.TabIndex = 4;
             this.pbArticulo.TabStop = false;
+            this.pbArticulo.Click += new System.EventHandler(this.pbArticulo_Click);
             // 
             // frmPrincipal
             // 
