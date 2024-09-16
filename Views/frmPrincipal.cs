@@ -139,6 +139,26 @@ namespace TPWinForm_equipo_16A.Views
                 dataGridView.Columns["Categoria_Descripcion"].HeaderText = "Categoría";
             }
 
+            if (dataGridView.Columns.Contains("Articulo_Codigo"))
+            {
+                dataGridView.Columns["Articulo_Codigo"].HeaderText = "Codigo";
+            }
+
+            if (dataGridView.Columns.Contains("Articulo_Nombre"))
+            {
+                dataGridView.Columns["Articulo_Nombre"].HeaderText = "Nombre";
+            }
+
+            if (dataGridView.Columns.Contains("Articulo_Descripcion"))
+            {
+                dataGridView.Columns["Articulo_Descripcion"].HeaderText = "Descripcion";
+            }
+
+            if (dataGridView.Columns.Contains("Articulo_Precio"))
+            {
+                dataGridView.Columns["Articulo_Precio"].HeaderText = "Precio";
+            }
+
             AgregarColumnaImagen(dataGridView, "Editar", rutaIconoEditar);
             AgregarColumnaImagen(dataGridView, "Eliminar", rutaIconoEliminar);
         }
