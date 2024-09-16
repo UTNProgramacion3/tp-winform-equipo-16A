@@ -66,7 +66,7 @@ namespace Business.Managers
             return lista;
         }
 
-        public bool Crear(Marca m)
+        public Marca Crear(Marca m)
         {
 
             string query = "insert into MARCAS values (@Descripcion)";
@@ -76,13 +76,13 @@ namespace Business.Managers
                 new SqlParameter("@Descripcion", m.Descripcion)
             };
 
-            var res = dataBManager.ExecuteNonQuery(query, parametros);    
+            var res = dataBManager.ExecuteNonQuery(query, parametros);
 
-            if(res == 0)
-                return false;
+            if (res == 0)
+                return new Marca();
 
             MessageBox.Show("Marca agregada correctamente");
-            return true;
+            return m;
         }
 
         public bool Update(Marca m)

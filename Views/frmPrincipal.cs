@@ -58,6 +58,7 @@ namespace TPWinForm_equipo_16A.Views
         private void tlsNuevoArticulo_Click(object sender, EventArgs e)
         {
             OpenForm<frmAgregarArticulo>();
+            CargarArticulos(dgvArticulos);
         }
 
         private void tlsBuscarArticulo_Click(object sender, EventArgs e)
@@ -69,6 +70,7 @@ namespace TPWinForm_equipo_16A.Views
         private void tlsbCargarArticulo_Click(object sender, EventArgs e)
         {
             OpenForm<frmAgregarArticulo>();
+            CargarArticulos(dgvArticulos);
         }
 
         private void tlsbEditarArticulo_Click(object sender, EventArgs e)

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\ArticuloDTO.cs" />
+    <Compile Include="Interfaces\IImagenManager.cs" />
     <Compile Include="Managers\ArticuloManager.cs" />
     <Compile Include="Interfaces\ICrudRepository.cs" />
     <Compile Include="Managers\CategoriaManager.cs" />

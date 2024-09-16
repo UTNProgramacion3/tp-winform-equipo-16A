@@ -21,7 +21,7 @@ namespace Business.Managers
             _mapper = new Mapper<ArticuloDTO>();
         }
 
-        public bool Crear(ArticuloDTO entity)
+        public ArticuloDTO Crear(ArticuloDTO entity)
         {
             string query = @"Insert into ARTICULOS values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)";
 
@@ -30,8 +30,8 @@ namespace Business.Managers
                     new SqlParameter("@Codigo", entity.Articulo.Codigo),
                     new SqlParameter("@Nombre", entity.Articulo.Nombre),
                     new SqlParameter("@Descripcion", entity.Articulo.Descripcion),
-                    new SqlParameter("@IdMarca", entity.Marca.Id),
-                    new SqlParameter("@IdCategoria", entity.Categoria.Id),
+                    new SqlParameter("@IdMarca", entity.Articulo.IdMarca),
+                    new SqlParameter("@IdCategoria", entity.Articulo.IdCategoria),
                     new SqlParameter("@Precio", entity.Articulo.Precio)
                 };
 
@@ -42,10 +42,10 @@ namespace Business.Managers
 
                 if (res == 0)
                 {
-                    return false;
+                    return new ArticuloDTO();
                 }
-
-                return true;
+                entity.Articulo.Id = (int)_dbManager.ExecuteScalar("Select Max(Id) From ARTICULOS");
+                return entity;
             }catch (Exception ex)
             {
                 throw new Exception("Problemas al crear un articulo: " + ex.Message.ToString());

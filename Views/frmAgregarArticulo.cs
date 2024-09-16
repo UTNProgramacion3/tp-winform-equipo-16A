@@ -20,6 +20,7 @@ namespace TPWinForm_equipo_16A.Views
         private readonly MarcaManager _marcaManager;
         private readonly CategoriaManager _categoriaManager;
         private readonly ArticuloManager _articuloManager;
+        private readonly ImagenManager _imagenManager;
         private readonly ArticuloDTO _articulo;
         private readonly List<string> _imagenes;
 
@@ -33,9 +34,11 @@ namespace TPWinForm_equipo_16A.Views
                 Marca = new Marca(),
                 Categoria = new Categoria()
             };
+                
             _articuloManager = new ArticuloManager();
             _marcaManager = new MarcaManager();
             _categoriaManager = new CategoriaManager();
+            _imagenManager = new ImagenManager();
 
             _imagenes = new List<string>();
             this.Load += frmAgregarArticulo_Load;
@@ -108,6 +111,10 @@ namespace TPWinForm_equipo_16A.Views
             {
                 MessageBox.Show("Error al cargar la imagen desde la URL: " + ex.Message);
             }
+            finally
+            {
+                urlTextBox.Text = "";
+            }
         }
 
 
@@ -137,14 +144,12 @@ namespace TPWinForm_equipo_16A.Views
         {
             if (ValidarCampos())
             {
-                _articuloManager.Crear(_articulo);
+                var articuloCreado = _articuloManager.Crear(_articulo);
                 MessageBox.Show("Artículo agregado correctamente.");
                 if(_imagenes.Count > 0)
                 {
-                    foreach (var url in _imagenes)
-                    {
-                        //_imagenes.CrearImagen(_articulo.Articulo.Id, url);
-                    }
+                    int idArticulo = articuloCreado.Articulo.Id;
+                    _imagenManager.InsertLista(_imagenes,idArticulo);
                 }
                 this.Close();
             }
@@ -221,7 +226,6 @@ namespace TPWinForm_equipo_16A.Views
             if (_imagenes.Count > 0)
             {
                 urlGrid.RowTemplate.Height = 100;
-                urlGrid.Visible = true;
                 urlGrid.Rows.Clear(); 
 
                 foreach (var url in _imagenes)
@@ -245,6 +249,10 @@ namespace TPWinForm_equipo_16A.Views
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Error al cargar la imagen desde la URL: {url}\n{ex.Message}");
+                    }
+                    finally
+                    {
+                        urlGrid.Visible = true;
                     }
                 }
             }
