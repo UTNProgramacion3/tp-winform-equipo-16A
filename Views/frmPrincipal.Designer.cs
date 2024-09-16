@@ -153,6 +153,8 @@
             this.tlsEliminar.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminar.Text = "Eliminar...";
             // 
+
+            // 
             // tlsEliminarMarca
             // 
             this.tlsEliminarMarca.Name = "tlsEliminarMarca";

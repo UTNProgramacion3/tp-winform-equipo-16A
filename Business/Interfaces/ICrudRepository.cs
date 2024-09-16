@@ -10,7 +10,7 @@ namespace Business.Managers
     {
         T ObtenerPorId(int id);
         List<T> ObtenerTodos();
-        bool Crear(T entity);
+        T Crear(T entity);
         bool Update(T entity);
         bool Eliminar(int id);
     }

@@ -34,7 +34,7 @@ namespace TPWinForm_equipo_16A.Views
 
             var res = manager.Crear(nueva);
 
-            var mensaje = res == true ? MessageBox.Show("Categoria agregada correctamente") : MessageBox.Show("Error al agregar categoria");
+            var mensaje = res.Id != 0 == true ? MessageBox.Show("Categoria agregada correctamente") : MessageBox.Show("Error al agregar categoria");
 
             txtbDescripcion.Clear();
             txtbDescripcion.Focus();

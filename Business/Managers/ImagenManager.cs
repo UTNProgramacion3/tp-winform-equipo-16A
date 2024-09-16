@@ -6,11 +6,11 @@ using System.Data.SqlClient;
 using System.Data;
 using Utils;
 using Utils.Interfaces;
-
+using Business.Interfaces;
 
 namespace Business.Managers
 {
-    public class ImagenManager : ICrudRepository<Imagen>
+    public class ImagenManager : ICrudRepository<Imagen>, IImagenManager
     {
         private DBManager _dbManager;
         private IMapper<Imagen> _mapper;
@@ -153,7 +153,7 @@ namespace Business.Managers
             return true;
         }
 
-        public bool Crear(Imagen entity)
+        public Imagen Crear(Imagen entity)
         {
             string query = @"Insert into IMAGENES values (@IdArticulo, @ImagenUrl)";
 
@@ -167,28 +167,32 @@ namespace Business.Managers
 
             if (res == 0)
             {
-                return false;
+                return new Imagen();
             }
 
-            return true;
-
+            return entity;
         }
 
-        public bool InsertLista(List<Imagen> imagenes)
+        public bool InsertLista(List<string> urls, int idArticulo)
         {
-            foreach(Imagen img in imagenes)
+            try
             {
-                if(img != null)
-                {
-                    var res = Crear(img);
+            string query = @"Insert into IMAGENES values (@IdArticulo, @ImagenUrl)";
+            foreach (string url in urls)
+            {
 
-                    if(!res)
+                SqlParameter[] parametros = new SqlParameter[]
                     {
-                        return false;
-                    }
-                }
+                    new SqlParameter("@IdArticulo", idArticulo),
+                    new SqlParameter("@ImagenUrl", url)
+                    };
+                _dbManager.ExecuteNonQuery(query, parametros);
             }
             return true;
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<Imagen> ObtenerTodos()

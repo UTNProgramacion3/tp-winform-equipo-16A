@@ -19,7 +19,7 @@ namespace Business.Managers
             _mapper = new Mapper<Categoria>();
         }
 
-        public bool Crear(Categoria entity)
+        public Categoria Crear(Categoria entity)
         {
             string query = "INSERT INTO Categorias (Descripcion) VALUES (@Descripcion)";
 
@@ -32,10 +32,10 @@ namespace Business.Managers
 
             if(res == 0) 
             {
-                return false;
+                return new Categoria();
             }
 
-            return true;
+            return entity;
         }
 
         public bool Eliminar(int id)
