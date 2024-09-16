@@ -430,5 +430,10 @@ namespace TPWinForm_equipo_16A.Views
             }
             return valor; 
         }
+
+        private void tlsSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

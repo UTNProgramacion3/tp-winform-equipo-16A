@@ -153,8 +153,6 @@
             this.tlsEliminar.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminar.Text = "Eliminar...";
             // 
-
-            // 
             // tlsEliminarMarca
             // 
             this.tlsEliminarMarca.Name = "tlsEliminarMarca";
@@ -189,6 +187,7 @@
             this.tlsSalir.Name = "tlsSalir";
             this.tlsSalir.Size = new System.Drawing.Size(180, 22);
             this.tlsSalir.Text = "Salir...";
+            this.tlsSalir.Click += new System.EventHandler(this.tlsSalir_Click);
             // 
             // tlsLeeme
             // 
