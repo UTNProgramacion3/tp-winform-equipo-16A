@@ -178,18 +178,6 @@ namespace TPWinForm_equipo_16A.Views
             }
         }
 
-        private string ObtenerDescripcionCategoria(int idCategoria)
-        {
-            Categoria categoria = _catManager.ObtenerPorId(idCategoria);
-            return categoria?.Descripcion ?? "Sin Categoría";
-        }
-
-        private string ObtenerDescripcionMarca(int idMarca)
-        {
-            Marca marca = _marcManager.ObtenerPorId(idMarca);
-            return marca?.Descripcion ?? "Sin Marca";
-        }
-
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvArticulos.CurrentRow != null)
@@ -337,11 +325,18 @@ namespace TPWinForm_equipo_16A.Views
         {
             string url = "https://github.com/UTNProgramacion3/tp-winform-equipo-16A";
 
-            Process.Start(new ProcessStartInfo
+            try
             {
-                FileName = url,
-                UseShellExecute = true
-            });
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+            }catch (Exception ex)
+            {
+                throw new Exception("Problemas con el readme: " + ex.Message.ToString());
+            }
         }
 
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
