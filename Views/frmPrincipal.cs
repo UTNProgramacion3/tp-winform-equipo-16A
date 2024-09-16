@@ -155,8 +155,11 @@ namespace TPWinForm_equipo_16A.Views
             }
 
             if (dataGridView.Columns.Contains("Articulo_Precio"))
+            {
+                dataGridView.Columns["Articulo_Precio"].HeaderText = "Precio";
+            }
 
-                AgregarColumnaImagen(dataGridView, "Editar", rutaIconoEditar);
+            AgregarColumnaImagen(dataGridView, "Editar", rutaIconoEditar);
             AgregarColumnaImagen(dataGridView, "Eliminar", rutaIconoEliminar);
         }
 
