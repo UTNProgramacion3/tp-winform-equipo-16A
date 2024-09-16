@@ -11,6 +11,7 @@ using Business.Dtos;
 using Utils.Interfaces;
 using Utils;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace TPWinForm_equipo_16A.Views
 {
@@ -333,7 +334,8 @@ namespace TPWinForm_equipo_16A.Views
                     FileName = url,
                     UseShellExecute = true
                 });
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception("Problemas con el readme: " + ex.Message.ToString());
             }
@@ -383,21 +385,28 @@ namespace TPWinForm_equipo_16A.Views
                 string filtro = txtFiltro.Text;
                 bool eliminados = cbEliminados.Checked;
 
-                if (campo == "Precio" && !EsNumerico(filtro))
+                if (campo == "Precio")
                 {
-                    if(string.IsNullOrEmpty(filtro))
+                    if (string.IsNullOrEmpty(filtro))
                     {
                         CargarArticulos(dgvArticulos);
                         return;
                     }
-                    MessageBox.Show("El filtro para el campo 'Precio' debe ser un número.");
-                    CargarArticulos(dgvArticulos);
-                    return;
+
+                    // Usar CultureInfo para permitir formatos decimales según la cultura
+                    if (!EsDecimal(filtro))
+                    {
+                        MessageBox.Show("El filtro para el campo 'Precio' debe ser un número decimal válido.");
+                        CargarArticulos(dgvArticulos);
+                        return;
+                    }
+
+                    // Intentar convertir el filtro a decimal
+                    filtro = ConvertirDecimal(filtro);
                 }
 
                 _articulos = _artManager.Filtrar(campo, condicion, filtro, eliminados);
                 CargarArticulos(dgvArticulos, true);
-                
             }
             catch (Exception ex)
             {
@@ -406,9 +415,18 @@ namespace TPWinForm_equipo_16A.Views
         }
 
 
-        private bool EsNumerico(string input)
+        private bool EsDecimal(string valor)
         {
-            return decimal.TryParse(input, out _); 
+            return decimal.TryParse(valor, NumberStyles.Number, CultureInfo.InvariantCulture, out _);
+        }
+
+        private string ConvertirDecimal(string valor)
+        {
+            if (decimal.TryParse(valor, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal resultado))
+            {
+                return resultado.ToString(CultureInfo.InvariantCulture);
+            }
+            return valor; 
         }
     }
 }
