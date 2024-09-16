@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FFFA04DB-D698-495E-987B-28295C73FB29}</ProjectGuid>
+    <ProjectGuid>{98677985-B64C-471E-9080-FA40E29D997E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Business</RootNamespace>
-    <AssemblyName>Business</AssemblyName>
+    <RootNamespace>DataAccess</RootNamespace>
+    <AssemblyName>DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -34,7 +34,6 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,20 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\ArticuloDTO.cs" />
-    <Compile Include="Interfaces\IImagenManager.cs" />
-    <Compile Include="Managers\ArticuloManager.cs" />
-    <Compile Include="Interfaces\ICrudRepository.cs" />
-    <Compile Include="Managers\CategoriaManager.cs" />
-    <Compile Include="Managers\ImagenManager.cs" />
-    <Compile Include="Managers\MarcaManager.cs" />
+    <Compile Include="DBManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{98677985-b64c-471e-9080-fa40e29d997e}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{0c953172-bb8c-4977-bb74-7893462ea150}</Project>
       <Name>Domain</Name>
@@ -66,9 +55,5 @@
       <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

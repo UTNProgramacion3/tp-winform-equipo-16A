@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Business.Managers;
+using System;
 using System.Windows.Forms;
+using TPWinForm_equipo_16A.Views;
 
-namespace TPWinForm_16A
+namespace TPWinForm_equipo_16A
 {
     internal static class Program
     {
@@ -13,10 +12,11 @@ namespace TPWinForm_16A
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        {            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmPrincipal());
+
         }
     }
 }
