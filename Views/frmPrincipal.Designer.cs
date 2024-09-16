@@ -43,9 +43,6 @@
             this.tlsEliminarCategoria = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsBuscar = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsBuscarArticulo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tlsMostrar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tlsMostrarListMarcas = new System.Windows.Forms.ToolStripMenuItem();
-            this.tlsMostrarListCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tlsLeeme = new System.Windows.Forms.ToolStripMenuItem();
             this.ssUTN = new System.Windows.Forms.StatusStrip();
@@ -88,7 +85,6 @@
             this.tlsEditar,
             this.tlsEliminar,
             this.tlsBuscar,
-            this.tlsMostrar,
             this.tlsSalir});
             this.tlsArchivo.Name = "tlsArchivo";
             this.tlsArchivo.Size = new System.Drawing.Size(60, 20);
@@ -101,7 +97,7 @@
             this.tlsNuevoMarca,
             this.tlsNuevoCategoria});
             this.tlsNuevo.Name = "tlsNuevo";
-            this.tlsNuevo.Size = new System.Drawing.Size(126, 22);
+            this.tlsNuevo.Size = new System.Drawing.Size(180, 22);
             this.tlsNuevo.Text = "Nuevo...";
             // 
             // tlsNuevoArticulo
@@ -131,7 +127,7 @@
             this.tlsEditarMarca,
             this.tlsEditarCategoria});
             this.tlsEditar.Name = "tlsEditar";
-            this.tlsEditar.Size = new System.Drawing.Size(126, 22);
+            this.tlsEditar.Size = new System.Drawing.Size(180, 22);
             this.tlsEditar.Text = "Editar...";
             // 
             // tlsEditarMarca
@@ -154,7 +150,7 @@
             this.tlsEliminarMarca,
             this.tlsEliminarCategoria});
             this.tlsEliminar.Name = "tlsEliminar";
-            this.tlsEliminar.Size = new System.Drawing.Size(126, 22);
+            this.tlsEliminar.Size = new System.Drawing.Size(180, 22);
             this.tlsEliminar.Text = "Eliminar...";
             // 
             // tlsEliminarMarca
@@ -176,7 +172,7 @@
             this.tlsBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsBuscarArticulo});
             this.tlsBuscar.Name = "tlsBuscar";
-            this.tlsBuscar.Size = new System.Drawing.Size(126, 22);
+            this.tlsBuscar.Size = new System.Drawing.Size(180, 22);
             this.tlsBuscar.Text = "Buscar...";
             // 
             // tlsBuscarArticulo
@@ -186,31 +182,10 @@
             this.tlsBuscarArticulo.Text = "Articulo";
             this.tlsBuscarArticulo.Click += new System.EventHandler(this.tlsBuscarArticulo_Click);
             // 
-            // tlsMostrar
-            // 
-            this.tlsMostrar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tlsMostrarListMarcas,
-            this.tlsMostrarListCategorias});
-            this.tlsMostrar.Name = "tlsMostrar";
-            this.tlsMostrar.Size = new System.Drawing.Size(126, 22);
-            this.tlsMostrar.Text = "Mostrar";
-            // 
-            // tlsMostrarListMarcas
-            // 
-            this.tlsMostrarListMarcas.Name = "tlsMostrarListMarcas";
-            this.tlsMostrarListMarcas.Size = new System.Drawing.Size(173, 22);
-            this.tlsMostrarListMarcas.Text = "Lista de Marcas";
-            // 
-            // tlsMostrarListCategorias
-            // 
-            this.tlsMostrarListCategorias.Name = "tlsMostrarListCategorias";
-            this.tlsMostrarListCategorias.Size = new System.Drawing.Size(173, 22);
-            this.tlsMostrarListCategorias.Text = "Lista de Categorias";
-            // 
             // tlsSalir
             // 
             this.tlsSalir.Name = "tlsSalir";
-            this.tlsSalir.Size = new System.Drawing.Size(126, 22);
+            this.tlsSalir.Size = new System.Drawing.Size(180, 22);
             this.tlsSalir.Text = "Salir...";
             // 
             // tlsLeeme
@@ -407,9 +382,6 @@
         private System.Windows.Forms.ToolStripMenuItem tlsEliminar;
         private System.Windows.Forms.ToolStripMenuItem tlsEliminarMarca;
         private System.Windows.Forms.ToolStripMenuItem tlsEliminarCategoria;
-        private System.Windows.Forms.ToolStripMenuItem tlsMostrar;
-        private System.Windows.Forms.ToolStripMenuItem tlsMostrarListMarcas;
-        private System.Windows.Forms.ToolStripMenuItem tlsMostrarListCategorias;
         private System.Windows.Forms.ToolStripMenuItem tlsSalir;
         private System.Windows.Forms.ToolStripMenuItem tlsLeeme;
         private System.Windows.Forms.StatusStrip ssUTN;
