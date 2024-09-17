@@ -104,9 +104,13 @@ namespace TPWinForm_equipo_16A.Views
             }
 
             _imagenes = _imgManager.ObtenerImagenesPorArticulo(_art.Articulo.Id);
-            dgvImagenes.DataSource = _imagenes.Count > 0 ? _imagenes : null;
-            dgvImagenes.Columns["Id"].Visible = false;
-            dgvImagenes.Columns["IdArticulo"].Visible = false;
+            if(_imagenes != null)
+            {
+                dgvImagenes.DataSource = _imagenes;
+                dgvImagenes.Columns["Id"].Visible = false;
+                dgvImagenes.Columns["IdArticulo"].Visible = false;
+
+            }
             CrearColumnasEditaryEliminar();
         }
 
